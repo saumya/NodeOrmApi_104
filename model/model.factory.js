@@ -12,6 +12,7 @@ const Model = Sequelize.Model;
 // initialize the proporties
 var sequelize = null;
 
+const getSequelize = () => { return sequelize }
 const initModelFactory = function(onSuccess,onFail){
 	sequelize = new Sequelize(config.dbConfig.database, config.dbConfig.user, config.dbConfig.password, {
 		host: config.dbConfig.host,
@@ -26,11 +27,11 @@ const initModelFactory = function(onSuccess,onFail){
 	});
 	sequelize.authenticate().then(function(){
 		console.log('+--- Sequelize ---------------');
-		console.log('Sequelize: Connection has been established successfully.');
+		console.log('YES : Sequelize: Connection has been established successfully.');
 		onSuccess(sequelize);
 	}).catch(function(error){
 		console.log('+--- Sequelize - Error ---------------');
-		console.error('Sequelize: Unable to connect to the database:', error);
+		console.error('NO : Sequelize: Unable to connect to the database:', error);
 		onFail(error);
 	});
 }
@@ -47,5 +48,8 @@ const initModelFactory = function(onSuccess,onFail){
 
 
 
-module.exports = { initModelFactory }
+module.exports = { 
+	getSequelize, 
+	initModelFactory 
+}
 //
