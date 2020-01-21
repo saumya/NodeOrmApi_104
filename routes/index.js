@@ -32,6 +32,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express | Sequelize | API' });
 });
 
+router.get('/initDB',function(request,response,next){
+	modelFactory.initTheModels();
+	response.send('initDB');
+});
+
 router.get('/ormCheck',function(request,response,next){
 	//const result = connCheck();
 	response.send( JSON.stringify({'Checked':true}) );

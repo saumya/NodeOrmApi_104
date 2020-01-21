@@ -9,8 +9,15 @@ const Sequelize = require('sequelize');
 
 const Model = Sequelize.Model;
 
+const getPersonModel = require('./person.model');
+
+
+
 // initialize the proporties
 var sequelize = null;
+//
+var ModelPerson = null;
+//
 
 const getSequelize = () => { return sequelize }
 const initModelFactory = function(onSuccess,onFail){
@@ -36,7 +43,23 @@ const initModelFactory = function(onSuccess,onFail){
 	});
 }
 
+// ---------------------------------------------------------------------------------------
+// Initialises the Models and saves them.
+// The ORM creates the tables and if it is already present, deletes them and re-creates
+// ---------------------------------------------------------------------------------------
+const initTheModels = function(){
+	console.log( 'initTheModels' );
 
+	ModelPerson = getPersonModel(sequelize);
+	ModelPerson.sync({force:true}).then(()=>{
+      console.log('Sequelize: Synced! ModelPerson');
+      console.log(ModelPerson);
+  }).catch(err=>{
+      console.log('+--- Sequelize - Error ---------------');
+      console.error('Sequelize: Model Error: ModelPerson: ', err);
+  });
+
+}
 
 
 
@@ -50,6 +73,7 @@ const initModelFactory = function(onSuccess,onFail){
 
 module.exports = { 
 	getSequelize, 
-	initModelFactory 
+	initModelFactory,
+	initTheModels 
 }
 //
