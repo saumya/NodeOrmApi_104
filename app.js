@@ -47,9 +47,9 @@ const modelFactory = require('./model/model.factory');
 modelFactory.initModelFactory(onModelFactoryInitDone,onModelFactoryInitFail);
 function onModelFactoryInitDone(sequelize){
     console.log('app.js: onModelFactoryInitDone');
-    console.log('+-----------------------------------------');
-    console.log('| Application: Init : Done ');
-    console.log('+-----------------------------------------');
+    console.log('+----------------------------+');
+    console.log('| Application: Init : Done   |');
+    console.log('+----------------------------+');
     //console.log('sequelize',sequelize);
     
     //sequelize = modelFactory.getORMRef();

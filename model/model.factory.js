@@ -59,6 +59,9 @@ const initTheModels = function(){
       console.error('Sequelize: Model Error: ModelPerson: ', err);
   });
 
+  // Instead of calling sync() for every model, you can call sequelize.sync() which will automatically sync all models.
+  
+
 }
 
 
