@@ -3,3 +3,24 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  div
+   span The first call to start is '/initDB' 
+   div It just makes the default Tables available to work with. 
+  br
+  div(class='api_group') 
+   span APIs
+   ul Database initialisation
+    li 
+     a(href="/ormCheck") ORM Check
+    li
+     a(href="/initDB") Initialise the Database
+   ul Begins the calls
+    li
+     a(href="/ormCheck") ORM Check
+    li
+     a(href="/ormCheck") ORM Check
+
+  div
+   p Thank you.
+   
+   

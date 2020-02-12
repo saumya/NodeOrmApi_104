@@ -10,6 +10,7 @@ const Sequelize = require('sequelize');
 const Model = Sequelize.Model;
 
 const getPersonModel = require('./person.model');
+const getGroupModel = require('./group.model');
 
 
 
@@ -17,6 +18,7 @@ const getPersonModel = require('./person.model');
 var sequelize = null;
 //
 var ModelPerson = null;
+var ModelGroup = null;
 //
 
 const getSequelize = () => { return sequelize }
@@ -60,6 +62,15 @@ const initTheModels = function(){
   });
 
   // Instead of calling sync() for every model, you can call sequelize.sync() which will automatically sync all models.
+
+  ModelGroup = getGroupModel(sequelize);
+  ModelGroup.sync({force:true}).then(()=>{
+  	console.log('Sequelize: Synced! ModelGroup');
+  	console.log(ModelGroup);
+  }).catch(err=>{
+  	console.log('+--- Sequelize - Error ---------------');
+  	console.error('Sequelize: Model Error: ModelGroup: ', err);
+  });
   
 
 }
