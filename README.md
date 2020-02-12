@@ -50,13 +50,13 @@ npm install --save sequelize
 
 
 
-
-
-
-
 [1]: https://github.com/saumya/NodeOrmApi_101
 [2]: https://github.com/saumya/NodeOrmApi_102
 [3]: https://github.com/saumya/NodeOrmApi_103
 
 [1s]: https://sequelize.org/
 [2s]: https://typeorm.io/
+
+
+
+
