@@ -73,7 +73,14 @@ const initTheModels = function(){
   });
   
 
+} // initTheModels/
+
+// ----------- API calls ---------------------------------
+const createGroupWithName = function(groupObj){
+	console.log('createGroupWithName');
+	console.log(groupObj);
 }
+// ----------- API calls / ---------------------------------
 
 
 
@@ -88,6 +95,7 @@ const initTheModels = function(){
 module.exports = { 
 	getSequelize, 
 	initModelFactory,
-	initTheModels 
+	initTheModels,
+	createGroupWithName 
 }
 //
