@@ -36,6 +36,7 @@ router.get('/info', function(req, res, next) {
 router.post('/createGroup', (request,response)=>{
 	console.log('v1.js : API : CreateGroup');
 	console.log( 'request.body=',request.body );
+	
 	var newGroupName = request.body.groupName;
 	var newGroupAdminName = request.body.userName;
 	var newGroupAdminPassword = request.body.userPassword;
