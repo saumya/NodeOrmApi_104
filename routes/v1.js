@@ -36,16 +36,24 @@ router.get('/info', function(req, res, next) {
 router.post('/createGroup', (request,response)=>{
 	console.log('v1.js : API : CreateGroup');
 	console.log( 'request.body=',request.body );
-	
-	var newGroupName = request.body.groupName;
-	var newGroupAdminName = request.body.userName;
-	var newGroupAdminPassword = request.body.userPassword;
+
+	const newGroupName = request.body.groupName;
+	const newGroupAdminName = request.body.userName;
+	const newGroupAdminPassword = request.body.userPassword;
+	//
+	const onCallbackFromDB = function(dbResult){
+		console.log('v1.js : onCallbackFromDB');
+		//console.log( dbResult );
+		console.log('sending response to client');
+
+		response.send( dbResult );
+	}
 	
 	modelFactory.createGroupWithName({
-		gName : newGroupName,
-		gAdminName : newGroupAdminName,
-		gAdminPassword : newGroupAdminPassword
-	});
+		group_name : newGroupName,
+		user_name : newGroupAdminName,
+		user_password : newGroupAdminPassword
+	},onCallbackFromDB);
 	
 	var tNow = new Date();
 	var sTime = tNow.getHours()+':'+tNow.getMinutes()+':'+tNow.getSeconds()+':'+tNow.getMilliseconds();
@@ -55,7 +63,8 @@ router.post('/createGroup', (request,response)=>{
     "greet":"Hello from server",
     "api-message":"POST request to CreateGroup"
   };
-  response.send(result);
+
+  //response.send(result);
 });
 
 // ------------------------------- POST / -----------------------------------

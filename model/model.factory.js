@@ -52,7 +52,7 @@ const initModelFactory = function(onSuccess,onFail){
 const initTheModels = function(){
 	console.log( 'initTheModels' );
 
-	ModelPerson = getPersonModel(sequelize);
+	const ModelPerson = getPersonModel(sequelize);
 	ModelPerson.sync({force:true}).then(()=>{
       console.log('Sequelize: Synced! ModelPerson');
       console.log(ModelPerson);
@@ -63,7 +63,7 @@ const initTheModels = function(){
 
   // Instead of calling sync() for every model, you can call sequelize.sync() which will automatically sync all models.
 
-  ModelGroup = getGroupModel(sequelize);
+  const ModelGroup = getGroupModel(sequelize);
   ModelGroup.sync({force:true}).then(()=>{
   	console.log('Sequelize: Synced! ModelGroup');
   	console.log(ModelGroup);
@@ -76,9 +76,21 @@ const initTheModels = function(){
 } // initTheModels/
 
 // ----------- API calls ---------------------------------
-const createGroupWithName = function(groupObj){
-	console.log('createGroupWithName');
+const createGroupWithName = function(groupObj,onResult){
+	console.log('model.factory : createGroupWithName');
 	console.log(groupObj);
+
+	const ModelGroup = getGroupModel(sequelize);
+	ModelGroup.create(groupObj).then(function(result){
+		console.log('RESULT : ModelGroup.create');
+		//console.log( result );
+		onResult(result);
+	}).catch(function(error){
+		console.log('ERROR : ModelGroup.create');
+		//console.log( error );
+		onResult( error );
+	});
+
 }
 // ----------- API calls / ---------------------------------
 
