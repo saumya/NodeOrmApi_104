@@ -29,7 +29,11 @@ router.get('/info', function(req, res, next) {
 });
 //
 // ------------------------------- GET -----------------------------------
-
+router.get('/findGroupWithId/:theID', (request,response)=>{
+	console.log('findGroupWithId', request.params );
+	response.send('findGroupWithId : server : '+ request.params.theID );
+	//TODO: make the server call and respond
+});
 // ------------------------------- GET / -----------------------------------
 // ------------------------------- POST -----------------------------------
 
@@ -55,6 +59,7 @@ router.post('/createGroup', (request,response)=>{
 		user_password : newGroupAdminPassword
 	},onCallbackFromDB);
 	
+	/*
 	var tNow = new Date();
 	var sTime = tNow.getHours()+':'+tNow.getMinutes()+':'+tNow.getSeconds()+':'+tNow.getMilliseconds();
 	var result = {
@@ -63,6 +68,7 @@ router.post('/createGroup', (request,response)=>{
     "greet":"Hello from server",
     "api-message":"POST request to CreateGroup"
   };
+  */
 
   //response.send(result);
 });
