@@ -1,6 +1,6 @@
 NodeOrmApi_104
 ================
-Continuing my study of [Sequelize][1s] ORM. Though [TypeORM][2s] looks interesting too.
+Study of [Sequelize][1s] ORM. Though [TypeORM][2s] looks interesting too.
  
  The old projects are here
  
