@@ -11,7 +11,7 @@ These are projects where I am trying to connect to SQL database. There are other
  
  1. Node and MongoDB [NodeOrmApi_103][3]
 
-### Workings
+### How it is worked till now
 
 Generated the application with `express-generator` and `npx` not `npm`.
 
