@@ -2,6 +2,13 @@ NodeOrmApi_104
 ================
 Study of [Sequelize][1s] ORM by making a project with it.
 
+### TODO
+
+ - Model Factory to be able to switch Database servers
+
+
+
+
 [TypeORM][2s] looks interesting too.
  
  The old projects are here
