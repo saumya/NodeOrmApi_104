@@ -11,7 +11,10 @@ const Model = Sequelize.Model;
 
 const getPersonModel = require('./person.model');
 const getGroupModel = require('./group.model');
-const getPersonGroupModel = require('./personGroup.model');
+//const getPersonGroupModel = require('./personGroup.model');
+
+const getDoctorModel = require('./doctor.model.js');
+const getDoctorGroupModel = require('./doctorGroup.model');
 
 
 
@@ -72,7 +75,8 @@ const initTheModels = function(){
   	console.log('+--- Sequelize - Error ---------------');
   	console.error('Sequelize: Model Error: ModelGroup: ', err);
   });
-
+  
+  /*
   const ModelPersonGroup = getPersonGroupModel(sequelize);
   ModelPersonGroup.sync({force:true}).then(()=>{
   	console.log('Sequelize: Synced! ModelPersonGroup');
@@ -81,7 +85,25 @@ const initTheModels = function(){
   	console.log('+--- Sequelize - Error ---------------');
   	console.error('Sequelize: Model Error: ModelPersonGroup: ', err);
   });
-  
+  */
+
+  const ModelDoctor = getDoctorModel(sequelize);
+	ModelDoctor.sync({force:true}).then(()=>{
+      console.log('Sequelize: Synced! ModelDoctor');
+      //console.log(ModelDoctor);
+  }).catch(err=>{
+      console.log('+--- Sequelize - Error ---------------');
+      console.error('Sequelize: Model Error: ModelDoctor: ', err);
+  });
+
+  const ModelDoctorGroup = getDoctorGroupModel(sequelize);
+  ModelDoctorGroup.sync({force:true}).then(()=>{
+  	console.log('Sequelize: Synced! ModelDoctorGroup');
+  	//console.log(ModelDoctorGroup);
+  }).catch(err=>{
+  	console.log('+--- Sequelize - Error ---------------');
+  	console.error('Sequelize: Model Error: ModelDoctorGroup: ', err);
+  });
 
 } // initTheModels/
 
