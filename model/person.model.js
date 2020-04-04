@@ -16,7 +16,8 @@ const getPersonModel = function(sequelize){
 	Person.init({
 		name: Sequelize.STRING,
 		phone: Sequelize.STRING,
-		email: Sequelize.STRING
+		email: Sequelize.STRING,
+		address: Sequelize.STRING
 	},{
 		sequelize: sequelize,
 		modelName: 'person',
