@@ -7,7 +7,7 @@ const getGroupModel = function(sequelize){
 	class Group extends Model {};
 	
 	Group.init({
-		group_name: Sequelize.STRING,
+		group_name: { type: Sequelize.STRING, defaultValue: "NotNameGroup" },
 		user_name: Sequelize.STRING,
 		user_password: Sequelize.STRING,
 		activated_on: Sequelize.STRING,

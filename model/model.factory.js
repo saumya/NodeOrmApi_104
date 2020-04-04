@@ -11,6 +11,7 @@ const Model = Sequelize.Model;
 
 const getPersonModel = require('./person.model');
 const getGroupModel = require('./group.model');
+const getPersonGroupModel = require('./personGroup.model');
 
 
 
@@ -55,7 +56,7 @@ const initTheModels = function(){
 	const ModelPerson = getPersonModel(sequelize);
 	ModelPerson.sync({force:true}).then(()=>{
       console.log('Sequelize: Synced! ModelPerson');
-      console.log(ModelPerson);
+      //console.log(ModelPerson);
   }).catch(err=>{
       console.log('+--- Sequelize - Error ---------------');
       console.error('Sequelize: Model Error: ModelPerson: ', err);
@@ -66,10 +67,19 @@ const initTheModels = function(){
   const ModelGroup = getGroupModel(sequelize);
   ModelGroup.sync({force:true}).then(()=>{
   	console.log('Sequelize: Synced! ModelGroup');
-  	console.log(ModelGroup);
+  	//console.log(ModelGroup);
   }).catch(err=>{
   	console.log('+--- Sequelize - Error ---------------');
   	console.error('Sequelize: Model Error: ModelGroup: ', err);
+  });
+
+  const ModelPersonGroup = getPersonGroupModel(sequelize);
+  ModelPersonGroup.sync({force:true}).then(()=>{
+  	console.log('Sequelize: Synced! ModelPersonGroup');
+  	//console.log(ModelPersonGroup);
+  }).catch(err=>{
+  	console.log('+--- Sequelize - Error ---------------');
+  	console.error('Sequelize: Model Error: ModelPersonGroup: ', err);
   });
   
 
