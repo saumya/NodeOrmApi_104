@@ -2,8 +2,12 @@ NodeOrmApi_104
 ================
 Study of [Sequelize][1s] ORM by making a project with it.
 
+### wip updates
+
+ - Updated to latest packages.
 
 
+### Gegeric Information 
 
 [TypeORM][2s] looks interesting too.
  
