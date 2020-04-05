@@ -16,6 +16,8 @@ const getGroupModel = require('./group.model');
 const getDoctorModel = require('./doctor.model.js');
 const getDoctorGroupModel = require('./doctorGroup.model');
 
+const getScheduleModel = require('./schedule.model');
+
 
 
 // initialize the proporties
@@ -103,6 +105,15 @@ const initTheModels = function(){
   }).catch(err=>{
   	console.log('+--- Sequelize - Error ---------------');
   	console.error('Sequelize: Model Error: ModelDoctorGroup: ', err);
+  });
+
+  const ScheduleModel = getScheduleModel(sequelize);
+  ScheduleModel.sync({force:true}).then(()=>{
+  	console.log('Sequelize: Synced! ScheduleModel');
+  	//console.log(ScheduleModel);
+  }).catch(err=>{
+  	console.log('+--- Sequelize - Error ---------------');
+  	console.error('Sequelize: Model Error: ScheduleModel: ', err);
   });
 
 } // initTheModels/
