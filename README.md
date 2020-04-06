@@ -2,9 +2,9 @@ NodeOrmApi_104
 ================
 Study of [Sequelize][1s] ORM by making a project with it.
 
-### wip updates
+### TODO
 
- - Updated to latest packages.
+ - initDB : Error checking in this call
 
 
 ### Gegeric Information 
