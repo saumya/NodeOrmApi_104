@@ -5,6 +5,7 @@ Study of [Sequelize][1s] ORM by making a project with it.
 ### TODO
 
  - initDB : Error checking in this call
+ - API : for CRUD operations
 
 
 ### Gegeric Information 
