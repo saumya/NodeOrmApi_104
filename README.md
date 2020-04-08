@@ -6,6 +6,7 @@ Study of [Sequelize][1s] ORM by making a project with it.
 
  - initDB : Error checking in this call
  - API : for CRUD operations
+ - Need testing for the APIs
 
 
 ### Gegeric Information 
