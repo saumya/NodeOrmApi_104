@@ -37,6 +37,7 @@ router.get('/findGroupWithId/:theID', (request,response)=>{
 // ------------------------------- GET / -----------------------------------
 // ------------------------------- POST -----------------------------------
 
+// Group / Organisation / Company 
 router.post('/createGroup', (request,response)=>{
 	console.log('v1.js : API : CreateGroup');
 	console.log( 'request.body=',request.body );
@@ -71,6 +72,21 @@ router.post('/createGroup', (request,response)=>{
   */
 
   //response.send(result);
+});
+
+// TODO:
+
+router.post('/createPerson', (request,response)=>{
+	console.log('v1.js : API : CreatePerson');
+});
+router.post('/createDoctor', (request,response)=>{
+	console.log('v1.js : API : CreateDoctor');
+});
+router.post('/createDoctorGroup', (request,response)=>{
+	console.log('v1.js : API : CreateDoctorGroup');
+});
+router.post('/createSchedule', (request,response)=>{
+	console.log('v1.js : API : CreateSchedule');
 });
 
 // ------------------------------- POST / -----------------------------------
