@@ -34,6 +34,17 @@ router.get('/findGroupWithId/:theID', (request,response)=>{
 	response.send('findGroupWithId : server : '+ request.params.theID );
 	//TODO: make the server call and respond
 });
+
+// TODO
+
+router.post('/getPerson', (request,response)=>{
+	console.log('v1.js : API : getPerson');
+});
+router.post('/getDoctor', (request,response)=>{
+	console.log('v1.js : API : getDoctor');
+});
+
+
 // ------------------------------- GET / -----------------------------------
 // ------------------------------- POST -----------------------------------
 
