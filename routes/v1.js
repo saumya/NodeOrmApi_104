@@ -87,6 +87,7 @@ router.post('/createGroup', (request,response)=>{
 
 // TODO:
 
+// Create : 
 router.post('/createPerson', (request,response)=>{
 	console.log('v1.js : API : CreatePerson');
 });
@@ -99,6 +100,21 @@ router.post('/createDoctorGroup', (request,response)=>{
 router.post('/createSchedule', (request,response)=>{
 	console.log('v1.js : API : CreateSchedule');
 });
+// Create : /
+// Update : 
+router.post('/updatePerson', (request,response)=>{
+	console.log('v1.js : API : UpdatePerson');
+});
+router.post('/updateDoctor', (request,response)=>{
+	console.log('v1.js : API : UpdateDoctor');
+});
+router.post('/updateDoctorGroup', (request,response)=>{
+	console.log('v1.js : API : UpdateDoctorGroup');
+});
+router.post('/updateSchedule', (request,response)=>{
+	console.log('v1.js : API : UpdateSchedule');
+});
+// Update : /
 
 // ------------------------------- POST / -----------------------------------
 
