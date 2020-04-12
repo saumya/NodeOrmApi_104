@@ -115,6 +115,20 @@ router.post('/updateSchedule', (request,response)=>{
 	console.log('v1.js : API : UpdateSchedule');
 });
 // Update : /
+// Delete : 
+router.post('/deletePerson', (request,response)=>{
+	console.log('v1.js : API : DeletePerson');
+});
+router.post('/deleteDoctor', (request,response)=>{
+	console.log('v1.js : API : DeleteDoctor');
+});
+router.post('/deleteDoctorGroup', (request,response)=>{
+	console.log('v1.js : API : DeleteDoctorGroup');
+});
+router.post('/deleteSchedule', (request,response)=>{
+	console.log('v1.js : API : DeleteSchedule');
+});
+// Delete : /
 
 // ------------------------------- POST / -----------------------------------
 
