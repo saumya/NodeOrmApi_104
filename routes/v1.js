@@ -90,6 +90,13 @@ router.post('/createGroup', (request,response)=>{
 // Create : 
 router.post('/createPerson', (request,response)=>{
 	console.log('v1.js : API : CreatePerson');
+	//
+	console.log( 'request.body=',request.body );
+	const newPersonName = request.body.personName;
+	const newPersonEmail = request.body.personEmail;
+	const newPersonPhone = request.body.personPhone;
+	//
+
 });
 router.post('/createDoctor', (request,response)=>{
 	console.log('v1.js : API : CreateDoctor');
