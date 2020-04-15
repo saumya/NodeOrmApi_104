@@ -97,7 +97,7 @@ router.post('/createPerson', (request,response)=>{
 	const newPersonPhone = request.body.personPhone;
 	//
 	const onCallbackFromDB = function(dbResult){
-		//console.log('v1.js : onCallbackFromDB');
+		//console.log('v1.js : createPerson : onCallbackFromDB');
 		//console.log( dbResult );
 
 		response.send( dbResult );
@@ -105,6 +105,18 @@ router.post('/createPerson', (request,response)=>{
 });
 router.post('/createDoctor', (request,response)=>{
 	console.log('v1.js : API : CreateDoctor');
+	//
+	console.log( 'request.body=',request.body );
+	const newPersonName = request.body.personName;
+	const newPersonEmail = request.body.personEmail;
+	const newPersonPhone = request.body.personPhone;
+	//
+	const onCallbackFromDB = function(dbResult){
+		//console.log('v1.js : createDoctor : onCallbackFromDB');
+		//console.log( dbResult );
+
+		response.send( dbResult );
+	}
 });
 router.post('/createDoctorGroup', (request,response)=>{
 	console.log('v1.js : API : CreateDoctorGroup');
