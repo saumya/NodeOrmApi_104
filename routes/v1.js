@@ -96,7 +96,12 @@ router.post('/createPerson', (request,response)=>{
 	const newPersonEmail = request.body.personEmail;
 	const newPersonPhone = request.body.personPhone;
 	//
+	const onCallbackFromDB = function(dbResult){
+		//console.log('v1.js : onCallbackFromDB');
+		//console.log( dbResult );
 
+		response.send( dbResult );
+	}
 });
 router.post('/createDoctor', (request,response)=>{
 	console.log('v1.js : API : CreateDoctor');
