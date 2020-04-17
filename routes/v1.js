@@ -95,6 +95,7 @@ router.post('/createPerson', (request,response)=>{
 	const newPersonName = request.body.personName;
 	const newPersonEmail = request.body.personEmail;
 	const newPersonPhone = request.body.personPhone;
+	const newPersonAddress = request.body.personAddress;
 	//
 	const onCallbackFromDB = function(dbResult){
 		//console.log('v1.js : createPerson : onCallbackFromDB');
@@ -107,9 +108,10 @@ router.post('/createDoctor', (request,response)=>{
 	console.log('v1.js : API : CreateDoctor');
 	//
 	console.log( 'request.body=',request.body );
-	const newPersonName = request.body.personName;
-	const newPersonEmail = request.body.personEmail;
-	const newPersonPhone = request.body.personPhone;
+	const newDoctorName = request.body.doctorName;
+	const newDoctorEmail = request.body.doctorEmail;
+	const newDonctorPhone = request.body.doctorPhone;
+	const newDoctorAddress = request.body.doctorAddress;
 	//
 	const onCallbackFromDB = function(dbResult){
 		//console.log('v1.js : createDoctor : onCallbackFromDB');
