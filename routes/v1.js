@@ -122,6 +122,15 @@ router.post('/createDoctor', (request,response)=>{
 });
 router.post('/createDoctorGroup', (request,response)=>{
 	console.log('v1.js : API : CreateDoctorGroup');
+	const newDoctorName = request.body.doctorName;
+	const newDoctorGroupName = request.body.doctorGroupName;
+	//
+	const onCallbackFromDB = function(dbResult){
+		//console.log('v1.js : createDoctor : onCallbackFromDB');
+		//console.log( dbResult );
+
+		response.send( dbResult );
+	}
 });
 router.post('/createSchedule', (request,response)=>{
 	console.log('v1.js : API : CreateSchedule');
