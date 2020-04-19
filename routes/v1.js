@@ -134,6 +134,14 @@ router.post('/createDoctorGroup', (request,response)=>{
 });
 router.post('/createSchedule', (request,response)=>{
 	console.log('v1.js : API : CreateSchedule');
+	//
+	const scheduleDate = request.body.sDate;
+	const schedulePersonId = request.body.personId;
+	const scheduleDoctorId = request.body.doctorId;
+	//
+	const onCallbackFromDB = function(dbResult){
+		response.send( dbResult );
+	}
 });
 // Create : /
 // Update : 
@@ -153,15 +161,31 @@ router.post('/updateSchedule', (request,response)=>{
 // Delete : 
 router.post('/deletePerson', (request,response)=>{
 	console.log('v1.js : API : DeletePerson');
+	const personId = request.body.personId;
+	const onCallbackFromDB = function(dbResult){
+		response.send( dbResult );
+	}
 });
 router.post('/deleteDoctor', (request,response)=>{
 	console.log('v1.js : API : DeleteDoctor');
+	const doctorId = request.body.doctorId;
+	const onCallbackFromDB = function(dbResult){
+		response.send( dbResult );
+	}
 });
 router.post('/deleteDoctorGroup', (request,response)=>{
 	console.log('v1.js : API : DeleteDoctorGroup');
+	const doctorGroupId = request.body.doctorGroupId;
+	const onCallbackFromDB = function(dbResult){
+		response.send( dbResult );
+	}
 });
 router.post('/deleteSchedule', (request,response)=>{
 	console.log('v1.js : API : DeleteSchedule');
+	const scheduleId = request.body.scheduleId;
+	const onCallbackFromDB = function(dbResult){
+		response.send( dbResult );
+	}
 });
 // Delete : /
 
