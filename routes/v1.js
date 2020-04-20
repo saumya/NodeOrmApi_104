@@ -147,6 +147,13 @@ router.post('/createSchedule', (request,response)=>{
 // Update : 
 router.post('/updatePerson', (request,response)=>{
 	console.log('v1.js : API : UpdatePerson');
+	const newPersonName = request.body.personName;
+	const newPersonEmail = request.body.personEmail;
+	const newPersonPhone = request.body.personPhone;
+	const newPersonAddress = request.body.personAddress;
+	const onCallbackFromDB = function(dbResult){
+		response.send( dbResult );
+	}
 });
 router.post('/updateDoctor', (request,response)=>{
 	console.log('v1.js : API : UpdateDoctor');
