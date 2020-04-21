@@ -157,6 +157,14 @@ router.post('/updatePerson', (request,response)=>{
 });
 router.post('/updateDoctor', (request,response)=>{
 	console.log('v1.js : API : UpdateDoctor');
+	const newDoctorName = request.body.doctorName;
+	const newDoctorEmail = request.body.doctorEmail;
+	const newDonctorPhone = request.body.doctorPhone;
+	const newDoctorAddress = request.body.doctorAddress;
+	const onCallbackFromDB = function(dbResult){
+		response.send( dbResult );
+	};
+
 });
 router.post('/updateDoctorGroup', (request,response)=>{
 	console.log('v1.js : API : UpdateDoctorGroup');
