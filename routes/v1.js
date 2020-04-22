@@ -168,6 +168,12 @@ router.post('/updateDoctor', (request,response)=>{
 });
 router.post('/updateDoctorGroup', (request,response)=>{
 	console.log('v1.js : API : UpdateDoctorGroup');
+	const newDoctorName = request.body.doctorName;
+	const newDoctorGroupName = request.body.doctorGroupName;
+	//
+	const onCallbackFromDB = function(dbResult){
+		response.send( dbResult );
+	}
 });
 router.post('/updateSchedule', (request,response)=>{
 	console.log('v1.js : API : UpdateSchedule');
