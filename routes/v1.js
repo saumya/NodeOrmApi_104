@@ -177,6 +177,13 @@ router.post('/updateDoctorGroup', (request,response)=>{
 });
 router.post('/updateSchedule', (request,response)=>{
 	console.log('v1.js : API : UpdateSchedule');
+	const scheduleDate = request.body.sDate;
+	const schedulePersonId = request.body.personId;
+	const scheduleDoctorId = request.body.doctorId;
+	//
+	const onCallbackFromDB = function(dbResult){
+		response.send( dbResult );
+	}
 });
 // Update : /
 // Delete : 
