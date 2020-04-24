@@ -103,6 +103,14 @@ router.post('/createPerson', (request,response)=>{
 
 		response.send( dbResult );
 	}
+	//
+	modelFactory.createPerson({
+		person_name : newPersonName,
+		person_email : newPersonEmail,
+		person_phone : newPersonPhone,
+		person_address : newPersonAddress
+	},onCallbackFromDB);
+	//
 });
 router.post('/createDoctor', (request,response)=>{
 	console.log('v1.js : API : CreateDoctor');
