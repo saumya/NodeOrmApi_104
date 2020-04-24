@@ -180,17 +180,28 @@ router.post('/updatePerson', (request,response)=>{
 	const onCallbackFromDB = function(dbResult){
 		response.send( dbResult );
 	}
+	modelFactory.updatePerson({
+		person_name : newPersonName,
+		person_email : newPersonEmail,
+		person_phone : newPersonPhone,
+		person_address : newPersonAddress
+	}, onCallbackFromDB );
 });
 router.post('/updateDoctor', (request,response)=>{
 	console.log('v1.js : API : UpdateDoctor');
 	const newDoctorName = request.body.doctorName;
 	const newDoctorEmail = request.body.doctorEmail;
-	const newDonctorPhone = request.body.doctorPhone;
+	const newDoctorPhone = request.body.doctorPhone;
 	const newDoctorAddress = request.body.doctorAddress;
 	const onCallbackFromDB = function(dbResult){
 		response.send( dbResult );
 	};
-
+	modelFactory.updateDoctor({
+		doctor_name : newDoctorName,
+		doctor_email : newDoctorEmail,
+		doctor_phone : newDoctorPhone,
+		doctor_address : newDoctorAddress
+	}, onCallbackFromDB );
 });
 router.post('/updateDoctorGroup', (request,response)=>{
 	console.log('v1.js : API : UpdateDoctorGroup');
@@ -200,6 +211,12 @@ router.post('/updateDoctorGroup', (request,response)=>{
 	const onCallbackFromDB = function(dbResult){
 		response.send( dbResult );
 	}
+	//
+	modelFactory.updateDoctorGroup({
+		doctor_name : newDoctorName,
+		doctor_group_name : newDoctorGroupName
+	}, onCallbackFromDB );
+	//
 });
 router.post('/updateSchedule', (request,response)=>{
 	console.log('v1.js : API : UpdateSchedule');
@@ -210,6 +227,12 @@ router.post('/updateSchedule', (request,response)=>{
 	const onCallbackFromDB = function(dbResult){
 		response.send( dbResult );
 	}
+	//
+	modelFactory.updateSchedule({
+		schedule_date : scheduleDate,
+		schedule_person_id : schedulePersonId,
+		schedule_doctor_id : scheduleDoctorId
+	}, onCallbackFromDB );
 });
 // Update : /
 // Delete : 
@@ -219,6 +242,10 @@ router.post('/deletePerson', (request,response)=>{
 	const onCallbackFromDB = function(dbResult){
 		response.send( dbResult );
 	}
+	//
+	modelFactory.deletePerson({
+		person_id : personId
+	}, onCallbackFromDB );
 });
 router.post('/deleteDoctor', (request,response)=>{
 	console.log('v1.js : API : DeleteDoctor');
@@ -226,6 +253,9 @@ router.post('/deleteDoctor', (request,response)=>{
 	const onCallbackFromDB = function(dbResult){
 		response.send( dbResult );
 	}
+	modelFactory.deleteDoctor({
+		doctor_id : doctorId
+	}, onCallbackFromDB );
 });
 router.post('/deleteDoctorGroup', (request,response)=>{
 	console.log('v1.js : API : DeleteDoctorGroup');
@@ -233,6 +263,9 @@ router.post('/deleteDoctorGroup', (request,response)=>{
 	const onCallbackFromDB = function(dbResult){
 		response.send( dbResult );
 	}
+	modelFactory.deleteDoctorGroup({
+		doctor_group_id : doctorGroupId
+	}, onCallbackFromDB );
 });
 router.post('/deleteSchedule', (request,response)=>{
 	console.log('v1.js : API : DeleteSchedule');
@@ -240,6 +273,9 @@ router.post('/deleteSchedule', (request,response)=>{
 	const onCallbackFromDB = function(dbResult){
 		response.send( dbResult );
 	}
+	modelFactory.deleteSchedule({
+		schedule_id : scheduleId
+	}, onCallbackFromDB );
 });
 // Delete : /
 
