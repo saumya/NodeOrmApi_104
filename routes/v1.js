@@ -100,7 +100,6 @@ router.post('/createPerson', (request,response)=>{
 	const onCallbackFromDB = function(dbResult){
 		//console.log('v1.js : createPerson : onCallbackFromDB');
 		//console.log( dbResult );
-
 		response.send( dbResult );
 	}
 	//
@@ -109,7 +108,7 @@ router.post('/createPerson', (request,response)=>{
 		person_email : newPersonEmail,
 		person_phone : newPersonPhone,
 		person_address : newPersonAddress
-	},onCallbackFromDB);
+	}, onCallbackFromDB );
 	//
 });
 router.post('/createDoctor', (request,response)=>{
@@ -118,15 +117,22 @@ router.post('/createDoctor', (request,response)=>{
 	console.log( 'request.body=',request.body );
 	const newDoctorName = request.body.doctorName;
 	const newDoctorEmail = request.body.doctorEmail;
-	const newDonctorPhone = request.body.doctorPhone;
+	const newDoctorPhone = request.body.doctorPhone;
 	const newDoctorAddress = request.body.doctorAddress;
 	//
 	const onCallbackFromDB = function(dbResult){
 		//console.log('v1.js : createDoctor : onCallbackFromDB');
 		//console.log( dbResult );
-
 		response.send( dbResult );
 	}
+	//
+	modelFactory.createDoctor({
+		doctor_name : newDoctorName,
+		doctor_email : newDoctorEmail,
+		doctor_phone : newDoctorPhone,
+		doctor_address : newDoctorAddress
+	}, onCallbackFromDB );
+	//
 });
 router.post('/createDoctorGroup', (request,response)=>{
 	console.log('v1.js : API : CreateDoctorGroup');
@@ -136,9 +142,14 @@ router.post('/createDoctorGroup', (request,response)=>{
 	const onCallbackFromDB = function(dbResult){
 		//console.log('v1.js : createDoctor : onCallbackFromDB');
 		//console.log( dbResult );
-
 		response.send( dbResult );
 	}
+	//
+	modelFactory.createDoctorGroup({
+		doctor_name : newDoctorName,
+		doctor_group_name : newDoctorGroupName
+	}, onCallbackFromDB );
+	//
 });
 router.post('/createSchedule', (request,response)=>{
 	console.log('v1.js : API : CreateSchedule');
@@ -150,6 +161,13 @@ router.post('/createSchedule', (request,response)=>{
 	const onCallbackFromDB = function(dbResult){
 		response.send( dbResult );
 	}
+	//
+	modelFactory.createSchedule({
+		schedule_date : scheduleDate,
+		schedule_person_id : schedulePersonId,
+		schedule_doctor_id : scheduleDoctorId
+	}, onCallbackFromDB );
+	//
 });
 // Create : /
 // Update : 
