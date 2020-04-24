@@ -35,7 +35,7 @@ router.get('/findGroupWithId/:theID', (request,response)=>{
 	//TODO: make the server call and respond
 });
 
-// TODO
+//
 
 router.post('/getPerson', (request,response)=>{
 	console.log('v1.js : API : getPerson');
@@ -84,8 +84,6 @@ router.post('/createGroup', (request,response)=>{
 
   //response.send(result);
 });
-
-// TODO:
 
 // Create : 
 router.post('/createPerson', (request,response)=>{

@@ -135,6 +135,27 @@ const createGroupWithName = function(groupObj,onResult){
 	});
 
 }
+
+//TODO: API implementation of the following signatures
+
+/*
+
+createPerson
+createDoctor
+createDoctorGroup
+createSchedule
+
+updatePerson
+updateDoctor
+updateDoctorGroup
+updateSchedule
+
+deletePerson
+deleteDoctor
+deleteDoctorGroup
+deleteSchedule
+
+*/
 // ----------- API calls / ---------------------------------
 
 
