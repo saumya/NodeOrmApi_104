@@ -156,6 +156,32 @@ deleteDoctorGroup
 deleteSchedule
 
 */
+
+const createPerson = function(personObj,onResult){
+  console.log('model.factory : createPerson');
+  console.log(personObj);
+
+  const newPerson = {
+    name: personObj.person_name ,
+    phone: personObj.person_phone ,
+    email: personObj.person_email,
+    address: personObj.person_address
+  }
+
+  const ModelPerson = getPersonModel(sequelize);
+  ModelPerson.create( newPerson ).then(function(result){
+    console.log('RESULT : ModelPerson.create');
+    //console.log( result );
+    onResult(result);
+  }).catch(function(error){
+    console.log('ERROR : ModelPerson.create');
+    //console.log( error );
+    onResult( error );
+  });
+}
+
+
+
 // ----------- API calls / ---------------------------------
 
 

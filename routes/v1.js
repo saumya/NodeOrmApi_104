@@ -96,7 +96,7 @@ router.post('/createPerson', (request,response)=>{
 	const newPersonAddress = request.body.personAddress;
 	//
 	const onCallbackFromDB = function(dbResult){
-		//console.log('v1.js : createPerson : onCallbackFromDB');
+		console.log('v1.js : API : createPerson : onCallbackFromDB');
 		//console.log( dbResult );
 		response.send( dbResult );
 	}
