@@ -140,7 +140,7 @@ const createGroupWithName = function(groupObj,onResult){
 
 /*
 
-createPerson
+createPerson x
 createDoctor
 createDoctorGroup
 createSchedule
@@ -175,6 +175,29 @@ const createPerson = function(personObj,onResult){
     onResult(result);
   }).catch(function(error){
     console.log('ERROR : ModelPerson.create');
+    //console.log( error );
+    onResult( error );
+  });
+}
+
+const createDoctor = function(doctorObj,onResult){
+  console.log('model.factory : createDoctor');
+  console.log(doctorObj);
+
+  const newDoctor = {
+    name: doctorObj.doctor_name ,
+    phone: doctorObj.doctor_phone ,
+    email: doctorObj.doctor_email,
+    address: doctorObj.doctor_address
+  }
+
+  const ModelDoctor = getDoctorModel(sequelize);
+  ModelDoctor.create( newDoctor ).then(function(result){
+    console.log('RESULT : ModelDoctor.create');
+    //console.log( result );
+    onResult(result);
+  }).catch(function(error){
+    console.log('ERROR : ModelDoctor.create');
     //console.log( error );
     onResult( error );
   });
