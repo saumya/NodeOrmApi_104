@@ -155,6 +155,7 @@ router.post('/createSchedule', (request,response)=>{
 	const scheduleDate = request.body.sDate;
 	const schedulePersonId = request.body.personId;
 	const scheduleDoctorId = request.body.doctorId;
+	const scheduleIsMorning = request.body.isMorning;
 	//
 	const onCallbackFromDB = function(dbResult){
 		response.send( dbResult );
@@ -163,7 +164,8 @@ router.post('/createSchedule', (request,response)=>{
 	modelFactory.createSchedule({
 		schedule_date : scheduleDate,
 		schedule_person_id : schedulePersonId,
-		schedule_doctor_id : scheduleDoctorId
+		schedule_doctor_id : scheduleDoctorId,
+		schedule_is_morning : scheduleIsMorning
 	}, onCallbackFromDB );
 	//
 });

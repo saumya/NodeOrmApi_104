@@ -203,6 +203,54 @@ const createDoctor = function(doctorObj,onResult){
   });
 }
 
+// this is tricky.
+// Check it and fix it if not working
+const createDoctorGroup = function(doctorGroupObj, onResult){
+  console.log('model.factory : createDoctorGroup');
+
+  const newDoctorGroup = {
+    doctor_name : doctorGroupObj.doctor_name,
+    doctor_group_name : doctorGroupObj.doctor_group_name
+  };
+  const ModelDoctorGroup = getDoctorGroupModel(sequelize);
+  ModelDoctorGroup.create( newDoctorGroup ).then(function(result){
+    console.log('RESULT : ModelDoctorGroup.create');
+    //console.log( result );
+    onResult(result);
+  }).catch(function(error){
+    console.log('ERROR : ModelDoctorGroup.create');
+    //console.log( error );
+    onResult( error );
+  });
+
+} //createDoctorGroup/
+
+// Test this
+// Fix the things that is not working
+// WIP
+const createSchedule = function(schedule, onResult){
+  console.log('model.factory : createSchedule');
+  /*
+  schedule_date
+  schedule_person_id
+  schedule_doctor_id
+  schedule_is_morning
+  */
+
+  const newSchedule = {
+    on_date: schedule.scheduleDate,
+    is_morning: schedule.schedule_is_morning
+  };
+  const ModelSchedule = getScheduleModel(sequelize);
+  ModelSchedule.create( newSchedule ).then(function(result){
+    console.log('RESULT : ModelSchedule.create');
+    onResult( result );
+  }).catch(function(error){
+    console.log('ERROR : ModelSchedule.create');
+    console.log(error);
+  });
+}; // createSchedule/
+
 
 
 // ----------- API calls / ---------------------------------
