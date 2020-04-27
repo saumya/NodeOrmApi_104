@@ -141,9 +141,9 @@ const createGroupWithName = function(groupObj,onResult){
 /*
 
 createPerson x
-createDoctor
-createDoctorGroup
-createSchedule
+createDoctor x
+createDoctorGroup x
+createSchedule x
 
 updatePerson
 updateDoctor
@@ -157,6 +157,13 @@ deleteSchedule
 
 */
 
+// create
+/*
+createPerson 
+createDoctor 
+createDoctorGroup 
+createSchedule 
+*/
 const createPerson = function(personObj,onResult){
   console.log('model.factory : createPerson');
   console.log(personObj);
@@ -250,6 +257,53 @@ const createSchedule = function(schedule, onResult){
     console.log(error);
   });
 }; // createSchedule/
+
+// create/
+
+// update
+/*
+updatePerson
+updateDoctor
+updateDoctorGroup
+updateSchedule
+*/
+
+// updatePerson
+const updatePerson = function(){};
+// updatePerson/
+// updateDoctor
+const updateDoctor = function(){};
+// updateDoctor/
+// updateDoctorGroup
+const updateDoctorGroup = function(){};
+// updateDoctorGroup/
+// updateSchedule
+const updateSchedule = function(){};
+// updateSchedule/
+// update/
+
+// delete
+/*
+deletePerson
+deleteDoctor
+deleteDoctorGroup
+deleteSchedule
+*/
+
+// deletePerson
+const deletePerson = function(){};
+// deletePerson/
+// deleteDoctor
+const deleteDoctor = function(){};
+// deleteDoctor/
+// delteDoctorGroup
+const deleteDoctorGroup = function(){};
+// delteDoctorGroup/
+// deleteSchedule
+const deleteSchedule = function(){};
+// deleteSchedule/
+// delete/
+
 
 
 
