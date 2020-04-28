@@ -291,7 +291,33 @@ deleteSchedule
 */
 
 // deletePerson
-const deletePerson = function(){};
+const deletePerson = function(personObj,onResult){
+  console.log('model.factory : createPerson');
+  console.log(personObj);
+
+  const newPerson = {
+    name: personObj.person_name ,
+    phone: personObj.person_phone ,
+    email: personObj.person_email,
+    address: personObj.person_address,
+    pId: personObj.pID
+  }
+  const ModelPerson = getPersonModel(sequelize);
+
+  // TODO:
+  // Delete the person with ID
+  // This should be deleting the Person from DB
+  ModelPerson.create( newPerson ).then(function(result){
+    console.log('RESULT : ModelPerson.create');
+    //console.log( result );
+    onResult(result);
+  }).catch(function(error){
+    console.log('ERROR : ModelPerson.create');
+    //console.log( error );
+    onResult( error );
+  });
+
+};
 // deletePerson/
 // deleteDoctor
 const deleteDoctor = function(){};
