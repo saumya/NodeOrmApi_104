@@ -300,19 +300,19 @@ const deletePerson = function(personObj,onResult){
     phone: personObj.person_phone ,
     email: personObj.person_email,
     address: personObj.person_address,
-    pId: personObj.pID
+    pID: personObj.pID
   }
   const ModelPerson = getPersonModel(sequelize);
 
   // TODO:
   // Delete the person with ID
   // This should be deleting the Person from DB
-  ModelPerson.create( newPerson ).then(function(result){
-    console.log('RESULT : ModelPerson.create');
+  ModelPerson.delete( newPerson ).then(function(result){
+    console.log('RESULT : ModelPerson.delete');
     //console.log( result );
     onResult(result);
   }).catch(function(error){
-    console.log('ERROR : ModelPerson.create');
+    console.log('ERROR : ModelPerson.delete');
     //console.log( error );
     onResult( error );
   });
@@ -320,7 +320,31 @@ const deletePerson = function(personObj,onResult){
 };
 // deletePerson/
 // deleteDoctor
-const deleteDoctor = function(){};
+const deleteDoctor = function(doctorObj,onResult){
+  console.log('model.factory : deleteDoctor');
+  console.log(doctorObj);
+
+  const newDoctor = {
+    name: doctorObj.doctor_name ,
+    phone: doctorObj.doctor_phone ,
+    email: doctorObj.doctor_email,
+    address: doctorObj.doctor_address,
+    dID: doctorObj.dID
+  }
+
+  const ModelDoctor = getDoctorModel(sequelize);
+  // check for 'delete' functionality in that model
+  //
+  ModelDoctor.delete( newDoctor ).then(function(result){
+    console.log('RESULT : ModelDoctor.delete');
+    //console.log( result );
+    onResult(result);
+  }).catch(function(error){
+    console.log('ERROR : ModelDoctor.delete');
+    //console.log( error );
+    onResult( error );
+  });
+};
 // deleteDoctor/
 // delteDoctorGroup
 const deleteDoctorGroup = function(){};
