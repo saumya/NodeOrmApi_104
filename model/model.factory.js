@@ -347,7 +347,24 @@ const deleteDoctor = function(doctorObj,onResult){
 };
 // deleteDoctor/
 // delteDoctorGroup
-const deleteDoctorGroup = function(){};
+const deleteDoctorGroup = function(doctorGroupObj, onResult){
+  console.log('model.factory : deleteDoctorGroup');
+
+  const newDoctorGroup = {
+    doctor_name : doctorGroupObj.doctor_name,
+    doctor_group_name : doctorGroupObj.doctor_group_name
+  };
+  const ModelDoctorGroup = getDoctorGroupModel(sequelize);
+  ModelDoctorGroup.delete( newDoctorGroup ).then(function(result){
+    console.log('RESULT : ModelDoctorGroup.delete');
+    //console.log( result );
+    onResult(result);
+  }).catch(function(error){
+    console.log('ERROR : ModelDoctorGroup.delete');
+    //console.log( error );
+    onResult( error );
+  });
+};
 // delteDoctorGroup/
 // deleteSchedule
 const deleteSchedule = function(){};
