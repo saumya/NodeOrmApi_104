@@ -367,7 +367,20 @@ const deleteDoctorGroup = function(doctorGroupObj, onResult){
 };
 // delteDoctorGroup/
 // deleteSchedule
-const deleteSchedule = function(){};
+const deleteSchedule = function(schedule, onResult){
+  const newSchedule = {
+    on_date: schedule.scheduleDate,
+    is_morning: schedule.schedule_is_morning
+  };
+  const ModelSchedule = getScheduleModel(sequelize);
+  ModelSchedule.delete( newSchedule ).then(function(result){
+    console.log('RESULT : ModelSchedule.delete');
+    onResult( result );
+  }).catch(function(error){
+    console.log('ERROR : ModelSchedule.delete');
+    console.log(error);
+  });
+};
 // deleteSchedule/
 // delete/
 
