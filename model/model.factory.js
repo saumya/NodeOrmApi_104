@@ -269,7 +269,32 @@ updateSchedule
 */
 
 // updatePerson
-const updatePerson = function(){};
+const updatePerson = function(personObj,onResult){
+  console.log('model.factory : updatePerson');
+  console.log(personObj);
+
+  const newPerson = {
+    name: personObj.person_name ,
+    phone: personObj.person_phone ,
+    email: personObj.person_email,
+    address: personObj.person_address,
+    pID: personObj.pID
+  }
+  const ModelPerson = getPersonModel(sequelize);
+
+  // TODO:
+  // Delete the person with ID
+  // This should be deleting the Person from DB
+  ModelPerson.update( newPerson ).then(function(result){
+    console.log('RESULT : ModelPerson.update');
+    //console.log( result );
+    onResult(result);
+  }).catch(function(error){
+    console.log('ERROR : ModelPerson.update');
+    //console.log( error );
+    onResult( error );
+  });
+};
 // updatePerson/
 // updateDoctor
 const updateDoctor = function(){};
