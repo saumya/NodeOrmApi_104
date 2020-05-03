@@ -297,13 +297,65 @@ const updatePerson = function(personObj,onResult){
 };
 // updatePerson/
 // updateDoctor
-const updateDoctor = function(){};
+const updateDoctor = function(doctorObj,onResult){
+  console.log('model.factory : updateDoctor');
+  console.log(doctorObj);
+
+  const newDoctor = {
+    name: doctorObj.doctor_name ,
+    phone: doctorObj.doctor_phone ,
+    email: doctorObj.doctor_email,
+    address: doctorObj.doctor_address
+  }
+
+  const ModelDoctor = getDoctorModel(sequelize);
+  ModelDoctor.update( newDoctor ).then(function(result){
+    console.log('RESULT : ModelDoctor.update');
+    //console.log( result );
+    onResult(result);
+  }).catch(function(error){
+    console.log('ERROR : ModelDoctor.update');
+    //console.log( error );
+    onResult( error );
+  });
+};
 // updateDoctor/
 // updateDoctorGroup
-const updateDoctorGroup = function(){};
+const updateDoctorGroup = function(doctorGroupObj, onResult){
+  console.log('model.factory : updateDoctorGroup');
+
+  const newDoctorGroup = {
+    doctor_name : doctorGroupObj.doctor_name,
+    doctor_group_name : doctorGroupObj.doctor_group_name
+  };
+  const ModelDoctorGroup = getDoctorGroupModel(sequelize);
+  ModelDoctorGroup.update( newDoctorGroup ).then(function(result){
+    console.log('RESULT : ModelDoctorGroup.update');
+    //console.log( result );
+    onResult(result);
+  }).catch(function(error){
+    console.log('ERROR : ModelDoctorGroup.update');
+    //console.log( error );
+    onResult( error );
+  });
+};
 // updateDoctorGroup/
 // updateSchedule
-const updateSchedule = function(){};
+const updateSchedule = function(schedule, onResult){
+  console.log('model.factory : updateSchedule');
+  const newSchedule = {
+    on_date: schedule.scheduleDate,
+    is_morning: schedule.schedule_is_morning
+  };
+  const ModelSchedule = getScheduleModel(sequelize);
+  ModelSchedule.update( newSchedule ).then(function(result){
+    console.log('RESULT : ModelSchedule.update');
+    onResult( result );
+  }).catch(function(error){
+    console.log('ERROR : ModelSchedule.update');
+    console.log(error);
+  });
+};
 // updateSchedule/
 // update/
 
