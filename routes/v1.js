@@ -65,12 +65,14 @@ router.post('/createGroup', (request,response)=>{
 		response.send( dbResult );
 	}
 	
+
 	modelFactory.createGroupWithName({
 		group_name : newGroupName,
 		user_name : newGroupAdminName,
 		user_password : newGroupAdminPassword
 	},onCallbackFromDB);
 	
+
 	/*
 	var tNow = new Date();
 	var sTime = tNow.getHours()+':'+tNow.getMinutes()+':'+tNow.getSeconds()+':'+tNow.getMilliseconds();
