@@ -480,6 +480,7 @@ module.exports = {
 	getSequelize, 
 	initModelFactory,
 	initTheModels,
-	createGroupWithName 
+	createGroupWithName, 
+  createPerson, createDoctor, createDoctorGroup, createSchedule
 }
 //
