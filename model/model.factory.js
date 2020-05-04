@@ -42,12 +42,17 @@ const initModelFactory = function(onSuccess,onFail){
 	});
 	sequelize.authenticate().then(function(){
 		console.log('+--- Sequelize ---------------');
-		console.log('YES : Sequelize: Connection has been established successfully.');
+		console.log('YES : Sequelize : Connection has been established successfully.');
 		onSuccess(sequelize);
 	}).catch(function(error){
 		console.log('+--- Sequelize - Error ---------------');
-		console.error('NO : Sequelize: Unable to connect to the database:', error);
+		console.error('model.factory.js :  : NO : Sequelize : Unable to connect to the database');
+
+    //console.log(error);
 		onFail(error);
+
+    console.error('model.factory.js : / : NO : Sequelize : Unable to connect to the database');
+    console.log('+--- Sequelize - Error / ---------------');
 	});
 }
 

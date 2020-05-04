@@ -79,8 +79,15 @@ function onModelFactoryInitDone(sequelize){
     //modelFactory.initTheModels();
 }
 function onModelFactoryInitFail(error){
-    console.log('app.js: onModelFactoryInitFail');
-    console.log('error',error);
+    console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+    console.log('app.js: onModelFactoryInitFail :  : ');
+    console.log('+----------------------------+');
+    console.log('| Application: Init : Fail   |');
+    console.log('+----------------------------+');
+    //console.log('error');
+    console.log( error );
+    console.log('app.js: onModelFactoryInitFail : / : ');
+    console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
 }
 //----------------------------- Model Factory : init : / -----------------------------------
 
