@@ -486,6 +486,8 @@ module.exports = {
 	initModelFactory,
 	initTheModels,
 	createGroupWithName, 
-  createPerson, createDoctor, createDoctorGroup, createSchedule
+  createPerson, createDoctor, createDoctorGroup, createSchedule,
+  updatePerson, updateDoctor, updateDoctorGroup, updateSchedule,
+  deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule
 }
 //
