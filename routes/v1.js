@@ -100,6 +100,13 @@ router.post('/createPerson', (request,response)=>{
 	const onCallbackFromDB = function(dbResult){
 		console.log('v1.js : API : createPerson : onCallbackFromDB');
 		//console.log( dbResult );
+		//
+		// ref: https://sequelize.org/master/manual/model-instances.html
+		console.log('+---------------------------------------');
+		console.log( dbResult.toJSON() );
+		console.log( JSON.stringify(dbResult, null, 4) );
+		console.log('+---------------------------------------');
+		//
 		response.send( dbResult );
 	}
 	//
