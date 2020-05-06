@@ -1,5 +1,9 @@
 // Factory
 //
+// ref: 
+// ref : model : https://sequelize.org/master/manual/model-instances.html
+// ref : API : https://sequelize.org/master/class/lib/model.js~Model.html#static-method-destroy
+//
 
 
 const config = require('../app.config');
