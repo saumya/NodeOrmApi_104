@@ -101,6 +101,7 @@ router.post('/createPerson', (request,response)=>{
 		console.log('v1.js : API : createPerson : onCallbackFromDB');
 		//console.log( dbResult );
 		//
+		// ref: log the Model
 		// ref: https://sequelize.org/master/manual/model-instances.html
 		console.log('+---------------------------------------');
 		console.log( dbResult.toJSON() );
@@ -249,7 +250,23 @@ router.post('/deletePerson', (request,response)=>{
 	console.log('v1.js : API : DeletePerson');
 	const personId = request.body.personId;
 	const onCallbackFromDB = function(dbResult){
-		response.send( dbResult );
+		//response.send( dbResult );
+		
+		console.log('v1.js : API : DeletePerson : onCallbackFromDB');
+		//res.sendStatus(status);
+		//response.sendStatus( dbResult );
+		console.log( 'dbResult=',dbResult );
+
+		var result = '';
+		if( dbResult===1 ){
+			result = 'SUCCESS';
+		}else{
+			result = 'FAIL';
+		}
+
+		response.send( {'result':result} );
+
+		//response.send( dbResult );
 	}
 	//
 	modelFactory.deletePerson({

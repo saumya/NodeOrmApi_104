@@ -378,7 +378,7 @@ deleteSchedule
 
 // deletePerson
 const deletePerson = function(personObj,onResult){
-  console.log('model.factory : createPerson');
+  console.log('model.factory : deletePerson');
   console.log(personObj);
 
   const newPerson = {
@@ -386,20 +386,30 @@ const deletePerson = function(personObj,onResult){
     phone: personObj.person_phone ,
     email: personObj.person_email,
     address: personObj.person_address,
-    pID: personObj.pID
+    pID: personObj.person_id
   }
   const ModelPerson = getPersonModel(sequelize);
 
   // TODO:
   // Delete the person with ID
   // This should be deleting the Person from DB
-  ModelPerson.delete( newPerson ).then(function(result){
+  /*
+  ModelPerson.destroy( newPerson ).then(function(result){
     console.log('RESULT : ModelPerson.delete');
     //console.log( result );
     onResult(result);
   }).catch(function(error){
     console.log('ERROR : ModelPerson.delete');
     //console.log( error );
+    onResult( error );
+  });
+  */
+
+  ModelPerson.destroy({ where:{ id:newPerson.pID } }).then(function(result){
+    console.log('model.factory : RESULT : ModelPerson.delete');
+    onResult( result );
+  }).catch(function(error){
+    console.log('model.factory : ERROR : ModelPerson.delete');
     onResult( error );
   });
 
