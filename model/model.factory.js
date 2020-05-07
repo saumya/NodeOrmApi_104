@@ -380,7 +380,9 @@ deleteSchedule
 const deletePerson = function(personObj,onResult){
   console.log('model.factory : deletePerson');
   console.log(personObj);
-
+  //personObj.person_id
+  
+  /*
   const newPerson = {
     name: personObj.person_name ,
     phone: personObj.person_phone ,
@@ -388,6 +390,8 @@ const deletePerson = function(personObj,onResult){
     address: personObj.person_address,
     pID: personObj.person_id
   }
+  */
+  
   const ModelPerson = getPersonModel(sequelize);
 
   // TODO:
@@ -405,7 +409,7 @@ const deletePerson = function(personObj,onResult){
   });
   */
 
-  ModelPerson.destroy({ where:{ id:newPerson.pID } }).then(function(result){
+  ModelPerson.destroy({ where:{ id:personObj.person_id } }).then(function(result){
     console.log('model.factory : RESULT : ModelPerson.delete');
     onResult( result );
   }).catch(function(error){

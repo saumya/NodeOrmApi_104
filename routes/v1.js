@@ -251,7 +251,6 @@ router.post('/deletePerson', (request,response)=>{
 	const personId = request.body.personId;
 	const onCallbackFromDB = function(dbResult){
 		//response.send( dbResult );
-		
 		console.log('v1.js : API : DeletePerson : onCallbackFromDB');
 		//res.sendStatus(status);
 		//response.sendStatus( dbResult );
@@ -265,13 +264,10 @@ router.post('/deletePerson', (request,response)=>{
 		}
 
 		response.send( {'result':result} );
-
 		//response.send( dbResult );
 	}
 	//
-	modelFactory.deletePerson({
-		person_id : personId
-	}, onCallbackFromDB );
+	modelFactory.deletePerson({ person_id : personId }, onCallbackFromDB );
 });
 router.post('/deleteDoctor', (request,response)=>{
 	console.log('v1.js : API : DeleteDoctor');
