@@ -269,16 +269,25 @@ router.post('/deletePerson', (request,response)=>{
 	//
 	modelFactory.deletePerson({ person_id : personId }, onCallbackFromDB );
 });
+
 router.post('/deleteDoctor', (request,response)=>{
 	console.log('v1.js : API : DeleteDoctor');
 	const doctorId = request.body.doctorId;
 	const onCallbackFromDB = function(dbResult){
-		response.send( dbResult );
+		//response.send( dbResult );
+		console.log('v1.js : API : DeleteDoctor : onCallbackFromDB');
+		console.log( 'dbResult=',dbResult );
+		var result = '';
+		if( dbResult===1 ){
+			result = 'SUCCESS';
+		}else{
+			result = 'FAIL';
+		}
+		response.send( {'result':result} );
 	}
-	modelFactory.deleteDoctor({
-		doctor_id : doctorId
-	}, onCallbackFromDB );
+	modelFactory.deleteDoctor({ doctor_id : doctorId }, onCallbackFromDB );
 });
+
 router.post('/deleteDoctorGroup', (request,response)=>{
 	console.log('v1.js : API : DeleteDoctorGroup');
 	const doctorGroupId = request.body.doctorGroupId;

@@ -382,38 +382,14 @@ const deletePerson = function(personObj,onResult){
   console.log(personObj);
   //personObj.person_id
   
-  /*
-  const newPerson = {
-    name: personObj.person_name ,
-    phone: personObj.person_phone ,
-    email: personObj.person_email,
-    address: personObj.person_address,
-    pID: personObj.person_id
-  }
-  */
-  
-  const ModelPerson = getPersonModel(sequelize);
-
-  // TODO:
   // Delete the person with ID
   // This should be deleting the Person from DB
-  /*
-  ModelPerson.destroy( newPerson ).then(function(result){
-    console.log('RESULT : ModelPerson.delete');
-    //console.log( result );
-    onResult(result);
-  }).catch(function(error){
-    console.log('ERROR : ModelPerson.delete');
-    //console.log( error );
-    onResult( error );
-  });
-  */
-
+  const ModelPerson = getPersonModel(sequelize);
   ModelPerson.destroy({ where:{ id:personObj.person_id } }).then(function(result){
-    console.log('model.factory : RESULT : ModelPerson.delete');
+    console.log('model.factory : RESULT : ModelPerson.destroy');
     onResult( result );
   }).catch(function(error){
-    console.log('model.factory : ERROR : ModelPerson.delete');
+    console.log('model.factory : ERROR : ModelPerson.destroy');
     onResult( error );
   });
 
@@ -422,26 +398,14 @@ const deletePerson = function(personObj,onResult){
 // deleteDoctor
 const deleteDoctor = function(doctorObj,onResult){
   console.log('model.factory : deleteDoctor');
-  console.log(doctorObj);
-
-  const newDoctor = {
-    name: doctorObj.doctor_name ,
-    phone: doctorObj.doctor_phone ,
-    email: doctorObj.doctor_email,
-    address: doctorObj.doctor_address,
-    dID: doctorObj.dID
-  }
+  console.log(doctorObj);//doctor_id
 
   const ModelDoctor = getDoctorModel(sequelize);
-  // check for 'delete' functionality in that model
-  //
-  ModelDoctor.delete( newDoctor ).then(function(result){
-    console.log('RESULT : ModelDoctor.delete');
-    //console.log( result );
-    onResult(result);
+  ModelDoctor.destroy({ where:{ id:doctorObj.doctor_id } }).then(function(result){
+    console.log('model.factory : RESULT : ModelDoctor.destroy');
+    onResult( result );
   }).catch(function(error){
-    console.log('ERROR : ModelDoctor.delete');
-    //console.log( error );
+    console.log('model.factory : ERROR : ModelDoctor.destroy');
     onResult( error );
   });
 };
