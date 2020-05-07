@@ -292,7 +292,15 @@ router.post('/deleteDoctorGroup', (request,response)=>{
 	console.log('v1.js : API : DeleteDoctorGroup');
 	const doctorGroupId = request.body.doctorGroupId;
 	const onCallbackFromDB = function(dbResult){
-		response.send( dbResult );
+		console.log('v1.js : API : DeleteDoctorGroup : onCallbackFromDB');
+		console.log( 'dbResult=',dbResult );
+		var result = '';
+		if( dbResult===1 ){
+			result = 'SUCCESS';
+		}else{
+			result = 'FAIL';
+		}
+		response.send( {'result':result} );
 	}
 	modelFactory.deleteDoctorGroup({
 		doctor_group_id : doctorGroupId
@@ -302,7 +310,15 @@ router.post('/deleteSchedule', (request,response)=>{
 	console.log('v1.js : API : DeleteSchedule');
 	const scheduleId = request.body.scheduleId;
 	const onCallbackFromDB = function(dbResult){
-		response.send( dbResult );
+		console.log('v1.js : API : DeleteSchedule : onCallbackFromDB');
+		console.log( 'dbResult=',dbResult );
+		var result = '';
+		if( dbResult===1 ){
+			result = 'SUCCESS';
+		}else{
+			result = 'FAIL';
+		}
+		response.send( {'result':result} );
 	}
 	modelFactory.deleteSchedule({
 		schedule_id : scheduleId

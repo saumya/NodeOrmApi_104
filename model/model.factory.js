@@ -413,35 +413,31 @@ const deleteDoctor = function(doctorObj,onResult){
 // delteDoctorGroup
 const deleteDoctorGroup = function(doctorGroupObj, onResult){
   console.log('model.factory : deleteDoctorGroup');
+  console.log(doctorGroupObj);//doctor_group_id
 
-  const newDoctorGroup = {
-    doctor_name : doctorGroupObj.doctor_name,
-    doctor_group_name : doctorGroupObj.doctor_group_name
-  };
   const ModelDoctorGroup = getDoctorGroupModel(sequelize);
-  ModelDoctorGroup.delete( newDoctorGroup ).then(function(result){
-    console.log('RESULT : ModelDoctorGroup.delete');
+  ModelDoctorGroup.destroy( {where:{ id:doctorGroupObj.doctor_group_id}} ).then(function(result){
+    console.log('RESULT : ModelDoctorGroup.destroy');
     //console.log( result );
     onResult(result);
   }).catch(function(error){
-    console.log('ERROR : ModelDoctorGroup.delete');
+    console.log('ERROR : ModelDoctorGroup.destroy');
     //console.log( error );
     onResult( error );
   });
 };
 // delteDoctorGroup/
 // deleteSchedule
-const deleteSchedule = function(schedule, onResult){
-  const newSchedule = {
-    on_date: schedule.scheduleDate,
-    is_morning: schedule.schedule_is_morning
-  };
+const deleteSchedule = function(scheduleObj, onResult){
+  console.log('model.factory : deleteSchedule');
+  console.log(scheduleObj);//schedule_id
+
   const ModelSchedule = getScheduleModel(sequelize);
-  ModelSchedule.delete( newSchedule ).then(function(result){
-    console.log('RESULT : ModelSchedule.delete');
+  ModelSchedule.destroy( {where:{ id:scheduleObj.schedule_id }} ).then(function(result){
+    console.log('RESULT : ModelSchedule.destroy');
     onResult( result );
   }).catch(function(error){
-    console.log('ERROR : ModelSchedule.delete');
+    console.log('ERROR : ModelSchedule.destroy');
     console.log(error);
   });
 };
