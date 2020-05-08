@@ -293,55 +293,76 @@ const updatePerson = function(personObj,onResult){
     pID: personObj.pID
   }
   
-  console.log( newPerson );
+  //console.log( newPerson );
 
   const ModelPerson = getPersonModel(sequelize);
 
-  //ModelPerson.findAll
-  ModelPerson.findOne({ where:{id : personObj.person_id} }).then(function(personObj){
-    //console.log('--- RESULT ---');
-    if(personObj===null){
-      onResult( {"result":"Not Found"} );
-    }else{
-      onResult(personObj);
-    }
-    //console.log( personObj );
+  // There are 2 ways to UPDATE
+  // 1. calling the static method on MODEL
+  // 2. calling instance method on MODEL instance
 
+  /*
+  // METHOD : 1
+  // calling UPDATE on Model Class itself, static method
+
+  ModelPerson.update({
+    name: personObj.person_name ,
+    phone: personObj.person_phone ,
+    email: personObj.person_email,
+    address: personObj.person_address
+  },{ where:{ id : personObj.person_id } }).then(function(result2){
+    console.log('result2');
+    console.log( result2 );
+    console.log( 'Number of rows updated =', result2[0] );
+    onResult({"result" : "SUCCESS : done"});
+    console.log('result2 /');
+  }).catch(function(error2){
+    console.log('error2');
+    console.log(error2);
+    onResult({"result" : "ERROR!"});
+    console.log('error2');
+  });
+  */
+
+
+  // METHOD : 2
+  // calling UPDATE on Model instance
+
+  //ModelPerson.findAll
+  ModelPerson.findOne({ where:{id : personObj.person_id} }).then(function(dbPersonObj){
+    //console.log('--- RESULT ---');
+    //console.log( personObj );
+    //onResult({"result" : "SUCCESS : done"});
+
+    // UPDATE personObj
+    dbPersonObj.update({
+      name: personObj.person_name,
+      phone: personObj.person_phone ,
+      email: personObj.person_email,
+      address: personObj.person_address
+    }).then(function(result){
+      console.log('model.factory : updatePerson : SUCCESS : ');
+      //console.log( result );
+      console.log( result.toJSON() );
+      //onResult(personObj);
+      onResult({"result" : "SUCCESS : done"});
+      console.log('model.factory : updatePerson : SUCCESS / : ');
+    }).catch(function(error2){
+      console.log('model.factory : updatePerson : ERROR : ');
+      console.log(error2);
+      console.log('model.factory : updatePerson : ERROR / : ');
+    });
     //console.log( result.toJSON() );
     //onResult(personObj);
     //console.log('--- RESULT / ---');
-  }).catch(function(error){
+  }).catch(function(error1){
     console.log('--- ERROR ----');
-    console.log(error);
-
-    onResult({"ERROR":"Not Found"});
+    //console.log(error1);
+    
+    onResult({"result" : "ERROR : Not Found"});
+    
     console.log('--- ERROR / ---');
   });
-
-
-
-  //onResult({'model':'update'});
-
-  /*
-  // Update the person with ID
-  // This should be deleting the Person from DB
-  ModelPerson.update( newPerson ).then(function(result){
-    console.log('RESULT : ModelPerson.update');
-    //console.log( result );
-    onResult(result);
-  }).catch(function(error){
-    console.log('ERROR : ModelPerson.update');
-    //console.log( error );
-    onResult( error );
-  });
-  */
-
-  /*
-  let updateValues = { name: 'changed name' };
-  instance.update(updateValues).then((self) => {
-      // here self is your instance, but updated
-  });
-  */
 
 };
 // updatePerson/

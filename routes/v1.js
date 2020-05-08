@@ -193,7 +193,7 @@ router.post('/updatePerson', (request,response)=>{
 		//console.log( dbResult.toJSON() );
 		console.log( dbResult );
 		//response.send( dbResult );
-		response.send('result');
+		response.send(dbResult);
 	}
 	modelFactory.updatePerson({
 		person_id : personId,
