@@ -183,14 +183,17 @@ router.post('/createSchedule', (request,response)=>{
 // Update : 
 router.post('/updatePerson', (request,response)=>{
 	console.log('v1.js : API : UpdatePerson');
+	const personId = request.body.personId;
 	const newPersonName = request.body.personName;
 	const newPersonEmail = request.body.personEmail;
 	const newPersonPhone = request.body.personPhone;
 	const newPersonAddress = request.body.personAddress;
 	const onCallbackFromDB = function(dbResult){
+		console.log('v1.js : API : UpdatePerson : onCallbackFromDB');
 		response.send( dbResult );
 	}
 	modelFactory.updatePerson({
+		person_id : personId,
 		person_name : newPersonName,
 		person_email : newPersonEmail,
 		person_phone : newPersonPhone,

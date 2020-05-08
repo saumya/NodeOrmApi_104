@@ -283,6 +283,7 @@ const updatePerson = function(personObj,onResult){
   console.log(personObj);
 
   const newPerson = {
+    id: personObj.person_id,
     name: personObj.person_name ,
     phone: personObj.person_phone ,
     email: personObj.person_email,
