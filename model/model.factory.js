@@ -280,7 +280,9 @@ updateSchedule
 // updatePerson
 const updatePerson = function(personObj,onResult){
   console.log('model.factory : updatePerson');
-  console.log(personObj);
+  //console.log(personObj);
+
+  var resultCallback = onResult;
 
   const newPerson = {
     id: personObj.person_id,
@@ -290,10 +292,38 @@ const updatePerson = function(personObj,onResult){
     address: personObj.person_address,
     pID: personObj.pID
   }
+  
+  console.log( newPerson );
+
   const ModelPerson = getPersonModel(sequelize);
 
-  // TODO:
-  // Delete the person with ID
+  //ModelPerson.findAll
+  ModelPerson.findOne({ where:{id : personObj.person_id} }).then(function(personObj){
+    //console.log('--- RESULT ---');
+    if(personObj===null){
+      onResult( {"result":"Not Found"} );
+    }else{
+      onResult(personObj);
+    }
+    //console.log( personObj );
+
+    //console.log( result.toJSON() );
+    //onResult(personObj);
+    //console.log('--- RESULT / ---');
+  }).catch(function(error){
+    console.log('--- ERROR ----');
+    console.log(error);
+
+    onResult({"ERROR":"Not Found"});
+    console.log('--- ERROR / ---');
+  });
+
+
+
+  //onResult({'model':'update'});
+
+  /*
+  // Update the person with ID
   // This should be deleting the Person from DB
   ModelPerson.update( newPerson ).then(function(result){
     console.log('RESULT : ModelPerson.update');
@@ -304,6 +334,15 @@ const updatePerson = function(personObj,onResult){
     //console.log( error );
     onResult( error );
   });
+  */
+
+  /*
+  let updateValues = { name: 'changed name' };
+  instance.update(updateValues).then((self) => {
+      // here self is your instance, but updated
+  });
+  */
+
 };
 // updatePerson/
 // updateDoctor

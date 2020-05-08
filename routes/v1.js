@@ -190,7 +190,10 @@ router.post('/updatePerson', (request,response)=>{
 	const newPersonAddress = request.body.personAddress;
 	const onCallbackFromDB = function(dbResult){
 		console.log('v1.js : API : UpdatePerson : onCallbackFromDB');
-		response.send( dbResult );
+		//console.log( dbResult.toJSON() );
+		console.log( dbResult );
+		//response.send( dbResult );
+		response.send('result');
 	}
 	modelFactory.updatePerson({
 		person_id : personId,
