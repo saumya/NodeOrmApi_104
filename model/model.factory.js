@@ -145,14 +145,14 @@ const createGroupWithName = function(groupObj,onResult){
 
 }
 
-//TODO: API implementation of the following signatures
+//API implementation of the following signatures
 
 /*
 
-createPerson x
-createDoctor x
-createDoctorGroup x
-createSchedule x
+createPerson 
+createDoctor 
+createDoctorGroup 
+createSchedule 
 
 updatePerson
 updateDoctor
@@ -167,12 +167,7 @@ deleteSchedule
 */
 
 // create
-/*
-createPerson 
-createDoctor 
-createDoctorGroup 
-createSchedule 
-*/
+//
 const createPerson = function(personObj,onResult){
   console.log('model.factory : createPerson');
   console.log(personObj);
@@ -270,12 +265,18 @@ const createSchedule = function(schedule, onResult){
 // create/
 
 // update
+// TODO: All the UPDATE functions are to be fixed with ERROR checking
+// TODO: return 0 or 1 for the result, instead of Strings
+//
+
+
 /*
 updatePerson
 updateDoctor
 updateDoctorGroup
 updateSchedule
 */
+
 
 // updatePerson
 const updatePerson = function(personObj,onResult){
@@ -364,8 +365,8 @@ const updatePerson = function(personObj,onResult){
     console.log('--- ERROR / ---');
   });
 
-};
-// updatePerson/
+};// updatePerson/
+
 // updateDoctor
 const updateDoctor = function(doctorObj,onResult){
   console.log('model.factory : updateDoctor');
@@ -410,12 +411,12 @@ const updateDoctor = function(doctorObj,onResult){
     onResult({"result" : "ERROR!"});
     console.log('error2');
   });
-};
-// updateDoctor/
+};// updateDoctor/
+
 // updateDoctorGroup
 const updateDoctorGroup = function(doctorGroupObj, onResult){
   console.log('model.factory : updateDoctorGroup');
-
+  /*
   const newDoctorGroup = {
     doctor_name : doctorGroupObj.doctor_name,
     doctor_group_name : doctorGroupObj.doctor_group_name
@@ -430,8 +431,25 @@ const updateDoctorGroup = function(doctorGroupObj, onResult){
     //console.log( error );
     onResult( error );
   });
-};
-// updateDoctorGroup/
+  */
+  const ModelDoctorGroup = getDoctorGroupModel(sequelize);
+  ModelDoctorGroup.update({
+    doctorId : doctorGroupObj.doctor_id,
+    groupId : doctorGroupObj.group_id
+  },{ where:{ id : doctorGroupObj.doctor_group_id } }).then(function(result2){
+    console.log('result2');
+    console.log( result2 );
+    console.log( 'Number of rows updated =', result2[0] );
+    onResult({"result" : "SUCCESS : done"});
+    console.log('result2 /');
+  }).catch(function(error2){
+    console.log('error2');
+    console.log(error2);
+    onResult({"result" : "ERROR!"});
+    console.log('error2');
+  });
+};// updateDoctorGroup/
+
 // updateSchedule
 const updateSchedule = function(schedule, onResult){
   console.log('model.factory : updateSchedule');
@@ -447,8 +465,8 @@ const updateSchedule = function(schedule, onResult){
     console.log('ERROR : ModelSchedule.update');
     console.log(error);
   });
-};
-// updateSchedule/
+};// updateSchedule/
+
 // update/
 
 // delete

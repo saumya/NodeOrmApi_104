@@ -181,6 +181,7 @@ router.post('/createSchedule', (request,response)=>{
 });
 // Create : /
 // Update : 
+// updatePerson
 router.post('/updatePerson', (request,response)=>{
 	console.log('v1.js : API : UpdatePerson');
 	const personId = request.body.personId;
@@ -202,7 +203,7 @@ router.post('/updatePerson', (request,response)=>{
 		person_phone : newPersonPhone,
 		person_address : newPersonAddress
 	}, onCallbackFromDB );
-});
+}); // updatePerson/
 // updateDoctor
 router.post('/updateDoctor', (request,response)=>{
 	console.log('v1.js : API : UpdateDoctor');
@@ -240,23 +241,27 @@ router.post('/updateDoctor', (request,response)=>{
 		doctor_phone : newDoctorPhone,
 		doctor_address : newDoctorAddress
 	}, onCallbackFromDB );
-}); // updateDoctor /
-
+}); // updateDoctor/
+// updateDoctorGroup
 router.post('/updateDoctorGroup', (request,response)=>{
 	console.log('v1.js : API : UpdateDoctorGroup');
-	const newDoctorName = request.body.doctorName;
-	const newDoctorGroupName = request.body.doctorGroupName;
+	
+	const newDoctorGroupId = request.body.doctorGroupId;
+	const newDoctorId = request.body.doctorId;
+	const newGroupId = request.body.groupId;
 	//
 	const onCallbackFromDB = function(dbResult){
 		response.send( dbResult );
 	}
 	//
 	modelFactory.updateDoctorGroup({
-		doctor_name : newDoctorName,
-		doctor_group_name : newDoctorGroupName
+		doctor_group_id : newDoctorGroupId,
+		doctor_id : newDoctorId,
+		group_id : newGroupId,
 	}, onCallbackFromDB );
 	//
-});
+}); // updateDoctorGroup/
+// updateSchedule
 router.post('/updateSchedule', (request,response)=>{
 	console.log('v1.js : API : UpdateSchedule');
 	const scheduleDate = request.body.sDate;
@@ -272,7 +277,8 @@ router.post('/updateSchedule', (request,response)=>{
 		schedule_person_id : schedulePersonId,
 		schedule_doctor_id : scheduleDoctorId
 	}, onCallbackFromDB );
-});
+}); // updateSchedule/
+
 // Update : /
 // Delete : 
 router.post('/deletePerson', (request,response)=>{
