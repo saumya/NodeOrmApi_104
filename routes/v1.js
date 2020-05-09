@@ -86,7 +86,7 @@ router.post('/createGroup', (request,response)=>{
 
   //response.send(result);
 });
-
+//---------------------------------------------------------------------------
 // Create : 
 router.post('/createPerson', (request,response)=>{
 	console.log('v1.js : API : CreatePerson');
@@ -180,6 +180,7 @@ router.post('/createSchedule', (request,response)=>{
 	//
 });
 // Create : /
+//---------------------------------------------------------------------------
 // Update : 
 // updatePerson
 router.post('/updatePerson', (request,response)=>{
@@ -264,23 +265,33 @@ router.post('/updateDoctorGroup', (request,response)=>{
 // updateSchedule
 router.post('/updateSchedule', (request,response)=>{
 	console.log('v1.js : API : UpdateSchedule');
+
+	const scheduleId = request.body.scheduleId;
 	const scheduleDate = request.body.sDate;
+	const scheduleIsMorning = request.body.isMorning;
 	const schedulePersonId = request.body.personId;
 	const scheduleDoctorId = request.body.doctorId;
+	const scheduleGroupId = request.body.groupId;
 	//
 	const onCallbackFromDB = function(dbResult){
 		response.send( dbResult );
 	}
 	//
 	modelFactory.updateSchedule({
+		schedule_id : scheduleId,
 		schedule_date : scheduleDate,
+		schedule_isMorning : scheduleIsMorning,
 		schedule_person_id : schedulePersonId,
-		schedule_doctor_id : scheduleDoctorId
+		schedule_doctor_id : scheduleDoctorId,
+		schedule_group_id : scheduleGroupId
 	}, onCallbackFromDB );
 }); // updateSchedule/
 
 // Update : /
-// Delete : 
+//---------------------------------------------------------------------------
+// Delete :
+
+// deletePerson
 router.post('/deletePerson', (request,response)=>{
 	console.log('v1.js : API : DeletePerson');
 	const personId = request.body.personId;
@@ -303,8 +314,8 @@ router.post('/deletePerson', (request,response)=>{
 	}
 	//
 	modelFactory.deletePerson({ person_id : personId }, onCallbackFromDB );
-});
-
+}); // deletePerson/
+// deleteDoctor
 router.post('/deleteDoctor', (request,response)=>{
 	console.log('v1.js : API : DeleteDoctor');
 	const doctorId = request.body.doctorId;
@@ -321,7 +332,7 @@ router.post('/deleteDoctor', (request,response)=>{
 		response.send( {'result':result} );
 	}
 	modelFactory.deleteDoctor({ doctor_id : doctorId }, onCallbackFromDB );
-});
+}); // deleteDoctor/
 
 router.post('/deleteDoctorGroup', (request,response)=>{
 	console.log('v1.js : API : DeleteDoctorGroup');
@@ -360,6 +371,7 @@ router.post('/deleteSchedule', (request,response)=>{
 	}, onCallbackFromDB );
 });
 // Delete : /
+//---------------------------------------------------------------------------
 
 // ------------------------------- POST / -----------------------------------
 

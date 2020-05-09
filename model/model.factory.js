@@ -453,6 +453,7 @@ const updateDoctorGroup = function(doctorGroupObj, onResult){
 // updateSchedule
 const updateSchedule = function(schedule, onResult){
   console.log('model.factory : updateSchedule');
+  /*
   const newSchedule = {
     on_date: schedule.scheduleDate,
     is_morning: schedule.schedule_is_morning
@@ -464,6 +465,26 @@ const updateSchedule = function(schedule, onResult){
   }).catch(function(error){
     console.log('ERROR : ModelSchedule.update');
     console.log(error);
+  });
+  */
+  const ModelSchedule = getScheduleModel(sequelize);
+  ModelSchedule.update({
+    on_date : schedule.schedule_date,
+    is_morning : schedule.schedule_isMorning,
+    personId : schedule.schedule_person_id,
+    doctorId : schedule.schedule_doctor_id,
+    groupId : schedule.schedule_group_id
+  },{ where:{ id : schedule.schedule_id } }).then(function(result2){
+    console.log('result2');
+    console.log( result2 );
+    console.log( 'Number of rows updated =', result2[0] );
+    onResult({"result" : "SUCCESS : done"});
+    console.log('result2 /');
+  }).catch(function(error2){
+    console.log('error2');
+    console.log(error2);
+    onResult({"result" : "ERROR!"});
+    console.log('error2');
   });
 };// updateSchedule/
 
