@@ -369,8 +369,9 @@ const updatePerson = function(personObj,onResult){
 // updateDoctor
 const updateDoctor = function(doctorObj,onResult){
   console.log('model.factory : updateDoctor');
-  console.log(doctorObj);
+  //console.log(doctorObj);
 
+  /*
   const newDoctor = {
     name: doctorObj.doctor_name ,
     phone: doctorObj.doctor_phone ,
@@ -379,6 +380,7 @@ const updateDoctor = function(doctorObj,onResult){
   }
 
   const ModelDoctor = getDoctorModel(sequelize);
+  
   ModelDoctor.update( newDoctor ).then(function(result){
     console.log('RESULT : ModelDoctor.update');
     //console.log( result );
@@ -387,6 +389,26 @@ const updateDoctor = function(doctorObj,onResult){
     console.log('ERROR : ModelDoctor.update');
     //console.log( error );
     onResult( error );
+  });
+  */
+
+  const ModelDoctor = getDoctorModel(sequelize);
+  ModelDoctor.update({
+    name: doctorObj.doctor_name ,
+    phone: doctorObj.doctor_phone ,
+    email: doctorObj.doctor_email,
+    address: doctorObj.doctor_address
+  },{ where:{ id : doctorObj.doctor_id } }).then(function(result2){
+    console.log('result2');
+    console.log( result2 );
+    console.log( 'Number of rows updated =', result2[0] );
+    onResult({"result" : "SUCCESS : done"});
+    console.log('result2 /');
+  }).catch(function(error2){
+    console.log('error2');
+    console.log(error2);
+    onResult({"result" : "ERROR!"});
+    console.log('error2');
   });
 };
 // updateDoctor/

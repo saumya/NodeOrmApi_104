@@ -203,8 +203,10 @@ router.post('/updatePerson', (request,response)=>{
 		person_address : newPersonAddress
 	}, onCallbackFromDB );
 });
+// updateDoctor
 router.post('/updateDoctor', (request,response)=>{
 	console.log('v1.js : API : UpdateDoctor');
+	/*
 	const newDoctorName = request.body.doctorName;
 	const newDoctorEmail = request.body.doctorEmail;
 	const newDoctorPhone = request.body.doctorPhone;
@@ -218,7 +220,28 @@ router.post('/updateDoctor', (request,response)=>{
 		doctor_phone : newDoctorPhone,
 		doctor_address : newDoctorAddress
 	}, onCallbackFromDB );
-});
+	*/
+	const newDoctorId = request.body.doctorId;
+	const newDoctorName = request.body.doctorName;
+	const newDoctorEmail = request.body.doctorEmail;
+	const newDoctorPhone = request.body.doctorPhone;
+	const newDoctorAddress = request.body.doctorAddress;
+
+	const onCallbackFromDB = function(dbResult){
+		console.log('v1.js : API : UpdateDoctor : onCallbackFromDB');
+		//console.log( dbResult );
+		response.send( dbResult );
+	};
+
+	modelFactory.updateDoctor({
+		doctor_id : newDoctorId,
+		doctor_name : newDoctorName,
+		doctor_email : newDoctorEmail,
+		doctor_phone : newDoctorPhone,
+		doctor_address : newDoctorAddress
+	}, onCallbackFromDB );
+}); // updateDoctor /
+
 router.post('/updateDoctorGroup', (request,response)=>{
 	console.log('v1.js : API : UpdateDoctorGroup');
 	const newDoctorName = request.body.doctorName;
