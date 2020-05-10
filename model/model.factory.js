@@ -142,29 +142,34 @@ const createGroupWithName = function(groupObj,onResult){
 		//console.log( error );
 		onResult( error );
 	});
+} // createGroupWithName/
 
+//--------------------- GET ------------------------------------
+const getPersonWithId = (id,onResult)=>{}
+const getDoctorWithId = (id,onResult)=>{}
+const getGroupWithId = (id,onResult)=>{}
+const getDoctorGroupWithId = (id,onResult)=>{}
+const getScheduleById = (id,onResult)=>{}
+const getScheduleByDoctorId = (id,onResult)=>{}
+const getScheduleByDoctorGroupId = (id,onResult)=>{}
+const getScheduleByPersonId = (id,onResult)=>{}
+
+const getAllPeople = (onResult)=>{
+  const ModelPerson = getPersonModel(sequelize);
+  //ModelPerson.findAll({ where:{id : personObj.person_id} }).then(function(dbPersonObj){}).catch(function(error){});
+  ModelPerson.findAll().then(function(people){
+    onResult(people);
+  }).catch(function(error){
+    onResult(error);
+  });
 }
+const getAllDoctors = (onResult)=>{}
+const getAllGroups = (onResult)=>{}
+const getAllDoctorGroups = (onResult)=>{}
+const getAllSchedule = (onResult)=>{}
+//--------------------- GET / ------------------------------------
 
 //API implementation of the following signatures
-
-/*
-
-createPerson 
-createDoctor 
-createDoctorGroup 
-createSchedule 
-
-updatePerson
-updateDoctor
-updateDoctorGroup
-updateSchedule
-
-deletePerson
-deleteDoctor
-deleteDoctorGroup
-deleteSchedule
-
-*/
 
 // create
 //
@@ -214,8 +219,7 @@ const createDoctor = function(doctorObj,onResult){
   });
 }
 
-// this is tricky.
-// Check it and fix it if not working
+
 const createDoctorGroup = function(doctorGroupObj, onResult){
   console.log('model.factory : createDoctorGroup');
 
@@ -236,9 +240,7 @@ const createDoctorGroup = function(doctorGroupObj, onResult){
 
 } //createDoctorGroup/
 
-// Test this
-// Fix the things that is not working
-// WIP
+
 const createSchedule = function(schedule, onResult){
   console.log('model.factory : createSchedule');
   /*
@@ -491,12 +493,6 @@ const updateSchedule = function(schedule, onResult){
 // update/
 
 // delete
-/*
-deletePerson
-deleteDoctor
-deleteDoctorGroup
-deleteSchedule
-*/
 
 // deletePerson
 const deletePerson = function(personObj,onResult){
@@ -515,8 +511,8 @@ const deletePerson = function(personObj,onResult){
     onResult( error );
   });
 
-};
-// deletePerson/
+};// deletePerson/
+
 // deleteDoctor
 const deleteDoctor = function(doctorObj,onResult){
   console.log('model.factory : deleteDoctor');
@@ -530,8 +526,8 @@ const deleteDoctor = function(doctorObj,onResult){
     console.log('model.factory : ERROR : ModelDoctor.destroy');
     onResult( error );
   });
-};
-// deleteDoctor/
+};// deleteDoctor/
+
 // delteDoctorGroup
 const deleteDoctorGroup = function(doctorGroupObj, onResult){
   console.log('model.factory : deleteDoctorGroup');
@@ -547,8 +543,8 @@ const deleteDoctorGroup = function(doctorGroupObj, onResult){
     //console.log( error );
     onResult( error );
   });
-};
-// delteDoctorGroup/
+};// delteDoctorGroup/
+
 // deleteSchedule
 const deleteSchedule = function(scheduleObj, onResult){
   console.log('model.factory : deleteSchedule');
@@ -562,8 +558,8 @@ const deleteSchedule = function(scheduleObj, onResult){
     console.log('ERROR : ModelSchedule.destroy');
     console.log(error);
   });
-};
-// deleteSchedule/
+};// deleteSchedule/
+
 // delete/
 
 
@@ -588,6 +584,7 @@ module.exports = {
 	createGroupWithName, 
   createPerson, createDoctor, createDoctorGroup, createSchedule,
   updatePerson, updateDoctor, updateDoctorGroup, updateSchedule,
-  deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule
+  deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule,
+  getAllPeople
 }
 //

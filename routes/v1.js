@@ -66,6 +66,14 @@ router.get('/getScheduleByPersonId/:id',(request,response)=>{
 
 router.get('/getAllPeople', (request,response)=>{
 	console.log('v1.js : API : allPeople');
+	const onCallbackFromDB = function(dbResult){
+		console.log('v1.js : getAllPeople : onCallbackFromDB');
+		//console.log( dbResult );
+		//console.log('sending response to client');
+		response.send( dbResult );
+	}
+	
+	modelFactory.getAllPeople(onCallbackFromDB);
 });
 router.get('/getAllDoctors', (request,response) => {
 	console.log('v1.js : API : allDoctors');
