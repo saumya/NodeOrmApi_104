@@ -29,19 +29,55 @@ router.get('/info', function(req, res, next) {
 });
 //
 // ------------------------------- GET -----------------------------------
-router.get('/findGroupWithId/:theID', (request,response)=>{
-	console.log('findGroupWithId', request.params );
-	response.send('findGroupWithId : server : '+ request.params.theID );
+/*
+router.get('/getGroupWithId/:theID', (request,response)=>{
+	console.log('getGroupWithId', request.params );
+	response.send('getGroupWithId : server : '+ request.params.theID );
 	//TODO: make the server call and respond
 });
-
-//
-
-router.post('/getPerson', (request,response)=>{
-	console.log('v1.js : API : getPerson');
+*/
+router.get('/getPersonWithId/:pID', (request,response)=>{
+	console.log('v1.js : API : getPerson : id : ', request.params.pID);
 });
-router.post('/getDoctor', (request,response)=>{
-	console.log('v1.js : API : getDoctor');
+router.get('/getDoctorWithId/:dID', (request,response)=>{
+	console.log('v1.js : API : getDoctor : id : ', request.params.dID);
+});
+
+router.get('/getGroupWithId/:gID', (request,response)=>{
+	console.log('v1.js : API : getGroup : id : ', request.params.gID);
+});
+router.get('/getDoctorGroupWithId/:dgID', (request,response) => {
+	console.log('v1.js : API : getDoctorGroup : id : ', request.params.gID);
+});
+
+router.get('/getScheduleById/:sID', (request,response)=>{
+	console.log('v1.js : API : getScheduleById : id : ', request.params.sID);
+});
+router.get('/getScheduleByDoctorId/:id',(request,response)=>{
+	console.log('v1.js : API : getScheduleByDoctorId : id : ',request.params.id);
+});
+router.get('/getScheduleByDoctorGroupId/:id',(request,response)=>{
+	console.log('v1.js : API : getScheduleByDoctorGroupId : id : ', request.params.id);
+});
+router.get('/getScheduleByPersonId/:id',(request,response)=>{
+	console.log('v1.js : API : getScheduleByPersonId : id : ',id);
+});
+
+
+router.get('/getAllPeople', (request,response)=>{
+	console.log('v1.js : API : allPeople');
+});
+router.get('/getAllDoctors', (request,response) => {
+	console.log('v1.js : API : allDoctors');
+});
+router.get('/getAllGroups', (request,response)=>{
+	console.log('v1.js : API : allGroups');
+});
+router.get('/getAllDoctorGroups',(request,response)=>{
+	console.log('v1.js : API : allDoctorGroups');
+});
+router.get('/getAllSchedule',(request,response)=>{
+	console.log('v1.js : API : allSchedules');
 });
 
 
