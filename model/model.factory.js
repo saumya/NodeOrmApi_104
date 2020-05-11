@@ -145,8 +145,11 @@ const createGroupWithName = function(groupObj,onResult){
 } // createGroupWithName/
 
 //--------------------- GET ------------------------------------
+
+//-------- with id -----------
 const getPersonWithId = (onResult,idToSearchFor)=>{
   const ModelPerson = getPersonModel(sequelize);
+  /*
   ModelPerson.findAll({
     where:{ id:idToSearchFor }
   }).then((result)=>{
@@ -154,14 +157,43 @@ const getPersonWithId = (onResult,idToSearchFor)=>{
   }).catch((error)=>{
     onResult(error);
   });
+  */
+  /*
+  // find by PrimaryKey
+  ModelPerson.findByPk(idToSearchFor).then((result)=>{
+    onResult(result);
+  }).catch((error)=>{
+    onResult(error);
+  });
+  */
+
+  ModelPerson.findOne({
+    where:{ id:idToSearchFor }
+  }).then((result)=>{
+    onResult(result);
+  }).catch((error)=>{
+    onResult(error);
+  });
+
+  
 }
-const getDoctorWithId = (id,onResult)=>{}
-const getGroupWithId = (id,onResult)=>{}
-const getDoctorGroupWithId = (id,onResult)=>{}
-const getScheduleById = (id,onResult)=>{}
-const getScheduleByDoctorId = (id,onResult)=>{}
-const getScheduleByDoctorGroupId = (id,onResult)=>{}
-const getScheduleByPersonId = (id,onResult)=>{}
+const getDoctorWithId = (onResult,idToSearchFor)=>{
+  const ModelDoctor = getDoctorModel(sequelize);
+  ModelDoctor.findOne({
+    where : { id : idToSearchFor }
+  }).then((result)=>{
+    onResult(result);
+  }).catch((error)=>{
+    onResult(error);
+  });
+};
+const getGroupWithId = (onResult,idToSearchFor)=>{};
+const getDoctorGroupWithId = (onResult,idToSearchFor)=>{};
+const getScheduleById = (onResult,idToSearchFor)=>{};
+const getScheduleByDoctorId = (onResult,idToSearchFor)=>{};
+const getScheduleByDoctorGroupId = (onResult,idToSearchFor)=>{};
+const getScheduleByPersonId = (onResult,idToSearchFor)=>{};
+//-------- with id / -----------
 
 const getAllPeople = (onResult)=>{
   const ModelPerson = getPersonModel(sequelize);
@@ -625,6 +657,6 @@ module.exports = {
   updatePerson, updateDoctor, updateDoctorGroup, updateSchedule,
   deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule,
   getAllPeople, getAllDoctors, getAllGroups, getAllDoctorGroups, getAllSchedules,
-  getPersonWithId
+  getPersonWithId, getDoctorWithId
 }
 //
