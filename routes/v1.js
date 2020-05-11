@@ -99,8 +99,13 @@ router.get('/getAllDoctorGroups',(request,response)=>{
 	}
 	modelFactory.getAllDoctorGroups(onCallbackFromDB);
 });
-router.get('/getAllSchedule',(request,response)=>{
+router.get('/getAllSchedules',(request,response)=>{
 	console.log('v1.js : API : allSchedules');
+	const onCallbackFromDB = (dbResult) => {
+		console.log('v1.js : API : getAllSchedules : onCallbackFromDB');
+		response.send( dbResult );
+	}
+	modelFactory.getAllSchedules(onCallbackFromDB);
 });
 
 

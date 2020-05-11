@@ -189,7 +189,14 @@ const getAllDoctorGroups = (onResult)=>{
     onResult(error);
   });
 }
-const getAllSchedule = (onResult)=>{}
+const getAllSchedules = (onResult)=>{
+  const ModelSchedule = getScheduleModel(sequelize);
+  ModelSchedule.findAll().then((schedules)=>{
+    onResult(schedules);
+  }).catch((error)=>{
+    onResult(error);
+  });
+}
 //--------------------- GET / ------------------------------------
 
 //API implementation of the following signatures
@@ -608,6 +615,6 @@ module.exports = {
   createPerson, createDoctor, createDoctorGroup, createSchedule,
   updatePerson, updateDoctor, updateDoctorGroup, updateSchedule,
   deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule,
-  getAllPeople, getAllDoctors, getAllGroups, getAllDoctorGroups
+  getAllPeople, getAllDoctors, getAllGroups, getAllDoctorGroups, getAllSchedules
 }
 //
