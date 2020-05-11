@@ -217,9 +217,36 @@ const getScheduleById = (onResult,idToSearchFor)=>{
     onResult(error);
   });
 };
-const getScheduleByDoctorId = (onResult,idToSearchFor)=>{};
-const getScheduleByDoctorGroupId = (onResult,idToSearchFor)=>{};
-const getScheduleByPersonId = (onResult,idToSearchFor)=>{};
+const getSchedulesByDoctorId = (onResult,idToSearchFor)=>{
+  const ScheduleModel = getScheduleModel(sequelize);
+  ScheduleModel.findAll({
+    where : { doctorId : idToSearchFor }
+  }).then((result)=>{
+    onResult(result);
+  }).catch((error)=>{
+    onResult(error);
+  });
+};
+const getScheduleByDoctorGroupId = (onResult,idToSearchFor)=>{
+  const ScheduleModel = getScheduleModel(sequelize);
+  ScheduleModel.findAll({
+    where : { groupId : idToSearchFor }
+  }).then((result)=>{
+    onResult(result);
+  }).catch((error)=>{
+    onResult(error);
+  });
+};
+const getScheduleByPersonId = (onResult,idToSearchFor)=>{
+  const ScheduleModel = getScheduleModel(sequelize);
+  ScheduleModel.findAll({
+    where : { personId : idToSearchFor }
+  }).then((result)=>{
+    onResult(result);
+  }).catch((error)=>{
+    onResult(error);
+  });
+};
 //-------- with id / -----------
 
 const getAllPeople = (onResult)=>{
@@ -666,15 +693,6 @@ const deleteSchedule = function(scheduleObj, onResult){
 // ----------- API calls / ---------------------------------
 
 
-
-
-
-
-
-
-
-
-
 module.exports = { 
 	getSequelize, 
 	initModelFactory,
@@ -684,6 +702,7 @@ module.exports = {
   updatePerson, updateDoctor, updateDoctorGroup, updateSchedule,
   deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule,
   getAllPeople, getAllDoctors, getAllGroups, getAllDoctorGroups, getAllSchedules,
-  getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId, getScheduleById
+  getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId, getScheduleById,
+  getSchedulesByDoctorId, getScheduleByDoctorGroupId, getScheduleByPersonId 
 }
 //

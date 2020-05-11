@@ -99,14 +99,44 @@ router.get('/getScheduleById/:sID', (request,response)=>{
 	}
 	modelFactory.getScheduleById(onCallbackFromDB, id);
 });
-router.get('/getScheduleByDoctorId/:id',(request,response)=>{
-	console.log('v1.js : API : getScheduleByDoctorId : id : ',request.params.id);
+
+router.get('/getSchedulesByDoctorId/:id',(request,response)=>{
+	console.log('v1.js : API : getSchedulesByDoctorId : id : ',request.params.id);
+
+	const id = request.params.id;
+	const onCallbackFromDB = (dbResult) => {
+		console.log('v1.js : API : getSchedulesByDoctorId : onCallbackFromDB');
+		//console.log( 'dbResult',dbResult );
+		if(dbResult===null){ dbResult = {"result":0} };
+		response.send( dbResult );
+	}
+	modelFactory.getSchedulesByDoctorId(onCallbackFromDB, id);
 });
+
 router.get('/getScheduleByDoctorGroupId/:id',(request,response)=>{
 	console.log('v1.js : API : getScheduleByDoctorGroupId : id : ', request.params.id);
+
+	const id = request.params.id;
+	const onCallbackFromDB = (dbResult) => {
+		console.log('v1.js : API : getScheduleByDoctorGroupId : onCallbackFromDB');
+		//console.log( 'dbResult',dbResult );
+		if(dbResult===null){ dbResult = {"result":0} };
+		response.send( dbResult );
+	}
+	modelFactory.getScheduleByDoctorGroupId(onCallbackFromDB, id);
 });
+
 router.get('/getScheduleByPersonId/:id',(request,response)=>{
-	console.log('v1.js : API : getScheduleByPersonId : id : ',id);
+	console.log('v1.js : API : getScheduleByPersonId : id : ', request.params.id);
+
+	const id = request.params.id;
+	const onCallbackFromDB = (dbResult) => {
+		console.log('v1.js : API : getScheduleByPersonId : onCallbackFromDB');
+		//console.log( 'dbResult',dbResult );
+		if(dbResult===null){ dbResult = {"result":0} };
+		response.send( dbResult );
+	}
+	modelFactory.getScheduleByPersonId(onCallbackFromDB, id);
 });
 
 
