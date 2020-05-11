@@ -38,27 +38,41 @@ router.get('/getGroupWithId/:theID', (request,response)=>{
 */
 router.get('/getPersonWithId/:pID', (request,response)=>{
 	console.log('v1.js : API : getPerson : id : ', request.params.pID);
+
+	const id = request.params.pID;
 	const onCallbackFromDB = (dbResult) => {
 		console.log('v1.js : API : getPersonWithId : onCallbackFromDB');
 		//console.log('dbResult',dbResult);
 		if(dbResult===null){ dbResult = {"result":0} };
 		response.send( dbResult );
 	}
-	modelFactory.getPersonWithId(onCallbackFromDB, request.params.pID);
+	modelFactory.getPersonWithId(onCallbackFromDB, id);
 });
+
 router.get('/getDoctorWithId/:dID', (request,response)=>{
 	console.log('v1.js : API : getDoctor : id : ', request.params.dID);
+
+	const id = request.params.dID;
 	const onCallbackFromDB = (dbResult) => {
 		console.log('v1.js : API : getDoctorWithId : onCallbackFromDB');
 		//console.log( 'dbResult',dbResult );
 		if(dbResult===null){ dbResult = {"result":0} };
 		response.send( dbResult );
 	}
-	modelFactory.getDoctorWithId(onCallbackFromDB, request.params.dID);
+	modelFactory.getDoctorWithId(onCallbackFromDB, id);
 });
 
 router.get('/getGroupWithId/:gID', (request,response)=>{
 	console.log('v1.js : API : getGroup : id : ', request.params.gID);
+
+	const id = request.params.gID;
+	const onCallbackFromDB = (dbResult) => {
+		console.log('v1.js : API : getGroupWithId : onCallbackFromDB');
+		//console.log( 'dbResult',dbResult );
+		if(dbResult===null){ dbResult = {"result":0} };
+		response.send( dbResult );
+	}
+	modelFactory.getGroupWithId(onCallbackFromDB, id);
 });
 router.get('/getDoctorGroupWithId/:dgID', (request,response) => {
 	console.log('v1.js : API : getDoctorGroup : id : ', request.params.gID);
