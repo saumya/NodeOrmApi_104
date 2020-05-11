@@ -75,7 +75,16 @@ router.get('/getGroupWithId/:gID', (request,response)=>{
 	modelFactory.getGroupWithId(onCallbackFromDB, id);
 });
 router.get('/getDoctorGroupWithId/:dgID', (request,response) => {
-	console.log('v1.js : API : getDoctorGroup : id : ', request.params.gID);
+	console.log('v1.js : API : getDoctorGroup : id : ', request.params.dgID);
+
+	const id = request.params.dgID;
+	const onCallbackFromDB = (dbResult) => {
+		console.log('v1.js : API : getDoctorGroupWithId : onCallbackFromDB');
+		//console.log( 'dbResult',dbResult );
+		if(dbResult===null){ dbResult = {"result":0} };
+		response.send( dbResult );
+	}
+	modelFactory.getDoctorGroupWithId(onCallbackFromDB, id);
 });
 
 router.get('/getScheduleById/:sID', (request,response)=>{
