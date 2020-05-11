@@ -163,7 +163,16 @@ const getAllPeople = (onResult)=>{
     onResult(error);
   });
 }
-const getAllDoctors = (onResult)=>{}
+const getAllDoctors = (onResult)=>{
+  //const ModelPerson = getPersonModel(sequelize);
+  const ModelDoctor = getDoctorModel(sequelize);
+  //ModelPerson.findAll({ where:{id : personObj.person_id} }).then(function(dbPersonObj){}).catch(function(error){});
+  ModelDoctor.findAll().then(function(doctors){
+    onResult(doctors);
+  }).catch(function(error){
+    onResult(error);
+  });
+}
 const getAllGroups = (onResult)=>{}
 const getAllDoctorGroups = (onResult)=>{}
 const getAllSchedule = (onResult)=>{}
@@ -585,6 +594,6 @@ module.exports = {
   createPerson, createDoctor, createDoctorGroup, createSchedule,
   updatePerson, updateDoctor, updateDoctorGroup, updateSchedule,
   deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule,
-  getAllPeople
+  getAllPeople, getAllDoctors
 }
 //

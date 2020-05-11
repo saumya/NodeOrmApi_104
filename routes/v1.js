@@ -77,6 +77,11 @@ router.get('/getAllPeople', (request,response)=>{
 });
 router.get('/getAllDoctors', (request,response) => {
 	console.log('v1.js : API : allDoctors');
+	const onCallbackFromDB = function(dbResult){
+		console.log('v1.js : getAllDoctors : onCallbackFromDB');
+		response.send( dbResult );
+	}
+	modelFactory.getAllDoctors(onCallbackFromDB);
 });
 router.get('/getAllGroups', (request,response)=>{
 	console.log('v1.js : API : allGroups');
