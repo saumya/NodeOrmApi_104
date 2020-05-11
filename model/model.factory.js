@@ -207,7 +207,16 @@ const getDoctorGroupWithId = (onResult,idToSearchFor)=>{
     onResult(error);
   });
 };
-const getScheduleById = (onResult,idToSearchFor)=>{};
+const getScheduleById = (onResult,idToSearchFor)=>{
+  const ScheduleModel = getScheduleModel(sequelize);
+  ScheduleModel.findOne({
+    where : { id : idToSearchFor }
+  }).then((result)=>{
+    onResult(result);
+  }).catch((error)=>{
+    onResult(error);
+  });
+};
 const getScheduleByDoctorId = (onResult,idToSearchFor)=>{};
 const getScheduleByDoctorGroupId = (onResult,idToSearchFor)=>{};
 const getScheduleByPersonId = (onResult,idToSearchFor)=>{};
@@ -675,6 +684,6 @@ module.exports = {
   updatePerson, updateDoctor, updateDoctorGroup, updateSchedule,
   deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule,
   getAllPeople, getAllDoctors, getAllGroups, getAllDoctorGroups, getAllSchedules,
-  getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId
+  getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId, getScheduleById
 }
 //
