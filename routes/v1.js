@@ -38,6 +38,11 @@ router.get('/getGroupWithId/:theID', (request,response)=>{
 */
 router.get('/getPersonWithId/:pID', (request,response)=>{
 	console.log('v1.js : API : getPerson : id : ', request.params.pID);
+	const onCallbackFromDB = (dbResult) => {
+		console.log('v1.js : API : getPersonWithId : onCallbackFromDB');
+		response.send( dbResult );
+	}
+	modelFactory.getPersonWithId(onCallbackFromDB, request.params.pID);
 });
 router.get('/getDoctorWithId/:dID', (request,response)=>{
 	console.log('v1.js : API : getDoctor : id : ', request.params.dID);

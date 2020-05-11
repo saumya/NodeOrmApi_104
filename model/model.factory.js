@@ -145,7 +145,16 @@ const createGroupWithName = function(groupObj,onResult){
 } // createGroupWithName/
 
 //--------------------- GET ------------------------------------
-const getPersonWithId = (id,onResult)=>{}
+const getPersonWithId = (onResult,idToSearchFor)=>{
+  const ModelPerson = getPersonModel(sequelize);
+  ModelPerson.findAll({
+    where:{ id:idToSearchFor }
+  }).then((result)=>{
+    onResult(result);
+  }).catch((error)=>{
+    onResult(error);
+  });
+}
 const getDoctorWithId = (id,onResult)=>{}
 const getGroupWithId = (id,onResult)=>{}
 const getDoctorGroupWithId = (id,onResult)=>{}
@@ -615,6 +624,7 @@ module.exports = {
   createPerson, createDoctor, createDoctorGroup, createSchedule,
   updatePerson, updateDoctor, updateDoctorGroup, updateSchedule,
   deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule,
-  getAllPeople, getAllDoctors, getAllGroups, getAllDoctorGroups, getAllSchedules
+  getAllPeople, getAllDoctors, getAllGroups, getAllDoctorGroups, getAllSchedules,
+  getPersonWithId
 }
 //
