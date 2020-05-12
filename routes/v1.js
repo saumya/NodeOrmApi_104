@@ -226,6 +226,27 @@ router.post('/createGroup', (request,response)=>{
 
   //response.send(result);
 });
+
+router.route('/group')
+	.all((req,res,next)=>{
+		// runs for all HTTP verbs first
+		console.log('v1.js : router.route : all : /group');
+		console.log( req.body );
+		next();
+	})
+	.get((req,res,next)=>{
+		res.send({"GET":"Group READ", "Request Body": (req.body)});
+	})
+	.put((req,res,next)=>{
+		res.send({"PUT":"Group UPDATE", "Request Body": (req.body)});
+	})
+	.post((req,res,next)=>{
+		
+		res.send({"POST":"Group CREATE", "Request Body": (req.body) });
+	})
+	.delete((req,res,next)=>{
+		res.send({"DELETE":"Group DELETE", "Request Body": (req.body)});
+	});
 //---------------------------------------------------------------------------
 // Create : 
 router.post('/createPerson', (request,response)=>{
