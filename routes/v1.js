@@ -227,6 +227,9 @@ router.post('/createGroup', (request,response)=>{
   //response.send(result);
 });
 
+
+//**********************************************************************
+
 /*
 ** This method uses different HTTP verbs to separate the calls for different actioins
 ** in the database
@@ -252,7 +255,8 @@ router.route('/group')
 	.delete((req,res,next)=>{
 		res.send({"DELETE":"Group DELETE", "Request Body": (req.body)});
 	});
-	
+//**********************************************************************
+
 //---------------------------------------------------------------------------
 // Create : 
 router.post('/createPerson', (request,response)=>{
