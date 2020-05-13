@@ -4,8 +4,16 @@ Study of [Sequelize][1s] ORM by making a project with it.
 
 ### TODO
 
- - initDB : Error checking in this call
- - API : for CRUD operations
+ - checking from the UI
+ - v2 API implementation
+
+
+### How it works
+
+ - Groups are to separate different Organisations
+ - DoctorGroups help separate different Doctors to different organisations
+
+
 
 
 ### Generic Information 
@@ -21,7 +29,7 @@ These are projects where I am trying to connect to SQL database. There are other
  
  1. Node and MongoDB [NodeOrmApi_103][3]
 
-### How it is worked till now
+### Developing with this
 
 Generated the application with `express-generator` and `npx` not `npm`.
 
@@ -35,6 +43,7 @@ Installing the requirements.
 npm install --save mysql2
 npm install --save sequelize
 ```
+
 
 
 
