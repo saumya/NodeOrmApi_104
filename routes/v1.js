@@ -317,6 +317,9 @@ router.post('/createDoctorGroup', (request,response)=>{
 	console.log('v1.js : API : CreateDoctorGroup');
 	const newDoctorName = request.body.doctorName;
 	const newDoctorGroupName = request.body.doctorGroupName;
+
+	const newDoctorGroup_doctorId = request.body.doctorId;
+	const newDoctorGroup_groupId = request.body.groupId;
 	//
 	const onCallbackFromDB = function(dbResult){
 		//console.log('v1.js : createDoctor : onCallbackFromDB');
@@ -326,7 +329,9 @@ router.post('/createDoctorGroup', (request,response)=>{
 	//
 	modelFactory.createDoctorGroup({
 		doctor_name : newDoctorName,
-		doctor_group_name : newDoctorGroupName
+		doctor_group_name : newDoctorGroupName,
+		doctor_id : newDoctorGroup_doctorId,
+		group_id : newDoctorGroup_groupId
 	}, onCallbackFromDB );
 	//
 });

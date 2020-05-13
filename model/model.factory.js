@@ -350,7 +350,9 @@ const createDoctorGroup = function(doctorGroupObj, onResult){
 
   const newDoctorGroup = {
     doctor_name : doctorGroupObj.doctor_name,
-    doctor_group_name : doctorGroupObj.doctor_group_name
+    doctor_group_name : doctorGroupObj.doctor_group_name,
+    doctorId : doctorGroupObj.doctor_id,
+    groupId : doctorGroupObj.group_id
   };
   const ModelDoctorGroup = getDoctorGroupModel(sequelize);
   ModelDoctorGroup.create( newDoctorGroup ).then(function(result){
