@@ -294,7 +294,7 @@ const getAllSchedules = (onResult)=>{
 }
 //--------------------- GET / ------------------------------------
 
-//API implementation of the following signatures
+//----------------- POST ---------------------------------------
 
 // create
 //
@@ -392,12 +392,14 @@ const createSchedule = function(schedule, onResult){
 }; // createSchedule/
 
 // create/
+//----------------- POST / ---------------------------------------
 
 // update
 // TODO: All the UPDATE functions are to be fixed with ERROR checking
 // TODO: return 0 or 1 for the result, instead of Strings
 //
 
+//----------------- UPDATE ---------------------------------------
 
 /*
 updatePerson
@@ -618,6 +620,9 @@ const updateSchedule = function(schedule, onResult){
 };// updateSchedule/
 
 // update/
+//----------------- UPDATE / ---------------------------------------
+
+//----------------- DELETE  ---------------------------------------
 
 // delete
 
@@ -688,6 +693,8 @@ const deleteSchedule = function(scheduleObj, onResult){
 };// deleteSchedule/
 
 // delete/
+
+//----------------- DELETE / ---------------------------------------
 
 
 

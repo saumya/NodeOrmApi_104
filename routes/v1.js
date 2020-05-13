@@ -1,4 +1,7 @@
 //
+// todo:
+// updateGroup, deleteGroup
+//
 var express = require('express');
 var router = express.Router();
 
@@ -358,6 +361,22 @@ router.post('/createSchedule', (request,response)=>{
 // Create : /
 //---------------------------------------------------------------------------
 // Update : 
+
+// updateGroup
+router.put('/updateGroup', (request,response)=>{
+	console.log('v1.js : API : updateGroup');
+	
+	const groupId = request.body.groupId;
+	const groupName = request.body.groupName;
+	const groupAdminUserName = request.body.adminUserName;
+	const groupAdminUserPassword = request.body.adminPassword;
+	const groupActiveFrom = request.body.activeFrom;
+	const groupActiveTo = request.body.activeTo;
+
+
+	response.send({"result": "TODO"});
+});
+// updateGroup /
 // updatePerson
 router.put('/updatePerson', (request,response)=>{
 	console.log('v1.js : API : UpdatePerson');
@@ -466,6 +485,12 @@ router.put('/updateSchedule', (request,response)=>{
 // Update : /
 //---------------------------------------------------------------------------
 // Delete :
+
+// deleteGroup
+router.put('/deleteGroup', (request,response)=>{
+	console.log('v1.js : API : deleteGroup');
+	response.send({"result": "TODO"});
+});
 
 // deletePerson
 router.delete('/deletePerson', (request,response)=>{
