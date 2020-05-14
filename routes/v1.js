@@ -389,11 +389,28 @@ router.put('/updateGroup', (request,response)=>{
 	const groupName = request.body.groupName;
 	const groupAdminUserName = request.body.adminUserName;
 	const groupAdminUserPassword = request.body.adminPassword;
+	const groupActivatedOn = request.body.activatedOn;
 	const groupActiveFrom = request.body.activeFrom;
 	const groupActiveTo = request.body.activeTo;
 
+	const onCallbackFromDB = function(dbResult){
+		console.log('v1.js : API : UpdatePerson : onCallbackFromDB');
+		//console.log( dbResult.toJSON() );
+		//console.log( dbResult );
+		response.send(dbResult);
+	}
+	modelFactory.updateGroup({
+		group_id : groupId,
+		group_name : groupName,
+		user_name : groupAdminUserName,
+		user_password : groupAdminUserPassword,
+		activated_on : groupActivatedOn,
+		activated_from : groupActiveFrom,
+		activated_to : groupActiveTo
+	}, onCallbackFromDB );
 
-	response.send({"result": "TODO"});
+
+	//response.send({"result": "TODO"});
 });
 // updateGroup /
 // updatePerson

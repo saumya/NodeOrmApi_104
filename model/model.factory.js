@@ -128,23 +128,8 @@ const initTheModels = function(){
 } // initTheModels/
 
 // ----------- API calls ---------------------------------
-const createGroupWithName = function(groupObj,onResult){
-	console.log('model.factory : createGroupWithName');
-	console.log(groupObj);
 
-	const ModelGroup = getGroupModel(sequelize);
-	ModelGroup.create(groupObj).then(function(result){
-		console.log('RESULT : ModelGroup.create');
-		//console.log( result );
-		onResult(result);
-	}).catch(function(error){
-		console.log('ERROR : ModelGroup.create');
-		//console.log( error );
-		onResult( error );
-	});
-} // createGroupWithName/
-
-//--------------------- GET ------------------------------------
+//--------------------- GET -----------------
 
 //-------- with id -----------
 const getPersonWithId = (onResult,idToSearchFor)=>{
@@ -298,6 +283,23 @@ const getAllSchedules = (onResult)=>{
 
 // create
 //
+const createGroupWithName = function(groupObj,onResult){
+  console.log('model.factory : createGroupWithName');
+  console.log(groupObj);
+
+  const ModelGroup = getGroupModel(sequelize);
+  ModelGroup.create(groupObj).then(function(result){
+    console.log('RESULT : ModelGroup.create');
+    //console.log( result );
+    onResult(result);
+  }).catch(function(error){
+    console.log('ERROR : ModelGroup.create');
+    //console.log( error );
+    onResult( error );
+  });
+} // createGroupWithName/
+
+//
 const createPerson = function(personObj,onResult){
   console.log('model.factory : createPerson');
   console.log(personObj);
@@ -407,6 +409,31 @@ updateDoctor
 updateDoctorGroup
 updateSchedule
 */
+
+// updateGroup
+const updateGroup = function(groupObj,onResult){
+  console.log('model.factory : updateGroup');
+  const ModelGroup = getGroupModel(sequelize);
+  ModelGroup.update({
+    group_name: groupObj.group_name ,
+    user_name: groupObj.user_name ,
+    user_password: groupObj.user_password,
+    activated_on: groupObj.activated_on,
+    activated_from: groupObj.activated_from,
+    activated_to: groupObj.activated_to
+  },{ where:{ id : groupObj.group_id } }).then(function(result2){
+    console.log('result2');
+    console.log( result2 );
+    console.log( 'Number of rows updated =', result2[0] );
+    onResult({"result" : "SUCCESS : done", "Num Rows Updated": result2[0]});
+    console.log('result2 /');
+  }).catch(function(error2){
+    console.log('error2');
+    console.log(error2);
+    onResult({"result" : "ERROR!"});
+    console.log('error2');
+  });
+}// updategroup /
 
 
 // updatePerson
@@ -706,9 +733,8 @@ module.exports = {
 	getSequelize, 
 	initModelFactory,
 	initTheModels,
-	createGroupWithName, 
-  createPerson, createDoctor, createDoctorGroup, createSchedule,
-  updatePerson, updateDoctor, updateDoctorGroup, updateSchedule,
+  createPerson, createDoctor, createDoctorGroup, createSchedule, createGroupWithName,
+  updatePerson, updateDoctor, updateDoctorGroup, updateSchedule, updateGroup,
   deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule,
   getAllPeople, getAllDoctors, getAllGroups, getAllDoctorGroups, getAllSchedules,
   getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId, getScheduleById,
