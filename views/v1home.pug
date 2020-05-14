@@ -20,11 +20,13 @@ block content
    
    h3 API references
    span API Root URL- #{endPoint}
+   //- Testing Data passing from Routes to View
+   //- And then rendering it
    ul From Object
     - var apiObj = {allAPIs}
     each val, key in apiObj.allAPIs
      li= key + ': ' + val
-
+   //- this is a test
    ul From Array
     each val, index in aObj
      li= index + ': ' + val
