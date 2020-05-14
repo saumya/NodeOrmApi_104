@@ -523,9 +523,22 @@ router.put('/updateSchedule', (request,response)=>{
 // Delete :
 
 // deleteGroup
-router.put('/deleteGroup', (request,response)=>{
+router.delete('/deleteGroup', (request,response)=>{
 	console.log('v1.js : API : deleteGroup');
-	response.send({"result": "TODO"});
+	const groupId = request.body.groupId;
+	const onCallbackFromDB = function(dbResult){
+		//response.send( dbResult );
+		console.log('v1.js : API : DeleteGroup : onCallbackFromDB');
+		console.log( 'dbResult=',dbResult );
+		var result = '';
+		if( dbResult===1 ){
+			result = 'SUCCESS';
+		}else{
+			result = 'FAIL';
+		}
+		response.send( {'result':result} );
+	}
+	modelFactory.deleteGroup({ group_id : groupId }, onCallbackFromDB );
 });
 
 // deletePerson

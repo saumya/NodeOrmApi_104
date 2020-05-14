@@ -403,13 +403,6 @@ const createSchedule = function(schedule, onResult){
 
 //----------------- UPDATE ---------------------------------------
 
-/*
-updatePerson
-updateDoctor
-updateDoctorGroup
-updateSchedule
-*/
-
 // updateGroup
 const updateGroup = function(groupObj,onResult){
   console.log('model.factory : updateGroup');
@@ -425,7 +418,7 @@ const updateGroup = function(groupObj,onResult){
     console.log('result2');
     console.log( result2 );
     console.log( 'Number of rows updated =', result2[0] );
-    onResult({"result" : "SUCCESS : done", "Num Rows Updated": result2[0]});
+    onResult({"result" : "SUCCESS : done", "NumberOfRows Updated": result2[0]});
     console.log('result2 /');
   }).catch(function(error2){
     console.log('error2');
@@ -561,7 +554,7 @@ const updateDoctor = function(doctorObj,onResult){
     console.log('result2');
     console.log( result2 );
     console.log( 'Number of rows updated =', result2[0] );
-    onResult({"result" : "SUCCESS : done"});
+    onResult({"result" : "SUCCESS : done", "NumberOfRows Updated": result2[0]});
     console.log('result2 /');
   }).catch(function(error2){
     console.log('error2');
@@ -598,7 +591,7 @@ const updateDoctorGroup = function(doctorGroupObj, onResult){
     console.log('result2');
     console.log( result2 );
     console.log( 'Number of rows updated =', result2[0] );
-    onResult({"result" : "SUCCESS : done"});
+    onResult({"result" : "SUCCESS : done", "NumberOfRows Updated": result2[0]});
     console.log('result2 /');
   }).catch(function(error2){
     console.log('error2');
@@ -636,7 +629,7 @@ const updateSchedule = function(schedule, onResult){
     console.log('result2');
     console.log( result2 );
     console.log( 'Number of rows updated =', result2[0] );
-    onResult({"result" : "SUCCESS : done"});
+    onResult({"result" : "SUCCESS : done", "NumberOfRows Updated": result2[0]});
     console.log('result2 /');
   }).catch(function(error2){
     console.log('error2');
@@ -652,6 +645,22 @@ const updateSchedule = function(schedule, onResult){
 //----------------- DELETE  ---------------------------------------
 
 // delete
+
+// deleteGroup
+const deleteGroup = function(groupObj,onResult){
+  console.log('model.factory : deleteGroup');
+  console.log(groupObj); //groupObj.group_id
+  
+  const ModelGroup = getGroupModel(sequelize);
+  ModelGroup.destroy({ where:{ id : groupObj.group_id } }).then(function(result){
+    console.log('model.factory : RESULT : ModelGroup.destroy');
+    onResult( result );
+  }).catch(function(error){
+    console.log('model.factory : ERROR : ModelGroup.destroy');
+    onResult( error );
+  });
+
+};// deleteGroup/
 
 // deletePerson
 const deletePerson = function(personObj,onResult){
@@ -735,7 +744,7 @@ module.exports = {
 	initTheModels,
   createPerson, createDoctor, createDoctorGroup, createSchedule, createGroupWithName,
   updatePerson, updateDoctor, updateDoctorGroup, updateSchedule, updateGroup,
-  deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule,
+  deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule, deleteGroup,
   getAllPeople, getAllDoctors, getAllGroups, getAllDoctorGroups, getAllSchedules,
   getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId, getScheduleById,
   getSchedulesByDoctorId, getScheduleByDoctorGroupId, getScheduleByPersonId 
