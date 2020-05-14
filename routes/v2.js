@@ -12,9 +12,8 @@ var modelFactory = require('../model/model.factory');
 // url : http://localhost:3000/api/v2/
 //
 router.get('/', function(req, res, next) {
-  res.render('v1home', { title: 'API | Version 2.0.0' });
-  // TODO: render with a v2 Template view
-  //res.render('v2home', { title: 'API | Version 2.0.0' });
+  //res.render('v1home', { title: 'API | Version 2.0.0' });
+  res.render('v2home', { title: 'API | Version 2.0.0' });
 });
 //**********************************************************************
 

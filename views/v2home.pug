@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p This is page with the Version 2 API documents and references.
+
+  div(class='api_group') 
+   h4 Sample API
+   ul Examples
+    li
+     a(href="/api/v1") Version 1.0.0 Home
+    li
+     a(href="/api/v1/info") Info | Sample Call
+  
+  div(id='api')
+   h2 API
+   p TODO: Documentation
