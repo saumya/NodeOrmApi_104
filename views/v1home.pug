@@ -5,7 +5,7 @@ block content
   p Welcome to #{title}
 
   div(class='api_group') 
-   span API
+   h3 API Samples
    ul  Samples
     li
      a(href="/api/v1") Version 1.0.0 Home
@@ -17,3 +17,14 @@ block content
    ul POST
     li
      a() Create Group ( /api/v1/createGroup )
+   
+   h3 API references
+   span API Root URL- #{endPoint}
+   ul From Object
+    - var apiObj = {allAPIs}
+    each val, key in apiObj.allAPIs
+     li= key + ': ' + val
+
+   ul From Array
+    each val, index in aObj
+     li= index + ': ' + val

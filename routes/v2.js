@@ -13,7 +13,11 @@ var modelFactory = require('../model/model.factory');
 //
 router.get('/', function(req, res, next) {
   //res.render('v1home', { title: 'API | Version 2.0.0' });
-  res.render('v2home', { title: 'API | Version 2.0.0' });
+  res.render('v2home', {
+  	"title" : 'API | Version 2.0.0',
+  	"allAPIs" : ["group"],
+  	"by" : "Saumya"
+  });
 });
 //**********************************************************************
 

@@ -10,7 +10,26 @@ const modelFactory = require('../model/model.factory');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   //res.send('version 1.0.0');
-  res.render('v1home', { title: 'API | Version 1.0.0' });
+  res.render('v1home', {
+  	"title" : 'API | Version 1.0.0',
+  	"endPoint" : "http://localhost:3000/api/v1",
+  	"allAPIs" : {
+  								"GET Person" : "/getPersonWithId/:id",
+  								"GET Doctor" : "/getDoctorWithId/:id",
+  								"GET Group" : "/getGroupWithId/:id",
+  								"GET DoctorGroup" : "/getDoctorGroupWithId/:id",
+  								"GET Schedule by Id" : "/getScheduleById/:id",
+  								"GET Schedule by DoctorId" : "/getSchedulesByDoctorId/:id",
+  								"GET Schedule by DoctorGroupId" : "/getScheduleByDoctorGroupId/:id",
+  								"GET Schedule by PersonId" : "/getScheduleByPersonId/:id",
+  								"GET All People" : "/getAllPeople",
+  								"GET All Groups" : "/getAllGroups",
+  								"GET All DoctorGroups" : "/getAllDoctorGroups",
+  								"GET All Schedules" : "/getAllSchedules"
+  								},
+  	"aObj" : ["All","/getPersonWithId/:id","/getDoctorWithId/:id"],
+  	"by" : "Saumya"
+  });
 });
 
 router.get('/info', function(req, res, next) {
