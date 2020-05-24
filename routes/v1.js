@@ -109,12 +109,12 @@ router.get('/getDoctorGroupWithId/:dgID', (request,response) => {
 	modelFactory.getDoctorGroupWithId(onCallbackFromDB, id);
 });
 
-router.get('/getScheduleById/:sID', (request,response)=>{
-	console.log('v1.js : API : getScheduleById : id : ', request.params.sID);
+router.get('/getScheduleWithId/:sID', (request,response)=>{
+	console.log('v1.js : API : getScheduleWithId : id : ', request.params.sID);
 
 	const id = request.params.sID;
 	const onCallbackFromDB = (dbResult) => {
-		console.log('v1.js : API : getScheduleById : onCallbackFromDB');
+		console.log('v1.js : API : getScheduleWithId : onCallbackFromDB');
 		//console.log( 'dbResult',dbResult );
 		if(dbResult===null){ dbResult = {"result":0} };
 		response.send( dbResult );
