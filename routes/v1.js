@@ -359,21 +359,29 @@ router.post('/createDoctorGroup', (request,response)=>{
 });
 router.post('/createSchedule', (request,response)=>{
 	console.log('v1.js : API : CreateSchedule');
+	//console.log('request.body',request.body);
 	//
+	const scheduleName = request.body.name;
 	const scheduleDate = request.body.sDate;
+	const scheduleIsMorning = request.body.isMorning;
+
 	const schedulePersonId = request.body.personId;
 	const scheduleDoctorId = request.body.doctorId;
-	const scheduleIsMorning = request.body.isMorning;
+	const scheduleGroupId = request.body.groupId;
+	
 	//
 	const onCallbackFromDB = function(dbResult){
 		response.send( dbResult );
 	}
 	//
 	modelFactory.createSchedule({
+		schedule_name : scheduleName,
 		schedule_date : scheduleDate,
+		schedule_is_morning : scheduleIsMorning,
 		schedule_person_id : schedulePersonId,
 		schedule_doctor_id : scheduleDoctorId,
-		schedule_is_morning : scheduleIsMorning
+		schedule_group_id : scheduleGroupId
+		
 	}, onCallbackFromDB );
 	//
 });

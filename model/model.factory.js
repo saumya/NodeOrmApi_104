@@ -372,16 +372,15 @@ const createDoctorGroup = function(doctorGroupObj, onResult){
 
 const createSchedule = function(schedule, onResult){
   console.log('model.factory : createSchedule');
-  /*
-  schedule_date
-  schedule_person_id
-  schedule_doctor_id
-  schedule_is_morning
-  */
+  //console.log('schedule', schedule);
 
   const newSchedule = {
-    on_date: schedule.scheduleDate,
-    is_morning: schedule.schedule_is_morning
+    name: schedule.schedule_name,
+    on_date: schedule.schedule_date,
+    is_morning: schedule.schedule_is_morning,
+    doctorId: schedule.schedule_doctor_id,
+    personId: schedule.schedule_person_id,
+    groupId: schedule.schedule_group_id
   };
   const ModelSchedule = getScheduleModel(sequelize);
   ModelSchedule.create( newSchedule ).then(function(result){
