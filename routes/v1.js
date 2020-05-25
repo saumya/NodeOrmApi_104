@@ -218,6 +218,14 @@ router.post('/createGroup', (request,response)=>{
 	const newGroupName = request.body.groupName;
 	const newGroupAdminName = request.body.userName;
 	const newGroupAdminPassword = request.body.userPassword;
+
+	//const groupId = request.body.groupId;
+	const groupName = request.body.groupName;
+	const groupAdminUserName = request.body.adminUserName;
+	const groupAdminUserPassword = request.body.adminPassword;
+	const groupActivatedOn = request.body.activatedOn;
+	const groupActiveFrom = request.body.activeFrom;
+	const groupActiveTo = request.body.activeTo;
 	//
 	const onCallbackFromDB = function(dbResult){
 		console.log('v1.js : onCallbackFromDB');
@@ -227,12 +235,14 @@ router.post('/createGroup', (request,response)=>{
 		response.send( dbResult );
 	}
 	
-
 	modelFactory.createGroupWithName({
-		group_name : newGroupName,
-		user_name : newGroupAdminName,
-		user_password : newGroupAdminPassword
-	},onCallbackFromDB);
+		group_name : groupName,
+		user_name : groupAdminUserName,
+		user_password : groupAdminUserPassword,
+		activated_on : groupActivatedOn,
+		activated_from : groupActiveFrom,
+		activated_to : groupActiveTo
+	}, onCallbackFromDB );
 	
 
 	/*
@@ -392,6 +402,7 @@ router.post('/createSchedule', (request,response)=>{
 // updateGroup
 router.put('/updateGroup', (request,response)=>{
 	console.log('v1.js : API : updateGroup');
+	console.log( request.body );
 	
 	const groupId = request.body.groupId;
 	const groupName = request.body.groupName;

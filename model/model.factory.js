@@ -405,6 +405,8 @@ const createSchedule = function(schedule, onResult){
 // updateGroup
 const updateGroup = function(groupObj,onResult){
   console.log('model.factory : updateGroup');
+  console.log(groupObj);
+
   const ModelGroup = getGroupModel(sequelize);
   ModelGroup.update({
     group_name: groupObj.group_name ,
