@@ -392,6 +392,25 @@ const createSchedule = function(schedule, onResult){
   });
 }; // createSchedule/
 
+const assignDoctorToClinic = function(assignment, onResult){
+  console.log('model.factory : assignDoctorToClinic');
+  //console.log('assignment', assignment);
+  // assignment.clinincId, assignment.doctorId
+
+  const newAssignment = {
+    doctorId : assignment.doctorId,
+    groupId : assignment.clinincId
+  };
+  const ModelDoctorGroup = getDoctorGroupModel(sequelize);
+  ModelDoctorGroup.create( newAssignment ).then(function(result){
+    console.log('RESULT : ModelDoctorGroup.create');
+    onResult( result );
+  }).catch(function(error){
+    console.log('ERROR : ModelDoctorGroup.create');
+    console.log(error);
+  });
+}; // assignDoctorToClinic/
+
 // create/
 //----------------- POST / ---------------------------------------
 
@@ -748,6 +767,8 @@ module.exports = {
   deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule, deleteGroup,
   getAllPeople, getAllDoctors, getAllGroups, getAllDoctorGroups, getAllSchedules,
   getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId, getScheduleById,
-  getSchedulesByDoctorId, getScheduleByDoctorGroupId, getScheduleByPersonId 
+  getSchedulesByDoctorId, getScheduleByDoctorGroupId, getScheduleByPersonId,
+
+  assignDoctorToClinic 
 }
 //

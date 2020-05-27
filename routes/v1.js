@@ -395,6 +395,22 @@ router.post('/createSchedule', (request,response)=>{
 	}, onCallbackFromDB );
 	//
 });
+
+router.post('/assignDoctorToClinic', (request,response)=>{
+	console.log('v1.js : API : assignDoctorToClinic');
+	console.log( 'request.body=',request.body );
+	// request.body.clinincId, request.body.doctorId
+	const onCallbackFromDB = function(dbResult){
+		console.log('v1.js : API : assignDoctorToClinic : onCallbackFromDB');
+		console.log('+---------------------------------------');
+		console.log( dbResult.toJSON() );
+		console.log( JSON.stringify(dbResult, null, 4) );
+		console.log('+---------------------------------------');
+		response.send( dbResult );
+	}
+	modelFactory.assignDoctorToClinic( request.body, onCallbackFromDB );
+	//
+});
 // Create : /
 //---------------------------------------------------------------------------
 // Update : 
@@ -642,7 +658,6 @@ router.delete('/deleteSchedule', (request,response)=>{
 // Delete : /
 //---------------------------------------------------------------------------
 
-// ------------------------------- POST / -----------------------------------
 
 
 
