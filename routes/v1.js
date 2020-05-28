@@ -161,6 +161,24 @@ router.get('/getScheduleByPersonId/:id',(request,response)=>{
 	modelFactory.getScheduleByPersonId(onCallbackFromDB, id);
 });
 
+router.get('/getAllSchedulesByClinicByDoctorOnDate/:cId/:dId/:onDate',(request,response)=>{
+	console.log('v1.js : API : getAllSchedulesByClinicByDoctorOnDate');
+	console.log('v1.js : API : getAllSchedulesByClinicByDoctorOnDate : ', request.params);
+	// clinic id = request.params.cId
+	// doctor id = request.params.dId
+	// date = request.params.onDate
+
+
+	const id = request.params.id;
+	const onCallbackFromDB = (dbResult) => {
+		console.log('v1.js : API : getAllSchedulesByClinicByDoctorOnDate : onCallbackFromDB');
+		//console.log( 'dbResult',dbResult );
+		if(dbResult===null){ dbResult = {"result":0} };
+		response.send( dbResult );
+	}
+	modelFactory.getAllSchedulesByClinicByDoctorOnDate(onCallbackFromDB, request.params);
+});
+
 
 router.get('/getAllPeople', (request,response)=>{
 	console.log('v1.js : API : allPeople');

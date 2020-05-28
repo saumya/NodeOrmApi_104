@@ -232,6 +232,20 @@ const getScheduleByPersonId = (onResult,idToSearchFor)=>{
     onResult(error);
   });
 };
+const getAllSchedulesByClinicByDoctorOnDate = (onResult, searchObj)=>{
+  const ScheduleModel = getScheduleModel(sequelize);
+  ScheduleModel.findAll({
+    where : { 
+      doctorId : searchObj.dId,
+      groupId : searchObj.cId,
+      on_date : searchObj.onDate 
+    }
+  }).then((result)=>{
+    onResult(result);
+  }).catch((error)=>{
+    onResult(error);
+  });
+};
 //-------- with id / -----------
 
 const getAllPeople = (onResult)=>{
@@ -769,6 +783,6 @@ module.exports = {
   getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId, getScheduleById,
   getSchedulesByDoctorId, getScheduleByDoctorGroupId, getScheduleByPersonId,
 
-  assignDoctorToClinic 
+  assignDoctorToClinic, getAllSchedulesByClinicByDoctorOnDate 
 }
 //
