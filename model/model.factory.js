@@ -425,6 +425,28 @@ const assignDoctorToClinic = function(assignment, onResult){
   });
 }; // assignDoctorToClinic/
 
+//TODO: Move this to UPDATE call instead of POST here
+const activateClinic = function(activationObj, onResult){
+  console.log('model.factory : activateClinic');
+  //console.log('activationObj', activationObj);
+  // activationObj.clinincId, activationObj.activeFrom, activationObj.activeTo
+
+  const newActivation = {
+    activated_from: activationObj.activeFrom,
+    activated_to: activationObj.activeTo
+  };
+  // wip :  xx
+  //const ModelDoctorGroup = getDoctorGroupModel(sequelize);
+  const ModelGroup = getGroupModel(sequelize);
+  ModelGroup.update( newActivation, {where: {id: activationObj.clinincId} }).then(function(result){
+    console.log('RESULT : ModelGroup.UPDATE');
+    onResult( result );
+  }).catch(function(error){
+    console.log('ERROR : ModelGroup.UPDATE');
+    console.log(error);
+  });
+}; // activateClinic/
+
 // create/
 //----------------- POST / ---------------------------------------
 
@@ -783,6 +805,6 @@ module.exports = {
   getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId, getScheduleById,
   getSchedulesByDoctorId, getScheduleByDoctorGroupId, getScheduleByPersonId,
 
-  assignDoctorToClinic, getAllSchedulesByClinicByDoctorOnDate 
+  assignDoctorToClinic, activateClinic, getAllSchedulesByClinicByDoctorOnDate 
 }
 //
