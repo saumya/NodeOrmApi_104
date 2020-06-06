@@ -1,6 +1,4 @@
 //
-// todo:
-// updateGroup, deleteGroup
 //
 var express = require('express');
 var router = express.Router();
@@ -55,7 +53,7 @@ router.get('/info', function(req, res, next) {
 router.get('/getGroupWithId/:theID', (request,response)=>{
 	console.log('getGroupWithId', request.params );
 	response.send('getGroupWithId : server : '+ request.params.theID );
-	//TODO: make the server call and respond
+	//make the server call and respond
 });
 */
 router.get('/getPersonWithId/:pID', (request,response)=>{
@@ -207,8 +205,40 @@ router.get('/getAllDoctorsByGroup/:groupId', (request,response) => {
 
 	const onCallbackFromDB = function(dbResult){
 		console.log('v1.js : getAllDoctorsByGroup : onCallbackFromDB');
-		response.send( dbResult );
-	}
+		console.log('v1.js : getAllDoctorsByGroup : onCallbackFromDB : ', dbResult);
+		//response.send( dbResult );
+		
+		// Call the API to get the Doctors from the IDs we got in 'dbResult'
+		// GetDoctorsFromDB
+		var aDoctors = [];
+		var ai = 0;
+		var onGotDoctorFromDB = function(result_doctor){
+			console.log('+-------- onGotDoctorFromDB ---------------');
+			console.log('onGotDoctorFromDB');
+			console.log('ai',ai);
+			console.log( result_doctor.toJSON() );
+			aDoctors.push(result_doctor);
+			ai++;
+			getNextDoctor();
+			console.log('+-------- onGotDoctorFromDB/ ---------------');
+		}
+		var getNextDoctor = function(){
+			console.log('+-------- getNextDoctor ---------------');
+			console.log('ai',ai);
+			if(ai<dbResult.length){
+				modelFactory.getDoctorWithId(onGotDoctorFromDB, dbResult[ai] );	
+			}else{
+				console.log('GOT all the Doctors');
+				console.log('aDoctors.length',aDoctors.length);
+				response.send(aDoctors);
+			}
+			console.log('+-------- getNextDoctor/ ---------------');
+		}
+		// intiate the recursion
+		getNextDoctor();
+		// GetDoctorsFromDB/
+
+	}// onCallbackFromDB/
 	modelFactory.getAllDoctorIdsByGroupId( onCallbackFromDB, request.params.groupId );
 });
 
@@ -493,10 +523,8 @@ router.put('/updateGroup', (request,response)=>{
 		activated_to : groupActiveTo
 	}, onCallbackFromDB );
 
+}); // updateGroup/
 
-	//response.send({"result": "TODO"});
-});
-// updateGroup /
 // updatePerson
 router.put('/updatePerson', (request,response)=>{
 	console.log('v1.js : API : UpdatePerson');
