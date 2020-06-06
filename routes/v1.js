@@ -191,6 +191,7 @@ router.get('/getAllPeople', (request,response)=>{
 	
 	modelFactory.getAllPeople(onCallbackFromDB);
 });
+
 router.get('/getAllDoctors', (request,response) => {
 	console.log('v1.js : API : allDoctors');
 	const onCallbackFromDB = function(dbResult){
@@ -199,6 +200,18 @@ router.get('/getAllDoctors', (request,response) => {
 	}
 	modelFactory.getAllDoctors(onCallbackFromDB);
 });
+
+router.get('/getAllDoctorsByGroup/:groupId', (request,response) => {
+	console.log('v1.js : API : getAllDoctorsByGroup');
+	console.log('v1.js : API : getAllDoctorsByGroup : request.params : ', request.params);
+
+	const onCallbackFromDB = function(dbResult){
+		console.log('v1.js : getAllDoctorsByGroup : onCallbackFromDB');
+		response.send( dbResult );
+	}
+	modelFactory.getAllDoctorIdsByGroupId( onCallbackFromDB, request.params.groupId );
+});
+
 router.get('/getAllGroups', (request,response)=>{
 	console.log('v1.js : API : getAllGroups');
 	const onCallbackFromDB = function(dbResult){

@@ -192,6 +192,53 @@ const getDoctorGroupWithId = (onResult,idToSearchFor)=>{
     onResult(error);
   });
 };
+
+const getAllDoctorIdsByGroupId = (onResult,idToSearchFor)=>{
+  //const ModelPerson = getPersonModel(sequelize);
+  const ModelDoctor = getDoctorModel(sequelize);
+  const ModelDoctorGroup = getDoctorGroupModel(sequelize);
+  //ModelPerson.findAll({ where:{id : personObj.person_id} }).then(function(dbPersonObj){}).catch(function(error){});
+  ModelDoctorGroup.findAll({
+    where : { groupId: idToSearchFor }
+  }).then(function(doctorGroups){
+    //onResult(doctorGroups);
+    //TODO: find the doctors from these Groups {doctorId,groupId}
+
+    
+    var aDoctorIds = doctorGroups.map(function(item){
+      return item.doctorId
+    });
+    onResult(aDoctorIds);
+    
+
+    /*
+    // This is not working
+    // Feels bad to do this, anyway.
+    // Need to find a way to do this in a better way.
+
+    var aDoctors = doctorGroups.map(function(item){
+      return item.doctorId
+      
+      ModelDoctor.findOne({
+        where : { id : item.doctorId }
+      }).then((result_1)=>{
+        //console.log('result_1', result_1);
+        //console.log('result_1:result_1.toJSON()', result_1.toJSON() );
+        var doctor = result_1.toJSON();
+        //console.log('result_1: doctor', doctor );
+        return doctor;
+      }).catch((error_1)=>{
+        console.log('error_1', error_1)
+      });
+    });
+    console.log('getAllDoctorsByGroupId : aDoctors : ',aDoctors);
+    */
+
+  }).catch(function(error){
+    onResult(error);
+  });
+}
+
 const getScheduleById = (onResult,idToSearchFor)=>{
   const ScheduleModel = getScheduleModel(sequelize);
   ScheduleModel.findOne({
@@ -257,6 +304,7 @@ const getAllPeople = (onResult)=>{
     onResult(error);
   });
 }
+
 const getAllDoctors = (onResult)=>{
   //const ModelPerson = getPersonModel(sequelize);
   const ModelDoctor = getDoctorModel(sequelize);
@@ -267,6 +315,7 @@ const getAllDoctors = (onResult)=>{
     onResult(error);
   });
 }
+
 const getAllGroups = (onResult)=>{
   const ModelGroup = getGroupModel(sequelize);
   ModelGroup.findAll().then(function(doctors){
@@ -805,6 +854,7 @@ module.exports = {
   getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId, getScheduleById,
   getSchedulesByDoctorId, getScheduleByDoctorGroupId, getScheduleByPersonId,
 
-  assignDoctorToClinic, activateClinic, getAllSchedulesByClinicByDoctorOnDate 
+  assignDoctorToClinic, activateClinic, getAllSchedulesByClinicByDoctorOnDate,
+  getAllDoctorIdsByGroupId, 
 }
 //
