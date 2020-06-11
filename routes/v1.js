@@ -473,30 +473,20 @@ const onAllCallbackFromDB = function(dbResult){
 // ----- CreatePrescription
 router.post('/createPrescription', (request,response)=>{
 	console.log('v1.js : API : CreatePrescription');
+	console.log( request.body );
+	/*
 	const name = request.body.prName;
 	const onDate = request.body.prOnDate;
 	const details = request.body.prDetails;
 	const doctorId = request.body.prDoctorId;
 	const personId = request.body.prPersonId;
 	const clinicId = request.body.prClinicId;
+	*/
 	//
 	// globalResponseObj = response;//Just saving the scope above
 	//
-	const onCallbackFromDB = function(dbResult){
-		response.send( dbResult );
-	}
-	//
-	/*
-	modelFactory.createPrescription({
-		name : name,
-		onDate : onDate,
-		details : details,
-		doctorId : doctorId,
-		personId : personId,
-		clinicId : clinicId
-	},onCallbackFromDB)
-	*/
-	modelFactory.createPrescription({name,onDate,details,doctorId,personId,clinicId}, onCallbackFromDB);
+	const onCallbackFromDB = function(dbResult){ response.send( dbResult ); }
+	modelFactory.createPrescription( request.body , onCallbackFromDB);
 }); // ----- CreatePrescription/
 
 // CreateBill

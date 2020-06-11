@@ -476,6 +476,8 @@ const createSchedule = function(schedule, onResult){
 // CreatePrescription
 const createPrescription = function(prescription, onResult){
   console.log('model.factory : createPrescription');
+  //console.log( JSON.stringify(prescription) );
+
   const ModelPrescription = getPrescriptionModel(sequelize);
   ModelPrescription.create(prescription).then(function(result){
     console.log('RESULT : ModelPrescription.create');
