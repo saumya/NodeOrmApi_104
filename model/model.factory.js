@@ -464,6 +464,20 @@ const createSchedule = function(schedule, onResult){
   });
 }; // createSchedule/
 
+// CreatePrescription
+const createPrescription = function(prescription, onResult){
+  console.log('model.factory : createPrescription');
+  const ModelPrescription = getPrescriptionModel(sequelize);
+  ModelPrescription.create(prescription).then(function(result){
+    console.log('RESULT : ModelPrescription.create');
+    onResult(result);
+  }).catch(function(error){
+    console.log('ERROR : ModelPrescription.create');
+    console.log(error)
+  });
+};
+// CreatePrescription/
+
 const assignDoctorToClinic = function(assignment, onResult){
   console.log('model.factory : assignDoctorToClinic');
   //console.log('assignment', assignment);
@@ -856,7 +870,7 @@ module.exports = {
 	getSequelize, 
 	initModelFactory,
 	initTheModels,
-  createPerson, createDoctor, createDoctorGroup, createSchedule, createGroupWithName,
+  createPerson, createDoctor, createDoctorGroup, createSchedule, createGroupWithName, createPrescription,
   updatePerson, updateDoctor, updateDoctorGroup, updateSchedule, updateGroup,
   deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule, deleteGroup,
   getAllPeople, getAllDoctors, getAllGroups, getAllDoctorGroups, getAllSchedules,

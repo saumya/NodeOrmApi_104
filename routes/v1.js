@@ -457,7 +457,48 @@ router.post('/createSchedule', (request,response)=>{
 	//
 });
 
-//TODO: These calls should be in PUT not POST
+// ---------- TODO: Improvement to the Code ---------------
+// This could be done.
+// Just get all the callbacks from inside the routes to here.
+// 
+/*
+var globalResponseObj = '';
+const onAllCallbackFromDB = function(dbResult){
+	console.log('onAllCallbackFromDB');
+	globalResponseObj.send( dbResult );
+}
+*/
+// ---------- TODO: Improvement to the Code / ---------------
+
+// ----- CreatePrescription
+router.post('/createPrescription', (request,response)=>{
+	console.log('v1.js : API : CreatePrescription');
+	const name = request.body.prName;
+	const onDate = request.body.prOnDate;
+	const details = request.body.prDetails;
+	const doctorId = request.body.prDoctorId;
+	const personId =request.body.prPersonId;
+	//
+	// globalResponseObj = response;//Just saving the scope above
+	//
+	const onCallbackFromDB = function(dbResult){
+		response.send( dbResult );
+	}
+	//
+	/*
+	modelFactory.createPrescription({
+		name : name,
+		onDate : onDate,
+		details : details,
+		doctorId : doctorId,
+		personId : personId
+	},onCallbackFromDB)
+	*/
+	modelFactory.createPrescription({name,onDate,details,doctorId,personId}, onCallbackFromDB);
+}); // ----- CreatePrescription/
+
+// TODO: These calls should be in PUT not POST
+// Move to PUT and remove from here 
 //
 router.post('/assignDoctorToClinic', (request,response)=>{
 	console.log('v1.js : API : assignDoctorToClinic');
@@ -490,6 +531,9 @@ router.post('/activateClinic', (request,response)=>{
 	modelFactory.activateClinic( request.body, onCallbackFromDB );
 	//
 });
+// Move to PUT and remove from here /
+
+
 // Create : /
 //---------------------------------------------------------------------------
 // Update : 
