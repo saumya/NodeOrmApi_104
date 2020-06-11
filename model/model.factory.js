@@ -21,6 +21,7 @@ const getDoctorModel = require('./doctor.model.js');
 const getDoctorGroupModel = require('./doctorGroup.model');
 
 const getScheduleModel = require('./schedule.model');
+const getPrescriptionModel = require('./prescription.model');
 
 
 
@@ -123,6 +124,14 @@ const initTheModels = function(){
   }).catch(err=>{
   	console.log('+--- Sequelize - Error ---------------');
   	console.error('Sequelize: Model Error: ScheduleModel: ', err);
+  });
+
+  const PrescriptionModel = getPrescriptionModel(sequelize);
+  PrescriptionModel.sync( {force:true} ).then( ()=>{
+    console.log('Sequelize: Synced! PrescriptionModel');
+  } ).catch( err => {
+    console.log('+--- Sequelize - Error ---------------');
+    console.error('Sequelize: Model Error: PrescriptionModel : ', err);
   });
 
 } // initTheModels/
