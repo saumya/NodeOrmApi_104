@@ -1,5 +1,5 @@
 //
-// prescription.model.js
+// bill.model.js
 //
 //
 const Sequelize = require('sequelize');
@@ -9,27 +9,28 @@ const Model = Sequelize.Model;
 // Sequelize.Model.init(attributes, options)
 
 
-const getPrescriptionModel = function(sequelize){
+const getBillModel = function(sequelize){
 
-	class Prescription extends Model {}
+	class Bill extends Model {}
 
-	Prescription.init({
+	Bill.init({
 		name: Sequelize.STRING,
 		onDate: Sequelize.DATE,
 		details: Sequelize.TEXT,
+		ammount: Sequelize.DECIMAL(10,2),
 		doctorId: Sequelize.INTEGER,
 		personId: Sequelize.INTEGER,
 		clinicId: Sequelize.INTEGER
 	},{
 		sequelize: sequelize,
-		modelName: 'prescription',
+		modelName: 'bill',
 		timestamps: true
 	});
 
-	return Prescription;
+	return Bill;
 }
 
-module.exports = getPrescriptionModel;
+module.exports = getBillModel;
 
 
 

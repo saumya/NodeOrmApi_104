@@ -22,6 +22,7 @@ const getDoctorGroupModel = require('./doctorGroup.model');
 
 const getScheduleModel = require('./schedule.model');
 const getPrescriptionModel = require('./prescription.model');
+const getBillModel = require('./bill.model');
 
 
 
@@ -85,7 +86,7 @@ const initTheModels = function(){
   	//console.log(ModelGroup);
   }).catch(err=>{
   	console.log('+--- Sequelize - Error ---------------');
-  	console.error('Sequelize: Model Error: ModelGroup: ', err);
+  	console.error('Sequelize: Model Error : ModelGroup : ', err);
   });
   
   /*
@@ -105,7 +106,7 @@ const initTheModels = function(){
       //console.log(ModelDoctor);
   }).catch(err=>{
       console.log('+--- Sequelize - Error ---------------');
-      console.error('Sequelize: Model Error: ModelDoctor: ', err);
+      console.error('Sequelize: Model Error : ModelDoctor : ', err);
   });
 
   const ModelDoctorGroup = getDoctorGroupModel(sequelize);
@@ -114,7 +115,7 @@ const initTheModels = function(){
   	//console.log(ModelDoctorGroup);
   }).catch(err=>{
   	console.log('+--- Sequelize - Error ---------------');
-  	console.error('Sequelize: Model Error: ModelDoctorGroup: ', err);
+  	console.error('Sequelize: Model Error : ModelDoctorGroup : ', err);
   });
 
   const ScheduleModel = getScheduleModel(sequelize);
@@ -123,7 +124,7 @@ const initTheModels = function(){
   	//console.log(ScheduleModel);
   }).catch(err=>{
   	console.log('+--- Sequelize - Error ---------------');
-  	console.error('Sequelize: Model Error: ScheduleModel: ', err);
+  	console.error('Sequelize: Model Error : ScheduleModel : ', err);
   });
 
   const PrescriptionModel = getPrescriptionModel(sequelize);
@@ -131,7 +132,15 @@ const initTheModels = function(){
     console.log('Sequelize: Synced! PrescriptionModel');
   } ).catch( err => {
     console.log('+--- Sequelize - Error ---------------');
-    console.error('Sequelize: Model Error: PrescriptionModel : ', err);
+    console.error('Sequelize: Model Error : PrescriptionModel : ', err);
+  });
+
+  const BillModel = getBillModel(sequelize);
+  BillModel.sync( {force:true} ).then( ()=>{
+    console.log('Sequelize: Synced! BillModel');
+  } ).catch( err => {
+    console.log('+--- Sequelize - Error ---------------');
+    console.error('Sequelize: Model Error : BillModel : ', err);
   });
 
 } // initTheModels/
@@ -477,6 +486,18 @@ const createPrescription = function(prescription, onResult){
   });
 };
 // CreatePrescription/
+// createBill
+const createBill = function(bill,onResult){
+  console.log('model.factory : createBill');
+  const ModelBill = getBillModel(sequelize);
+  ModelBill.create(bill).then(function(result){
+    console.log('RESULT : ModelBill.create');
+    onResult(result);
+  }).catch(function(error){
+    console.log('ERROR : ModelBill.create');
+    console.log(error);
+  });
+};// createBill/
 
 const assignDoctorToClinic = function(assignment, onResult){
   console.log('model.factory : assignDoctorToClinic');
@@ -870,7 +891,7 @@ module.exports = {
 	getSequelize, 
 	initModelFactory,
 	initTheModels,
-  createPerson, createDoctor, createDoctorGroup, createSchedule, createGroupWithName, createPrescription,
+  createPerson, createDoctor, createDoctorGroup, createSchedule, createGroupWithName, createPrescription, createBill,
   updatePerson, updateDoctor, updateDoctorGroup, updateSchedule, updateGroup,
   deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule, deleteGroup,
   getAllPeople, getAllDoctors, getAllGroups, getAllDoctorGroups, getAllSchedules,

@@ -477,7 +477,8 @@ router.post('/createPrescription', (request,response)=>{
 	const onDate = request.body.prOnDate;
 	const details = request.body.prDetails;
 	const doctorId = request.body.prDoctorId;
-	const personId =request.body.prPersonId;
+	const personId = request.body.prPersonId;
+	const clinicId = request.body.prClinicId;
 	//
 	// globalResponseObj = response;//Just saving the scope above
 	//
@@ -491,11 +492,32 @@ router.post('/createPrescription', (request,response)=>{
 		onDate : onDate,
 		details : details,
 		doctorId : doctorId,
-		personId : personId
+		personId : personId,
+		clinicId : clinicId
 	},onCallbackFromDB)
 	*/
-	modelFactory.createPrescription({name,onDate,details,doctorId,personId}, onCallbackFromDB);
+	modelFactory.createPrescription({name,onDate,details,doctorId,personId,clinicId}, onCallbackFromDB);
 }); // ----- CreatePrescription/
+
+// CreateBill
+router.post('/createBill', (request,response)=>{
+	console.log('v1.js : API : createBill');
+	/*
+	const name = request.body.prName;
+	const onDate = request.body.blOnDate;
+	const details = request.body.blDetails;
+	const ammount = request.body.blAmmount;
+	const doctorId = request.body.blDoctorId;
+	const personId = request.body.blPersonId;
+	const clinicId = request.body.blClinicId;
+	*/
+	const onCallbackFromDB = function(dbResult){
+		response.send( dbResult );
+	}
+	//modelFactory.createBill({name,onDate,details,ammount,doctorId,personId,clinicId}, onCallbackFromDB);
+	modelFactory.createBill(request.body, onCallbackFromDB);
+});// CreateBill /
+
 
 // TODO: These calls should be in PUT not POST
 // Move to PUT and remove from here 
