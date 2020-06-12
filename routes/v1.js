@@ -473,18 +473,8 @@ const onAllCallbackFromDB = function(dbResult){
 // ----- CreatePrescription
 router.post('/createPrescription', (request,response)=>{
 	console.log('v1.js : API : CreatePrescription');
-	console.log( request.body );
-	/*
-	const name = request.body.prName;
-	const onDate = request.body.prOnDate;
-	const details = request.body.prDetails;
-	const doctorId = request.body.prDoctorId;
-	const personId = request.body.prPersonId;
-	const clinicId = request.body.prClinicId;
-	*/
-	//
+	//console.log( request.body );
 	// globalResponseObj = response;//Just saving the scope above
-	//
 	const onCallbackFromDB = function(dbResult){ response.send( dbResult ); }
 	modelFactory.createPrescription( request.body , onCallbackFromDB);
 }); // ----- CreatePrescription/
@@ -492,19 +482,8 @@ router.post('/createPrescription', (request,response)=>{
 // CreateBill
 router.post('/createBill', (request,response)=>{
 	console.log('v1.js : API : createBill');
-	/*
-	const name = request.body.prName;
-	const onDate = request.body.blOnDate;
-	const details = request.body.blDetails;
-	const ammount = request.body.blAmmount;
-	const doctorId = request.body.blDoctorId;
-	const personId = request.body.blPersonId;
-	const clinicId = request.body.blClinicId;
-	*/
-	const onCallbackFromDB = function(dbResult){
-		response.send( dbResult );
-	}
-	//modelFactory.createBill({name,onDate,details,ammount,doctorId,personId,clinicId}, onCallbackFromDB);
+	//console.log( request.body );
+	const onCallbackFromDB = function(dbResult){ response.send( dbResult ); }
 	modelFactory.createBill(request.body, onCallbackFromDB);
 });// CreateBill /
 
