@@ -503,10 +503,24 @@ router.post('/loginClinic', (request,response)=>{
 		//console.log( JSON.stringify(dbResult, null, 4) );
 		console.log('+---------------------------------------');
 		let resultOutputString = 'FAIL';
+		let isStillActive = false;
 		if(dbResult.length>0){
 			resultOutputString = 'SUCCESS';
+			/*
+			console.log('SUCCESS', dbResult[0] );
+			console.log('SUCCESS', JSON.stringify(dbResult[0]) );
+			console.log('SUCCESS', (dbResult[0]).group_name );
+			*/
+			let activatedTo = new Date( dbResult[0].activated_to);
+			let today = new Date();
+			// If login SUCCESS, check for isActive
+			if( activatedTo>today ){
+				isStillActive = true;
+			}
 		}
-		response.send( { result: resultOutputString, data:JSON.stringify(dbResult[0]) } );
+
+		//response.send( { result: resultOutputString, data:JSON.stringify(dbResult[0]) } );
+		response.send( { result: resultOutputString, data: dbResult[0], isStillActive } );
 	}
 	modelFactory.checkValidityOfClinic(onCallbackFromDB, request.body);
 });// /loginClinic /
