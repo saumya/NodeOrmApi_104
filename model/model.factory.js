@@ -313,6 +313,30 @@ const getAllSchedulesByClinicByDoctorOnDate = (onResult, searchObj)=>{
 };
 //-------- with id / -----------
 
+const checkValidityOfClinic = (onResult, searchObj)=>{
+  console.log('checkValidityOfClinic',searchObj);
+
+  const cid = searchObj.cid;
+  const cname = searchObj.cAdminUserName;
+  const cpassword = searchObj.cAdminUserPw;
+
+  // WIP
+
+  const ModelGroup = getGroupModel(sequelize);
+  ModelGroup.findAll({
+    where : {
+      id : cid,
+      user_name : cname,
+      user_password : cpassword
+    }
+  }).then(function(clinics){
+    onResult(clinics);
+  }).catch(function(error){
+    onResult(error);
+  }); 
+
+}// checkValidityOfClinic/
+
 const getAllPeople = (onResult)=>{
   const ModelPerson = getPersonModel(sequelize);
   //ModelPerson.findAll({ where:{id : personObj.person_id} }).then(function(dbPersonObj){}).catch(function(error){});
@@ -530,7 +554,7 @@ const activateClinic = function(activationObj, onResult){
     activated_from: activationObj.activeFrom,
     activated_to: activationObj.activeTo
   };
-  // wip :  xx
+  // 
   //const ModelDoctorGroup = getDoctorGroupModel(sequelize);
   const ModelGroup = getGroupModel(sequelize);
   ModelGroup.update( newActivation, {where: {id: activationObj.clinincId} }).then(function(result){
@@ -900,7 +924,7 @@ module.exports = {
   getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId, getScheduleById,
   getSchedulesByDoctorId, getScheduleByDoctorGroupId, getScheduleByPersonId,
 
-  assignDoctorToClinic, activateClinic, getAllSchedulesByClinicByDoctorOnDate,
-  getAllDoctorIdsByGroupId, 
+  assignDoctorToClinic, activateClinic, checkValidityOfClinic, 
+  getAllSchedulesByClinicByDoctorOnDate, getAllDoctorIdsByGroupId, 
 }
 //

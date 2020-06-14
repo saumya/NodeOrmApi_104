@@ -488,13 +488,37 @@ router.post('/createBill', (request,response)=>{
 });// CreateBill /
 
 
+router.post('/loginClinic', (request,response)=>{
+	console.log('v1.js : API : activateClinic');
+	console.log( 'request.body=',request.body );
+	// request.body.clinicId, request.body.doctorId
+	const onCallbackFromDB = function(dbResult){
+		console.log('v1.js : API : activateClinic : onCallbackFromDB');
+		console.log('+---------------------------------------');
+		console.log( 'dbResult', dbResult );
+		//console.log( 'dbResult', JSON.stringify(dbResult) );
+		//console.log( 'dbResult', JSON.stringify(dbResult[0]) );
+		
+		//console.log( dbResult.toJSON() );
+		//console.log( JSON.stringify(dbResult, null, 4) );
+		console.log('+---------------------------------------');
+		let resultOutputString = 'FAIL';
+		if(dbResult.length>0){
+			resultOutputString = 'SUCCESS';
+		}
+		response.send( { result: resultOutputString, data:JSON.stringify(dbResult[0]) } );
+	}
+	modelFactory.checkValidityOfClinic(onCallbackFromDB, request.body);
+});// /loginClinic /
+
+
 // TODO: These calls should be in PUT not POST
 // Move to PUT and remove from here 
 //
 router.post('/assignDoctorToClinic', (request,response)=>{
 	console.log('v1.js : API : assignDoctorToClinic');
 	console.log( 'request.body=',request.body );
-	// request.body.clinincId, request.body.doctorId
+	// request.body.clinicId, request.body.doctorId
 	const onCallbackFromDB = function(dbResult){
 		console.log('v1.js : API : assignDoctorToClinic : onCallbackFromDB');
 		console.log('+---------------------------------------');
@@ -509,7 +533,7 @@ router.post('/assignDoctorToClinic', (request,response)=>{
 router.post('/activateClinic', (request,response)=>{
 	console.log('v1.js : API : activateClinic');
 	console.log( 'request.body=',request.body );
-	// request.body.clinincId, request.body.doctorId
+	// request.body.clinicId, request.body.doctorId
 	const onCallbackFromDB = function(dbResult){
 		console.log('v1.js : API : activateClinic : onCallbackFromDB');
 		console.log('+---------------------------------------');
