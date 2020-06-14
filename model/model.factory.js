@@ -320,8 +320,6 @@ const checkValidityOfClinic = (onResult, searchObj)=>{
   const cname = searchObj.cAdminUserName;
   const cpassword = searchObj.cAdminUserPw;
 
-  // WIP
-
   const ModelGroup = getGroupModel(sequelize);
   ModelGroup.findAll({
     where : {
