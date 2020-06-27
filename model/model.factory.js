@@ -428,13 +428,16 @@ const createPerson = function(personObj,onResult){
 
 const createDoctor = function(doctorObj,onResult){
   console.log('model.factory : createDoctor');
+  console.log('+---------------------------------');
   console.log(doctorObj);
+  console.log('+---------------------------------');
 
   const newDoctor = {
-    name: doctorObj.doctor_name ,
-    phone: doctorObj.doctor_phone ,
-    email: doctorObj.doctor_email,
-    address: doctorObj.doctor_address
+    name : doctorObj.doctor_name ,
+    phone : doctorObj.doctor_phone ,
+    email : doctorObj.doctor_email,
+    specialization : doctorObj.specialization,
+    address : doctorObj.doctor_address
   }
 
   const ModelDoctor = getDoctorModel(sequelize);
@@ -719,10 +722,11 @@ const updateDoctor = function(doctorObj,onResult){
 
   const ModelDoctor = getDoctorModel(sequelize);
   ModelDoctor.update({
-    name: doctorObj.doctor_name ,
-    phone: doctorObj.doctor_phone ,
-    email: doctorObj.doctor_email,
-    address: doctorObj.doctor_address
+    name : doctorObj.doctor_name ,
+    phone : doctorObj.doctor_phone ,
+    email : doctorObj.doctor_email,
+    specialization : doctorObj.specialization,
+    address : doctorObj.doctor_address
   },{ where:{ id : doctorObj.doctor_id } }).then(function(result2){
     console.log('result2');
     console.log( result2 );

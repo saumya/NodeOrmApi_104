@@ -390,6 +390,7 @@ router.post('/createDoctor', (request,response)=>{
 	const newDoctorName = request.body.doctorName;
 	const newDoctorEmail = request.body.doctorEmail;
 	const newDoctorPhone = request.body.doctorPhone;
+	const newSpecialization = request.body.doctorSpecialization;
 	const newDoctorAddress = request.body.doctorAddress;
 	//
 	const onCallbackFromDB = function(dbResult){
@@ -402,6 +403,7 @@ router.post('/createDoctor', (request,response)=>{
 		doctor_name : newDoctorName,
 		doctor_email : newDoctorEmail,
 		doctor_phone : newDoctorPhone,
+		specialization : newSpecialization,
 		doctor_address : newDoctorAddress
 	}, onCallbackFromDB );
 	//
@@ -643,6 +645,7 @@ router.put('/updateDoctor', (request,response)=>{
 	const newDoctorName = request.body.doctorName;
 	const newDoctorEmail = request.body.doctorEmail;
 	const newDoctorPhone = request.body.doctorPhone;
+	const newDoctorSpecialization = request.body.doctorSpecialization;
 	const newDoctorAddress = request.body.doctorAddress;
 
 	const onCallbackFromDB = function(dbResult){
@@ -656,6 +659,7 @@ router.put('/updateDoctor', (request,response)=>{
 		doctor_name : newDoctorName,
 		doctor_email : newDoctorEmail,
 		doctor_phone : newDoctorPhone,
+		specialization : newDoctorSpecialization,
 		doctor_address : newDoctorAddress
 	}, onCallbackFromDB );
 }); // updateDoctor/
