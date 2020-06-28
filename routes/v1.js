@@ -527,6 +527,12 @@ router.post('/loginClinic', (request,response)=>{
 	modelFactory.checkValidityOfClinic(onCallbackFromDB, request.body);
 });// /loginClinic /
 
+// LoginPatient
+router.post('/loginPatient', (request,response)=>{
+	response.send({result:true, data:{} });
+});
+// LoginPatient /
+
 
 // TODO: These calls should be in PUT not POST
 // Move to PUT and remove from here 
