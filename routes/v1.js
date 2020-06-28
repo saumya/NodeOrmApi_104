@@ -531,7 +531,29 @@ router.post('/loginClinic', (request,response)=>{
 
 // LoginPatient
 router.post('/loginPatient', (request,response)=>{
-	response.send({result:true, data:{} });
+	console.log('v1.js : API : assignDoctorToClinic');
+	console.log( JSON.stringify(request.body) );
+	//console.log( 'pUserId='+request.body.pUserId, 'pUserPw='+request.body.pUserPw );
+
+	const onCallbackFromDB = function(dbResult){
+		console.log('v1.js : API : loginPatient : onCallbackFromDB');
+		//console.log('+---------------------------------------');
+		//console.log( 'dbResult', dbResult );
+		//console.log( dbResult.toJSON() );
+		//console.log( JSON.stringify(dbResult, null, 4) );
+		//console.log('+---------------------------------------');
+
+		let result = { success : false };
+		if(dbResult){
+			//console.log('dbResult',dbResult);
+			result = { success : true, data : dbResult };
+		}else{
+			//
+		}
+		response.send( result );
+	}
+
+	modelFactory.getPersonWith_Id_Pw( onCallbackFromDB, request.body.pUserId, request.body.pUserPw);
 });
 // LoginPatient /
 
