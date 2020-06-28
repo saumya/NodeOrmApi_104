@@ -408,10 +408,11 @@ const createPerson = function(personObj,onResult){
   console.log(personObj);
 
   const newPerson = {
-    name: personObj.person_name ,
-    phone: personObj.person_phone ,
+    name: personObj.person_name,
+    phone: personObj.person_phone,
     email: personObj.person_email,
-    address: personObj.person_address
+    address: personObj.person_address,
+    password: personObj.person_password
   }
 
   const ModelPerson = getPersonModel(sequelize);
@@ -618,6 +619,7 @@ const updatePerson = function(personObj,onResult){
     phone: personObj.person_phone ,
     email: personObj.person_email,
     address: personObj.person_address,
+    password: personObj.person_password,
     pID: personObj.pID
   }
   
@@ -667,7 +669,8 @@ const updatePerson = function(personObj,onResult){
       name: personObj.person_name,
       phone: personObj.person_phone ,
       email: personObj.person_email,
-      address: personObj.person_address
+      address: personObj.person_address,
+      password: personObj.person_password,
     }).then(function(result){
       console.log('model.factory : updatePerson : SUCCESS : ');
       //console.log( result );

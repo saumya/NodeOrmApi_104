@@ -360,6 +360,7 @@ router.post('/createPerson', (request,response)=>{
 	const newPersonEmail = request.body.personEmail;
 	const newPersonPhone = request.body.personPhone;
 	const newPersonAddress = request.body.personAddress;
+	const newPersonPassword = request.body.personPassword;
 	//
 	const onCallbackFromDB = function(dbResult){
 		console.log('v1.js : API : createPerson : onCallbackFromDB');
@@ -377,6 +378,7 @@ router.post('/createPerson', (request,response)=>{
 	//
 	modelFactory.createPerson({
 		person_name : newPersonName,
+		person_password : newPersonPassword,
 		person_email : newPersonEmail,
 		person_phone : newPersonPhone,
 		person_address : newPersonAddress
@@ -589,7 +591,7 @@ router.put('/updateGroup', (request,response)=>{
 	const groupActiveTo = request.body.activeTo;
 
 	const onCallbackFromDB = function(dbResult){
-		console.log('v1.js : API : UpdatePerson : onCallbackFromDB');
+		console.log('v1.js : API : UpdateGroup : onCallbackFromDB');
 		//console.log( dbResult.toJSON() );
 		//console.log( dbResult );
 		response.send(dbResult);
@@ -609,11 +611,13 @@ router.put('/updateGroup', (request,response)=>{
 // updatePerson
 router.put('/updatePerson', (request,response)=>{
 	console.log('v1.js : API : UpdatePerson');
+	//console.log( JSON.stringify(request.body) );
 	const personId = request.body.personId;
 	const newPersonName = request.body.personName;
 	const newPersonEmail = request.body.personEmail;
 	const newPersonPhone = request.body.personPhone;
 	const newPersonAddress = request.body.personAddress;
+	const newPersonPassword = request.body.personPassword;
 	const onCallbackFromDB = function(dbResult){
 		console.log('v1.js : API : UpdatePerson : onCallbackFromDB');
 		//console.log( dbResult.toJSON() );
@@ -626,7 +630,8 @@ router.put('/updatePerson', (request,response)=>{
 		person_name : newPersonName,
 		person_email : newPersonEmail,
 		person_phone : newPersonPhone,
-		person_address : newPersonAddress
+		person_address : newPersonAddress,
+		person_password : newPersonPassword
 	}, onCallbackFromDB );
 }); // updatePerson/
 // updateDoctor
