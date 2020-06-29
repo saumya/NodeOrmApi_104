@@ -16,6 +16,13 @@ const getPrescriptionModel = function(sequelize){
 	Prescription.init({
 		name: Sequelize.STRING,
 		onDate: Sequelize.DATE,
+		
+		observations: Sequelize.TEXT,
+		advice: Sequelize.TEXT,
+		tests: Sequelize.TEXT,
+		medicines: Sequelize.TEXT,
+		followupDate: Sequelize.STRING,
+		
 		details: Sequelize.TEXT,
 		doctorId: Sequelize.INTEGER,
 		personId: Sequelize.INTEGER,
