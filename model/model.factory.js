@@ -196,6 +196,13 @@ const getPersonWith_Id_Pw = ( onResult, idToSearchFor, password )=>{
   });
 };
 
+const getDoctorWith_Id_Pw = ( onResult, idToSearchFor, password )=>{
+  const ModelDoctor = getDoctorModel(sequelize);
+  ModelDoctor.findOne({
+    where: { id : idToSearchFor, password : password }
+  }).then( result=> onResult(result) ).catch( error=> onResult(error) );
+};
+
 const getDoctorWithId = (onResult,idToSearchFor)=>{
   const ModelDoctor = getDoctorModel(sequelize);
   ModelDoctor.findOne({
@@ -947,7 +954,7 @@ module.exports = {
   getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId, getScheduleById,
   getSchedulesByDoctorId, getScheduleByDoctorGroupId, getScheduleByPersonId,
 
-  getPersonWith_Id_Pw,
+  getPersonWith_Id_Pw, getDoctorWith_Id_Pw,
 
   assignDoctorToClinic, activateClinic, checkValidityOfClinic, 
   getAllSchedulesByClinicByDoctorOnDate, getAllDoctorIdsByGroupId, 

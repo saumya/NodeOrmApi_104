@@ -495,11 +495,11 @@ router.post('/createBill', (request,response)=>{
 
 
 router.post('/loginClinic', (request,response)=>{
-	console.log('v1.js : API : activateClinic');
+	console.log('v1.js : API : loginClinic');
 	console.log( 'request.body=',request.body );
 	// request.body.clinicId, request.body.doctorId
 	const onCallbackFromDB = function(dbResult){
-		console.log('v1.js : API : activateClinic : onCallbackFromDB');
+		console.log('v1.js : API : loginClinic : onCallbackFromDB');
 		console.log('+---------------------------------------');
 		console.log( 'dbResult', dbResult );
 		//console.log( 'dbResult', JSON.stringify(dbResult) );
@@ -533,7 +533,7 @@ router.post('/loginClinic', (request,response)=>{
 
 // LoginPatient
 router.post('/loginPatient', (request,response)=>{
-	console.log('v1.js : API : assignDoctorToClinic');
+	console.log('v1.js : API : loginPatient');
 	console.log( JSON.stringify(request.body) );
 	//console.log( 'pUserId='+request.body.pUserId, 'pUserPw='+request.body.pUserPw );
 
@@ -558,6 +558,23 @@ router.post('/loginPatient', (request,response)=>{
 	modelFactory.getPersonWith_Id_Pw( onCallbackFromDB, request.body.pUserId, request.body.pUserPw);
 });
 // LoginPatient /
+
+// LoginDoctor
+router.post('/loginDoctor', (request,response)=>{
+	console.log('v1.js : API : loginDoctor');
+	const onCallbackFromDB = function(dbResult){
+		console.log('v1.js : API : loginDoctor : onCallbackFromDB');
+		let result = { success : false };
+		if(dbResult){
+			result = { success : true, data : dbResult };
+		}else{
+			//
+		}
+		response.send( result );
+	}
+	modelFactory.getDoctorWith_Id_Pw( onCallbackFromDB, request.body.pUserId, request.body.pUserPw);
+});
+// LoginDoctor /
 
 
 // TODO: These calls should be in PUT not POST
