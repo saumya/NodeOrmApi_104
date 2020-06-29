@@ -390,6 +390,7 @@ router.post('/createDoctor', (request,response)=>{
 	//
 	console.log( 'request.body=',request.body );
 	const newDoctorName = request.body.doctorName;
+	const newDoctorPassword = request.body.doctorPassword;
 	const newDoctorEmail = request.body.doctorEmail;
 	const newDoctorPhone = request.body.doctorPhone;
 	const newSpecialization = request.body.doctorSpecialization;
@@ -403,6 +404,7 @@ router.post('/createDoctor', (request,response)=>{
 	//
 	modelFactory.createDoctor({
 		doctor_name : newDoctorName,
+		doctor_password : newDoctorPassword,
 		doctor_email : newDoctorEmail,
 		doctor_phone : newDoctorPhone,
 		specialization : newSpecialization,
@@ -676,6 +678,7 @@ router.put('/updateDoctor', (request,response)=>{
 	*/
 	const newDoctorId = request.body.doctorId;
 	const newDoctorName = request.body.doctorName;
+	const newDoctorPassword = request.body.doctorPassword;
 	const newDoctorEmail = request.body.doctorEmail;
 	const newDoctorPhone = request.body.doctorPhone;
 	const newDoctorSpecialization = request.body.doctorSpecialization;
@@ -690,6 +693,7 @@ router.put('/updateDoctor', (request,response)=>{
 	modelFactory.updateDoctor({
 		doctor_id : newDoctorId,
 		doctor_name : newDoctorName,
+		doctor_password : newDoctorPassword,
 		doctor_email : newDoctorEmail,
 		doctor_phone : newDoctorPhone,
 		specialization : newDoctorSpecialization,

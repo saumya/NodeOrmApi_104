@@ -451,6 +451,7 @@ const createDoctor = function(doctorObj,onResult){
 
   const newDoctor = {
     name : doctorObj.doctor_name ,
+    password : doctorObj.doctor_password,
     phone : doctorObj.doctor_phone ,
     email : doctorObj.doctor_email,
     specialization : doctorObj.specialization,
@@ -742,6 +743,7 @@ const updateDoctor = function(doctorObj,onResult){
   const ModelDoctor = getDoctorModel(sequelize);
   ModelDoctor.update({
     name : doctorObj.doctor_name ,
+    password : doctorObj.doctor_password,
     phone : doctorObj.doctor_phone ,
     email : doctorObj.doctor_email,
     specialization : doctorObj.specialization,

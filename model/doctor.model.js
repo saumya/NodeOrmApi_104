@@ -18,7 +18,8 @@ const getDoctorModel = function(sequelize){
 		phone: Sequelize.STRING,
 		email: Sequelize.STRING,
 		address: Sequelize.TEXT,
-		specialization: Sequelize.STRING
+		specialization: Sequelize.STRING,
+		password: Sequelize.STRING
 	},{
 		sequelize: sequelize,
 		modelName: 'doctor',
