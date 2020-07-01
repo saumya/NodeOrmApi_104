@@ -133,6 +133,18 @@ router.get('/getSchedulesByDoctorId/:id',(request,response)=>{
 	modelFactory.getSchedulesByDoctorId(onCallbackFromDB, id);
 });
 
+router.get('/getSchedulesByPatientId/:id', function(request, response){
+	console.log('v1.js : API : getSchedulesByPatientId : id : ',request.params.id);
+	const id = request.params.id;
+	const onCallbackFromDB = (dbResult) => {
+		console.log('v1.js : API : getSchedulesByPatientId : onCallbackFromDB');
+		//console.log( 'dbResult',dbResult );
+		if(dbResult===null){ dbResult = {"result":0} };
+		response.send( dbResult );
+	}
+	modelFactory.getScheduleByPersonId(onCallbackFromDB, id);
+});
+
 router.get('/getScheduleByDoctorGroupId/:id',(request,response)=>{
 	console.log('v1.js : API : getScheduleByDoctorGroupId : id : ', request.params.id);
 
