@@ -171,12 +171,20 @@ router.get('/getScheduleByPersonId/:id',(request,response)=>{
 	modelFactory.getScheduleByPersonId(onCallbackFromDB, id);
 });
 
-router.get('/getPrescriptionsByPatientId/:id',async (request,response)=>{
+router.get('/getPrescriptionsByPatientId/:id', (request,response)=>{
 	const onCallbackFromDB = (dbResult) => {
 		if(dbResult===null){ dbResult = {"result":0} };
 		response.send( dbResult );
 	}
 	modelFactory.getPrescriptionsByPatientId(onCallbackFromDB, request.params.id);
+})
+
+router.get('/getBillsByPatientId/:id', (request,response)=>{
+	const onCallbackFromDB = (dbResult) => {
+		if(dbResult===null){ dbResult = {"result":0} };
+		response.send( dbResult );
+	}
+	modelFactory.getBillsByPatientId(onCallbackFromDB, request.params.id);
 })
 
 router.get('/getAllSchedulesByClinicByDoctorOnDate/:cId/:dId/:onDate',(request,response)=>{

@@ -345,6 +345,14 @@ const getPrescriptionsByPatientId = (onResult, idToSearchFor) => {
     onResult(error);
   });
 }
+
+const getBillsByPatientId = (onResult, idToSearchFor) => {
+  const BillModel = getBillModel(sequelize);
+  BillModel.findAll({
+    where : { personId : idToSearchFor }
+  }).then( (result)=> onResult(result) ).catch( (error)=> onResult(error) );
+}
+
 //-------- with id / -----------
 
 const checkValidityOfClinic = (onResult, searchObj)=>{
@@ -965,7 +973,7 @@ module.exports = {
   getAllPeople, getAllDoctors, getAllGroups, getAllDoctorGroups, getAllSchedules,
   getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId, getScheduleById,
   getSchedulesByDoctorId, getScheduleByDoctorGroupId, getScheduleByPersonId, 
-  getPrescriptionsByPatientId,
+  getPrescriptionsByPatientId, getBillsByPatientId,
 
   getPersonWith_Id_Pw, getDoctorWith_Id_Pw,
 
