@@ -334,6 +334,17 @@ const getAllSchedulesByClinicByDoctorOnDate = (onResult, searchObj)=>{
     onResult(error);
   });
 };
+
+const getPrescriptionsByPatientId = (onResult, idToSearchFor) => {
+  const PrescriptionModel = getPrescriptionModel(sequelize);
+  PrescriptionModel.findAll({
+    where : { personId : idToSearchFor }
+  }).then((result)=>{
+    onResult(result);
+  }).catch((error)=>{
+    onResult(error);
+  });
+}
 //-------- with id / -----------
 
 const checkValidityOfClinic = (onResult, searchObj)=>{
@@ -947,12 +958,14 @@ module.exports = {
 	getSequelize, 
 	initModelFactory,
 	initTheModels,
-  createPerson, createDoctor, createDoctorGroup, createSchedule, createGroupWithName, createPrescription, createBill,
+  createPerson, createDoctor, createDoctorGroup, createSchedule, createGroupWithName, 
+  createPrescription, createBill,
   updatePerson, updateDoctor, updateDoctorGroup, updateSchedule, updateGroup,
   deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule, deleteGroup,
   getAllPeople, getAllDoctors, getAllGroups, getAllDoctorGroups, getAllSchedules,
   getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId, getScheduleById,
-  getSchedulesByDoctorId, getScheduleByDoctorGroupId, getScheduleByPersonId,
+  getSchedulesByDoctorId, getScheduleByDoctorGroupId, getScheduleByPersonId, 
+  getPrescriptionsByPatientId,
 
   getPersonWith_Id_Pw, getDoctorWith_Id_Pw,
 

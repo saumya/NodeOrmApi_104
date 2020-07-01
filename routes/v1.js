@@ -171,6 +171,14 @@ router.get('/getScheduleByPersonId/:id',(request,response)=>{
 	modelFactory.getScheduleByPersonId(onCallbackFromDB, id);
 });
 
+router.get('/getPrescriptionsByPatientId/:id',async (request,response)=>{
+	const onCallbackFromDB = (dbResult) => {
+		if(dbResult===null){ dbResult = {"result":0} };
+		response.send( dbResult );
+	}
+	modelFactory.getPrescriptionsByPatientId(onCallbackFromDB, request.params.id);
+})
+
 router.get('/getAllSchedulesByClinicByDoctorOnDate/:cId/:dId/:onDate',(request,response)=>{
 	console.log('v1.js : API : getAllSchedulesByClinicByDoctorOnDate');
 	console.log('v1.js : API : getAllSchedulesByClinicByDoctorOnDate : ', request.params);
