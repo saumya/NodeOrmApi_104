@@ -27,10 +27,6 @@ const getPrescriptionModel = function(sequelize){
 		doctorId: Sequelize.INTEGER,
 		personId: Sequelize.INTEGER,
 		clinicId: Sequelize.INTEGER,
-
-		isAttended: Sequelize.BOOLEAN,
-		isWeb: Sequelize.BOOLEAN,
-		webURL: Sequelize.STRING
 	},{
 		sequelize: sequelize,
 		modelName: 'prescription',

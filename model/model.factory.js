@@ -523,17 +523,8 @@ const createDoctorGroup = function(doctorGroupObj, onResult){
 const createSchedule = function(schedule, onResult){
   console.log('model.factory : createSchedule');
   //console.log('schedule', schedule);
-
-  const newSchedule = {
-    name: schedule.schedule_name,
-    on_date: schedule.schedule_date,
-    is_morning: schedule.schedule_is_morning,
-    doctorId: schedule.schedule_doctor_id,
-    personId: schedule.schedule_person_id,
-    groupId: schedule.schedule_group_id
-  };
   const ModelSchedule = getScheduleModel(sequelize);
-  ModelSchedule.create( newSchedule ).then(function(result){
+  ModelSchedule.create( schedule ).then(function(result){
     console.log('RESULT : ModelSchedule.create');
     onResult( result );
   }).catch(function(error){
@@ -844,12 +835,16 @@ const updateSchedule = function(schedule, onResult){
   */
   const ModelSchedule = getScheduleModel(sequelize);
   ModelSchedule.update({
-    on_date : schedule.schedule_date,
-    is_morning : schedule.schedule_isMorning,
-    personId : schedule.schedule_person_id,
-    doctorId : schedule.schedule_doctor_id,
-    groupId : schedule.schedule_group_id
-  },{ where:{ id : schedule.schedule_id } }).then(function(result2){
+    on_date : schedule.on_date,
+    is_morning : schedule.is_morning,
+    personId : schedule.personId,
+    doctorId : schedule.doctorId,
+    groupId : schedule.groupId,
+
+    isAttended: schedule.isAttended,
+    isWeb: schedule.isWeb,
+    webURL: schedule.webURL
+  },{ where:{ id : schedule.id } }).then(function(result2){
     console.log('result2');
     console.log( result2 );
     console.log( 'Number of rows updated =', result2[0] );

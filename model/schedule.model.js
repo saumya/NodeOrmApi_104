@@ -22,7 +22,11 @@ const getScheduleModel = function(sequelize){
 	Schedule.init({
 		name: { type: Sequelize.STRING, defaultValue: "appointment" },
 		on_date: Sequelize.DATEONLY,
-		is_morning: Sequelize.BOOLEAN 
+		is_morning: Sequelize.BOOLEAN,
+
+		isAttended: Sequelize.BOOLEAN,
+		isWeb: Sequelize.BOOLEAN,
+		webURL: Sequelize.STRING 
 	},{
 		sequelize: sequelize,
 		modelName: 'schedule',

@@ -464,31 +464,8 @@ router.post('/createDoctorGroup', (request,response)=>{
 });
 router.post('/createSchedule', (request,response)=>{
 	console.log('v1.js : API : CreateSchedule');
-	//console.log('request.body',request.body);
-	//
-	const scheduleName = request.body.name;
-	const scheduleDate = request.body.sDate;
-	const scheduleIsMorning = request.body.isMorning;
-
-	const schedulePersonId = request.body.personId;
-	const scheduleDoctorId = request.body.doctorId;
-	const scheduleGroupId = request.body.groupId;
-	
-	//
-	const onCallbackFromDB = function(dbResult){
-		response.send( dbResult );
-	}
-	//
-	modelFactory.createSchedule({
-		schedule_name : scheduleName,
-		schedule_date : scheduleDate,
-		schedule_is_morning : scheduleIsMorning,
-		schedule_person_id : schedulePersonId,
-		schedule_doctor_id : scheduleDoctorId,
-		schedule_group_id : scheduleGroupId
-		
-	}, onCallbackFromDB );
-	//
+	const onCallbackFromDB = function(dbResult){ response.send( dbResult ); }
+	modelFactory.createSchedule( request.body, onCallbackFromDB );
 });
 
 // ---------- TODO: Improvement to the Code ---------------
@@ -767,26 +744,12 @@ router.put('/updateDoctorGroup', (request,response)=>{
 // updateSchedule
 router.put('/updateSchedule', (request,response)=>{
 	console.log('v1.js : API : UpdateSchedule');
+	console.log('----------------------');
+	console.log( request.body );
+	console.log('----------------------');
 
-	const scheduleId = request.body.scheduleId;
-	const scheduleDate = request.body.sDate;
-	const scheduleIsMorning = request.body.isMorning;
-	const schedulePersonId = request.body.personId;
-	const scheduleDoctorId = request.body.doctorId;
-	const scheduleGroupId = request.body.groupId;
-	//
-	const onCallbackFromDB = function(dbResult){
-		response.send( dbResult );
-	}
-	//
-	modelFactory.updateSchedule({
-		schedule_id : scheduleId,
-		schedule_date : scheduleDate,
-		schedule_isMorning : scheduleIsMorning,
-		schedule_person_id : schedulePersonId,
-		schedule_doctor_id : scheduleDoctorId,
-		schedule_group_id : scheduleGroupId
-	}, onCallbackFromDB );
+	const onCallbackFromDB = function(dbResult){ response.send( dbResult ); }
+	modelFactory.updateSchedule( request.body, onCallbackFromDB );
 }); // updateSchedule/
 
 // Update : /
