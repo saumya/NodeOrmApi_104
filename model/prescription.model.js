@@ -21,12 +21,16 @@ const getPrescriptionModel = function(sequelize){
 		advice: Sequelize.TEXT,
 		tests: Sequelize.TEXT,
 		medicines: Sequelize.TEXT,
-		followupDate: Sequelize.STRING,
+		followupDate: Sequelize.DATE,
 		
 		details: Sequelize.TEXT,
 		doctorId: Sequelize.INTEGER,
 		personId: Sequelize.INTEGER,
-		clinicId: Sequelize.INTEGER
+		clinicId: Sequelize.INTEGER,
+
+		isAttended: Sequelize.BOOLEAN,
+		isWeb: Sequelize.BOOLEAN,
+		webURL: Sequelize.STRING
 	},{
 		sequelize: sequelize,
 		modelName: 'prescription',
