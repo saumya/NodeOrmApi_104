@@ -26,7 +26,8 @@ const getScheduleModel = function(sequelize){
 
 		isAttended: Sequelize.BOOLEAN,
 		isWeb: Sequelize.BOOLEAN,
-		webURL: Sequelize.STRING 
+		webURL: Sequelize.STRING,
+		web_at_time: Sequelize.STRING 
 	},{
 		sequelize: sequelize,
 		modelName: 'schedule',

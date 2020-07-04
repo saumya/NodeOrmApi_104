@@ -843,7 +843,8 @@ const updateSchedule = function(schedule, onResult){
 
     isAttended: schedule.isAttended,
     isWeb: schedule.isWeb,
-    webURL: schedule.webURL
+    webURL: schedule.webURL,
+    web_at_time: schedule.web_at_time
   },{ where:{ id : schedule.id } }).then(function(result2){
     console.log('result2');
     console.log( result2 );
