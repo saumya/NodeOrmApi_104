@@ -4,14 +4,14 @@ Study of [Sequelize][1s] ORM by making a project with it.
 
 ### Done
 
- [x] checking from the UI
- [x] basic API for all
- [x] CRUD is done for most
+ - [x] checking from the UI
+ - [x] basic API for all
+ - [x] CRUD is done for most
 
 ### WIP
 
- [] General Error Handling
- [] v2 API implementation
+ - [] General Error Handling
+ - [] v2 API implementation
 
 
 ### How it works
