@@ -2,10 +2,16 @@ NodeOrmApi_104
 ================
 Study of [Sequelize][1s] ORM by making a project with it.
 
-### TODO
+### Done
 
- - checking from the UI
- - v2 API implementation
+ [x] checking from the UI
+ [x] basic API for all
+ [x] CRUD is done for most
+
+### WIP
+
+ [] General Error Handling
+ [] v2 API implementation
 
 
 ### How it works
