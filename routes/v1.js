@@ -371,6 +371,7 @@ router.route('/group')
 //---------------------------------------------------------------------------
 // Create : 
 router.post('/appusage', (req,res)=>{
+	/*
 	const onCallbackFromDB = dbResult=> {
 		console.log('v1.js : API : appusage : onCallbackFromDB');
 		console.log('+---------------------------------------');
@@ -379,6 +380,8 @@ router.post('/appusage', (req,res)=>{
 		console.log('+---------------------------------------');
 		res.send( dbResult )
 	}
+	*/
+	const onCallbackFromDB = dbResult=> res.send(dbResult);
 	const ipString = { "ip" : JSON.stringify( req.ip ) };
 	const obj = {...req.body, ...ipString };
 	//res.send( obj )
