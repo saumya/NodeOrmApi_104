@@ -13,6 +13,8 @@ const Sequelize = require('sequelize');
 
 const Model = Sequelize.Model;
 
+const getAppUsageModel = require('./appusage.model');
+
 const getPersonModel = require('./person.model');
 const getGroupModel = require('./group.model');
 //const getPersonGroupModel = require('./personGroup.model');
@@ -68,6 +70,11 @@ const initModelFactory = function(onSuccess,onFail){
 // ---------------------------------------------------------------------------------------
 const initTheModels = function(){
 	console.log( 'initTheModels' );
+
+  const AppUsage = getAppUsageModel(sequelize);
+  AppUsage.sync({force:true})
+    .then( ()=> console.log('Sequelize: Synced! AppUsage Model') )
+    .catch( err=>console.log('Sequelize: Model Error: ModelPerson: initTheModels: ',err) );
 
 	const ModelPerson = getPersonModel(sequelize);
 	ModelPerson.sync({force:true}).then(()=>{
@@ -560,6 +567,13 @@ const createBill = function(bill,onResult){
     console.log(error);
   });
 };// createBill/
+
+// createAppUsage
+const createAppUsage = function(usageObj,onResult){
+  console.log('model.factory : createAppUsage');
+  const AppUsage = getAppUsageModel(sequelize);
+  AppUsage.create(usageObj).then( result=> onResult(result) ).catch( error=>onResult(error) );
+};// createAppUsage/
 
 const assignDoctorToClinic = function(assignment, onResult){
   console.log('model.factory : assignDoctorToClinic');
