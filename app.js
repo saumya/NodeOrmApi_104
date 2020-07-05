@@ -18,8 +18,6 @@ app.set('view engine', 'pug');
 
 const myLogger = function (req, res, next) {
   console.log('=======:Saumya:LOGGER:=========================');
-  
-  //console.dir( req )
   console.log( '| IP= ', req.ip );
   console.log( '| METHOD= ', req.method);
   console.log( '| Original URL= ', req.originalUrl);
@@ -27,10 +25,9 @@ const myLogger = function (req, res, next) {
   console.log( '| PARAMS=', req.params);
   console.log( '| BODY=', req.body);
   console.log( '| QUERY= ', req.query);
-
+  
   console.log( '| PATH= ', req.path);
   console.log( '| PROTOCOL= ', req.protocol);
-  
   console.log('=======:Saumya:LOGGER: / ======================');
   next();
 }

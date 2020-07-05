@@ -571,6 +571,7 @@ const createBill = function(bill,onResult){
 // createAppUsage
 const createAppUsage = function(usageObj,onResult){
   console.log('model.factory : createAppUsage');
+  //console.log('usageObj', usageObj);
   const AppUsage = getAppUsageModel(sequelize);
   AppUsage.create(usageObj).then( result=> onResult(result) ).catch( error=>onResult(error) );
 };// createAppUsage/
@@ -988,6 +989,8 @@ module.exports = {
   getPersonWith_Id_Pw, getDoctorWith_Id_Pw,
 
   assignDoctorToClinic, activateClinic, checkValidityOfClinic, 
-  getAllSchedulesByClinicByDoctorOnDate, getAllDoctorIdsByGroupId, 
+  getAllSchedulesByClinicByDoctorOnDate, getAllDoctorIdsByGroupId,
+
+  createAppUsage, 
 }
 //
