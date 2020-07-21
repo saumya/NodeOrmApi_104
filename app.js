@@ -15,7 +15,8 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-
+// My Middleware for Logging in console
+// This is called everytime any call comes to the server
 const myLogger = function (req, res, next) {
   const origin = req.headers.origin;
   console.log( '=======:Saumya:LOGGER:=========================');
