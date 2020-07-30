@@ -1,6 +1,7 @@
 NodeOrmApi_104
 ================
-Study of [Sequelize][1s] ORM by making a project with it.
+Study of [Sequelize][1s] ORM by making a project with it. 
+Now it have a UI as another project.
 
 ### Status
 
