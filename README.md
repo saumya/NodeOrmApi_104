@@ -8,6 +8,7 @@ Now it have a UI as another project.
  - [x] checking from the UI
  - [x] basic API for all
  - [x] CRUD is done for most
+ - [x] Test done from UI Application
  - [ ] General Error Handling
  - [ ] v2 API implementation
 
