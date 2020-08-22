@@ -18,10 +18,8 @@ app.set('view engine', 'pug');
 // My Middleware for Logging in console
 // This is called everytime any call comes to the server
 const myLogger = function (req, res, next) {
-  const origin = req.headers.origin;
-  console.log( '=======:Saumya:LOGGER:=========================');
+  console.log('=======:Saumya:LOGGER:=========================');
   console.log( '| Domain: origin=', origin);
-  
   console.log( '| IP= ', req.ip );
   console.log( '| METHOD= ', req.method);
   console.log( '| Original URL= ', req.originalUrl);
@@ -32,7 +30,7 @@ const myLogger = function (req, res, next) {
   
   console.log( '| PATH= ', req.path);
   console.log( '| PROTOCOL= ', req.protocol);
-  console.log( '=======:Saumya:LOGGER: / ======================');
+  console.log('=======:Saumya:LOGGER: / ======================');
   next();
 }
 //app.use(myLogger)
@@ -47,7 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // ref: https://stackoverflow.com/questions/18310394/no-access-control-allow-origin-node-apache-port-issue
 // Add headers
 app.use(function (req, res, next) {
-  
+
   var origin = req.headers.origin;
   var allowedDomains = ['http://localhost:3001','http://localhost:8080' ];
 
@@ -57,10 +55,13 @@ app.use(function (req, res, next) {
        res.setHeader('Access-Control-Allow-Origin', origin);
   }
   console.log('--- domain / -----------');
-
+  
   // Website you wish to allow to connect
   //res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080'); // VueJS App
   //res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001'); // ReactJS App
+  
+  //res.setHeader('Access-Control-Allow-Origin', 'https://doctor.findhealth.today');
+  
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   // Request headers you wish to allow
