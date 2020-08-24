@@ -16,7 +16,7 @@ Now it have a UI as another project.
 
 ### How it works
 
- - Groups are to separate different Organisations
+ - Groups are made to separate different Organisations
  - DoctorGroups help separate different Doctors to different organisations
 
 
