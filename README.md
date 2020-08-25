@@ -11,7 +11,6 @@ Now it have a UI as another project.
  - [x] CRUD is done for most
  - [x] Test done from UI Application
  - [ ] General Error Handling
- - [ ] v2 API implementation
 
 
 ### How it works
