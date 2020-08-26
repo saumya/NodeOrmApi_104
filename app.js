@@ -19,7 +19,7 @@ app.set('view engine', 'pug');
 // This is called everytime any call comes to the server
 const myLogger = function (req, res, next) {
   console.log('=======:Saumya:LOGGER:=========================');
-  console.log( '| Domain: origin=', origin);
+  //console.log( '| Domain: origin=', origin);
   console.log( '| IP= ', req.ip );
   console.log( '| METHOD= ', req.method);
   console.log( '| Original URL= ', req.originalUrl);
