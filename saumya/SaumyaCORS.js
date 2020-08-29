@@ -10,7 +10,7 @@
 // ref: https://stackoverflow.com/questions/18310394/no-access-control-allow-origin-node-apache-port-issue
 // Add headers
 const myCORS = function (req, res, next) {
-
+	console.log('======= :Saumya:CORS: =========================');
   var origin = req.headers.origin;
   var allowedDomains = ['http://localhost:3001','http://localhost:8080' ];
 
@@ -34,6 +34,8 @@ const myCORS = function (req, res, next) {
   // Set to true if you need the website to include cookies in the requests sent
   // to the API (e.g. in case you use sessions)
   res.setHeader('Access-Control-Allow-Credentials', true);
+
+  console.log('======= :Saumya:CORS: / =========================');
   // Pass to next layer of middleware
   next();
 }

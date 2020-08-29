@@ -15,32 +15,20 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// My Middleware for Logging in console
-// This is called everytime any call comes to the server
-const myLogger = function (req, res, next) {
-  console.log('=======:Saumya:LOGGER:=========================');
-  //console.log( '| Domain: origin=', origin);
-  console.log( '| IP= ', req.ip );
-  console.log( '| METHOD= ', req.method);
-  console.log( '| Original URL= ', req.originalUrl);
-
-  console.log( '| PARAMS=', req.params);
-  console.log( '| BODY=', req.body);
-  console.log( '| QUERY= ', req.query);
-  
-  console.log( '| PATH= ', req.path);
-  console.log( '| PROTOCOL= ', req.protocol);
-  console.log('=======:Saumya:LOGGER: / ======================');
-  next();
-}
-//app.use(myLogger)
 
 //app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//
+const SaumyaLoggerX = require('./saumya/SaumyaLogger');
+app.use(SaumyaLoggerX);
 
+const SaumyaCORS = require('./saumya/SaumyaCORS');
+app.use(SaumyaCORS);
+
+/*
 // --------- CORS ------------------
 // ref: https://stackoverflow.com/questions/18310394/no-access-control-allow-origin-node-apache-port-issue
 // Add headers
@@ -74,8 +62,7 @@ app.use(function (req, res, next) {
 });
 
 // --------- CORS / ------------------
-
-app.use(myLogger)
+*/
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

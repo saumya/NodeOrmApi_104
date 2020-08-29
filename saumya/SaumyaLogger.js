@@ -19,6 +19,7 @@ const myLogger = function (req, res, next) {
   console.log( '| PATH= ', req.path);
   console.log( '| PROTOCOL= ', req.protocol);
   console.log('=======:Saumya:LOGGER: / ======================');
+  // Pass to next layer of middleware
   next();
 }
 //app.use(myLogger);
