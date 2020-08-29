@@ -21,6 +21,6 @@ const myLogger = function (req, res, next) {
   console.log('=======:Saumya:LOGGER: / ======================');
   next();
 }
-//app.use(myLogger)
+//app.use(myLogger);
 
-module.exports myLogger;
+module.exports = myLogger;
