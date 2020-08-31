@@ -57,7 +57,9 @@ app.use(function(err, req, res, next) {
 //
 //----------------------------- Model Factory : init : -------------------------------------
 const modelFactory = require('./model/model.factory');
+
 modelFactory.initModelFactory(onModelFactoryInitDone,onModelFactoryInitFail);
+
 function onModelFactoryInitDone(sequelize){
     console.log('app.js: onModelFactoryInitDone');
     console.log('+----------------------------+');
