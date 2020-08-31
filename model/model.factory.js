@@ -31,8 +31,8 @@ const getBillModel = require('./bill.model');
 // initialize the proporties
 var sequelize = null;
 //
-var ModelPerson = null;
-var ModelGroup = null;
+//var ModelPerson = null;
+//var ModelGroup = null;
 //
 
 const getSequelize = () => { return sequelize }
