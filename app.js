@@ -57,20 +57,14 @@ app.use(function(err, req, res, next) {
 //
 //----------------------------- Model Factory : init : -------------------------------------
 const modelFactory = require('./model/model.factory');
-
+// Makes the connection to ORM and makes the models ready to be used
 modelFactory.initModelFactory(onModelFactoryInitDone,onModelFactoryInitFail);
-
+// Callbacks from the ORM initialiser above
 function onModelFactoryInitDone(sequelize){
     console.log('app.js: onModelFactoryInitDone');
     console.log('+----------------------------+');
     console.log('| Application: Init : Done   |');
     console.log('+----------------------------+');
-    //console.log('sequelize',sequelize);
-    
-    //sequelize = modelFactory.getORMRef();
-    //console.log(sequelize);
-    
-    //modelFactory.initTheModels();
 }
 function onModelFactoryInitFail(error){
     console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
