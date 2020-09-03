@@ -23,9 +23,7 @@ Now it has different UI as another projects. This is the base project for the AP
  - DoctorGroups help separate different Doctors to different organisations
 
 
-
-
-### Generic Information 
+### Reference and Further reading
 
 [TypeORM][2s] looks interesting too.
  
