@@ -4,12 +4,13 @@
 
 const config = {
 	appConfig: {
-		'version' : '0.1.0'
+		'version' : '1.0.0'
 	},
 	
 	// ---------------------------------
 	// remote DB
 	// ---------------------------------
+	// Change 'dbserver.com' to the remote Database server
 
 	dbConfig:{
 		host: 'dbserver.com',
