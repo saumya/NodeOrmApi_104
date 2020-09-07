@@ -761,6 +761,17 @@ router.put('/updateSchedule', (request,response)=>{
 	modelFactory.updateSchedule( request.body, onCallbackFromDB );
 }); // updateSchedule/
 
+// updatePersonProfile
+router.put('/updatePersonProfile', (request,response)=>{
+	console.log('v1.js : API : UpdatePersonProfile');
+	console.log('----------------------');
+	console.log( request.body );
+	console.log('----------------------');
+	const onCallbackFromDB = function(dbResult){ response.send( dbResult ); }
+	modelFactory.updatePersonProfile( request.body, onCallbackFromDB );
+});
+// updatePersonProfile/
+
 // Update : /
 //---------------------------------------------------------------------------
 // Delete :

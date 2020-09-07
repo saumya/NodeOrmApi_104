@@ -867,6 +867,28 @@ const updateSchedule = function(schedule, onResult){
   });
 };// updateSchedule/
 
+// updatePersonProfile
+const updatePersonProfile = function(personProfileObj, onResult){
+  console.log('model.factory : updatePersonProfile');
+  const ModelPerson = getPersonModel(sequelize);
+  ModelPerson.update({
+    gender : personProfileObj.gender,
+    age : personProfileObj.age,
+    height : personProfileObj.height,
+    weight : personProfileObj.weight,
+    bloodGroup : personProfileObj.bloodGroup
+  },{ where: { id : personProfileObj.id } }).then(function(result2){
+    console.log('updatePersonProfile : result')
+    console.log('Number of Rows Updated', result2[0]);
+    onResult({'result' : 'SUCCESS', 'NumRowsUpdated' : result2[0]});
+  }).catch(function(error2){
+    console.log('updatePersonProfile : error2');
+    console.log(error2);
+    onResult({'result':'ERROR!'});
+  });
+}
+// updatePersonProfile/
+
 // update/
 //----------------- UPDATE / ---------------------------------------
 
@@ -973,6 +995,7 @@ module.exports = {
   createPerson, createDoctor, createDoctorGroup, createSchedule, createGroupWithName, 
   createPrescription, createBill,
   updatePerson, updateDoctor, updateDoctorGroup, updateSchedule, updateGroup,
+  updatePersonProfile,
   deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule, deleteGroup,
   getAllPeople, getAllDoctors, getAllGroups, getAllDoctorGroups, getAllSchedules,
   getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId, getScheduleById,
