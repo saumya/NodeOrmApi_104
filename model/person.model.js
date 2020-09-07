@@ -18,7 +18,13 @@ const getPersonModel = function(sequelize){
 		phone: Sequelize.STRING,
 		email: Sequelize.STRING,
 		address: Sequelize.TEXT,
-		password: Sequelize.STRING
+		password: Sequelize.STRING,
+
+		gender: Sequelize.STRING,
+		age: Sequelize.STRING,
+		height: Sequelize.STRING,
+		weight: Sequelize.STRING,
+		bloodGroup: Sequelize.STRING
 	},{
 		sequelize: sequelize,
 		modelName: 'person',
