@@ -507,6 +507,21 @@ router.post('/createBill', (request,response)=>{
 	modelFactory.createBill(request.body, onCallbackFromDB);
 });// CreateBill /
 
+// ------ Store ------
+router.post('/crateItem', (request, response)=>{
+	const onCallbackFromDB = dbResult=> response.send(dbResult);
+	modelFactory.createStoreItem(request.body, onCallbackFromDB);
+} );
+router.post('/createItemBought', (request,response)=>{
+	const onCallbackFromDB = dbResult=> response.send(dbResult);
+	modelFactory.createStoreItemBought(request.body, onCallbackFromDB);
+})
+router.post('/createItemSold', (request,response)=>{
+	const onCallbackFromDB = dbResult=> response.send(dbResult);
+	modelFactory.createStoreItemSold(request.body, onCallbackFromDB)
+})
+// ------ Store / ----
+
 
 router.post('/loginClinic', (request,response)=>{
 	console.log('v1.js : API : loginClinic');

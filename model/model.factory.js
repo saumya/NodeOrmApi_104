@@ -592,6 +592,21 @@ const createBill = function(bill,onResult){
   });
 };// createBill/
 
+// ----------- Store --------------------------------
+const crateItem = (item,onResult)=>{
+  const StoreItem = getStoreItemModel(sequelize);
+  StoreItem.create(item).then(result=>onResult(result)).catch(error=>console.log('ERROR : StoreItem.create'))
+};
+const createItemBought = (item, onResult)=>{
+  const StoreItemIn = getStoreItemInModel(sequelize);
+  StoreItemIn.create(item).then( result=>onResult(result)).catch(error=>console.log('ERROR : StoreItemIn.create') )
+};
+const createItemSold = (item, onResult)=>{
+  const StoreItemOut = getStoreItemOutModel(sequelize);
+  StoreItemOut.create(item).then( result=>onResult(result)).catch(error=>console.log('ERROR : StoreItemOut.create') )
+};
+// ----------- Store / --------------------------------
+
 // createAppUsage
 const createAppUsage = function(usageObj,onResult){
   console.log('model.factory : createAppUsage');
@@ -1025,6 +1040,7 @@ module.exports = {
 	initTheModels,
   createPerson, createDoctor, createDoctorGroup, createSchedule, createGroupWithName, 
   createPrescription, createBill,
+  crateItem, createItemBought, createItemSold, 
   updatePerson, updateDoctor, updateDoctorGroup, updateSchedule, updateGroup,
   updatePersonProfile,
   deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule, deleteGroup,
