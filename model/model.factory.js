@@ -26,6 +26,11 @@ const getScheduleModel = require('./schedule.model');
 const getPrescriptionModel = require('./prescription.model');
 const getBillModel = require('./bill.model');
 
+const getStoreItemModel = require('./storeItem.model');
+const getStoreItemInModel = require('./storeItemIn.model');
+const getStoreItemOutModel = require('./storeItemOut.model');
+
+
 var sequelize = null;
 
 const getSequelize = () => { return sequelize }
@@ -63,6 +68,7 @@ const initModelFactory = function(onSuccess,onFail){
 // ---------------------------------------------------------------------------------------
 const initTheModels = function(){
 	console.log( 'initTheModels' );
+  console.log('------------- initTheModels --------------');
 
   const AppUsage = getAppUsageModel(sequelize);
   AppUsage.sync({force:true})
@@ -143,6 +149,31 @@ const initTheModels = function(){
     console.error('Sequelize: Model Error : BillModel : ', err);
   });
 
+  // --------- Store -------------------------------------------------
+  const StoreItem = getStoreItemModel(sequelize);
+  StoreItem.sync( {force:true} ).then( ()=>{
+    console.log('Sequelize: Synced! StoreItem');
+  } ).catch( err => {
+    console.log('+--- Sequelize - Error ---------------');
+    console.error('Sequelize: Model Error : StoreItem : ', err);
+  });
+  const StoreItemIn = getStoreItemInModel(sequelize);
+  StoreItemIn.sync( {force:true} ).then( ()=>{
+    console.log('Sequelize: Synced! StoreItemIn');
+  } ).catch( err => {
+    console.log('+--- Sequelize - Error ---------------');
+    console.error('Sequelize: Model Error : StoreItemIn : ', err);
+  });
+  const StoreItemOut = getStoreItemOutModel(sequelize);
+  StoreItemOut.sync( {force:true} ).then( ()=>{
+    console.log('Sequelize: Synced! StoreItemOut');
+  } ).catch( err => {
+    console.log('+--- Sequelize - Error ---------------');
+    console.error('Sequelize: Model Error : StoreItemOut : ', err);
+  });
+  // --------- Store / -------------------------------------------------
+
+  console.log('------------- initTheModels / --------------')
 } // initTheModels/
 
 // ----------- API calls ---------------------------------
