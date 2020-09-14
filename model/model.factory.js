@@ -453,6 +453,11 @@ const getAllSchedules = (onResult)=>{
     onResult(error);
   });
 }
+
+const getAllStoreItems = onResult=>{
+  const StoreItem = getStoreItemModel(sequelize);
+  StoreItem.findAll().then(allItems=>onResult(allItems)).catch(error=>onResult(error));
+}
 //--------------------- GET / ------------------------------------
 
 //----------------- POST ---------------------------------------
@@ -1047,7 +1052,8 @@ module.exports = {
   getAllPeople, getAllDoctors, getAllGroups, getAllDoctorGroups, getAllSchedules,
   getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId, getScheduleById,
   getSchedulesByDoctorId, getScheduleByDoctorGroupId, getScheduleByPersonId, 
-  getPrescriptionsByPatientId, getBillsByPatientId,
+  getPrescriptionsByPatientId, getBillsByPatientId, 
+  getAllStoreItems,
 
   getPersonWith_Id_Pw, getDoctorWith_Id_Pw,
 

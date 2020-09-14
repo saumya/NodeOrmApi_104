@@ -285,6 +285,13 @@ router.get('/getAllSchedules',(request,response)=>{
 	modelFactory.getAllSchedules(onCallbackFromDB);
 });
 
+// ------ Store ------
+router.get('/getAllStoreItems', (request, response)=>{
+	const onCallbackFromDB = dbResult=> response.send(dbResult);
+	modelFactory.getAllStoreItems( onCallbackFromDB );
+} );
+// ------ Store / ------
+
 
 // ------------------------------- GET / -----------------------------------
 // ------------------------------- POST -----------------------------------
