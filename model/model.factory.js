@@ -458,6 +458,49 @@ const getAllStoreItems = onResult=>{
   const StoreItem = getStoreItemModel(sequelize);
   StoreItem.findAll().then(allItems=>onResult(allItems)).catch(error=>onResult(error));
 }
+
+const getTransactionDetailsOfItem = (itemId, onResult)=>{
+  console.log('getTransactionDetailsOfItem : ', itemId);
+  const StoreItemIn = getStoreItemInModel(sequelize);
+  const StoreItemOut = getStoreItemOutModel(sequelize);
+  //
+  let counter = 0;
+  let items_buy = [];
+  let items_sell = [];
+
+  const logCheckAndReturn = (message)=> {
+    // message = it is simply coming, we are not using it
+    //console.log(message)
+    counter ++
+    //console.log('items_buy', items_buy.length)
+    //console.log('items_sell', items_sell.length)
+    if(counter>=2){
+      onResult({ buy: items_buy, sell: items_sell  })
+    }
+  }
+  
+  StoreItemIn.findAll({
+    where : { store_item_id : itemId }
+  }).then(function(items){
+    //onResult(items);
+    items_buy = items;
+    logCheckAndReturn('buy');
+  }).catch(function(error){
+    onResult(error);
+  }); 
+  
+  StoreItemOut.findAll({
+    where : { store_item_id : itemId }
+  }).then(function(items){
+    //onResult(items);
+    items_sell = items;
+    logCheckAndReturn('sell');
+  }).catch(function(error){
+    onResult(error);
+  }); 
+
+  //onResult({result:'TODO: get the Details'})
+}
 //--------------------- GET / ------------------------------------
 
 //----------------- POST ---------------------------------------
@@ -1053,7 +1096,7 @@ module.exports = {
   getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId, getScheduleById,
   getSchedulesByDoctorId, getScheduleByDoctorGroupId, getScheduleByPersonId, 
   getPrescriptionsByPatientId, getBillsByPatientId, 
-  getAllStoreItems,
+  getAllStoreItems, getTransactionDetailsOfItem,
 
   getPersonWith_Id_Pw, getDoctorWith_Id_Pw,
 

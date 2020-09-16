@@ -290,6 +290,11 @@ router.get('/getAllStoreItems', (request, response)=>{
 	const onCallbackFromDB = dbResult=> response.send(dbResult);
 	modelFactory.getAllStoreItems( onCallbackFromDB );
 } );
+router.get('/getBuySellDetailsOfItemWithId/:itemId', (request, response)=>{
+	const itemId = request.params.itemId;
+	const onCallbackFromDB = dbResult=> response.send(dbResult);
+	modelFactory.getTransactionDetailsOfItem(itemId, onCallbackFromDB);
+})
 // ------ Store / ------
 
 
