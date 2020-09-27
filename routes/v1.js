@@ -901,6 +901,16 @@ router.delete('/deleteSchedule', (request,response)=>{
 		schedule_id : scheduleId
 	}, onCallbackFromDB );
 });
+
+// ----- DeletePrescription
+// TODO: Check the implementation from UI
+router.post('/deletePrescription', (request,response)=>{
+	console.log('v1.js : API : deletePrescription');
+	const pId = request.body.prescriptionId;
+	const onCallbackFromDB = function(dbResult){ response.send( dbResult ); }
+	modelFactory.deletePrescription( request.body , onCallbackFromDB);
+}); // ----- DeletePrescription/
+
 // Delete : /
 //---------------------------------------------------------------------------
 

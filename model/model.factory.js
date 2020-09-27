@@ -1072,6 +1072,19 @@ const deleteSchedule = function(scheduleObj, onResult){
   });
 };// deleteSchedule/
 
+// deletePrescription
+// TODO: check the implementation from UI
+const deletePrescription = function(prescriptionObj, onResult){
+  const PrescriptionModel = getPrescriptionModel(sequelize);
+  PrescriptionModel.destroy( {where:{ id:prescriptionObj.id }} ).then( function(result){
+    onResult( result );
+  }).catch(function(error){
+    console.log('ERROR: PrescriptionModel.destroy');
+    console.log(error);
+  })
+}
+// deletePrescription/
+
 // delete/
 
 //----------------- DELETE / ---------------------------------------
@@ -1092,6 +1105,7 @@ module.exports = {
   updatePerson, updateDoctor, updateDoctorGroup, updateSchedule, updateGroup,
   updatePersonProfile,
   deletePerson, deleteDoctor, deleteDoctorGroup, deleteSchedule, deleteGroup,
+  deletePrescription,
   getAllPeople, getAllDoctors, getAllGroups, getAllDoctorGroups, getAllSchedules,
   getPersonWithId, getDoctorWithId, getGroupWithId, getDoctorGroupWithId, getScheduleById,
   getSchedulesByDoctorId, getScheduleByDoctorGroupId, getScheduleByPersonId, 
