@@ -1076,6 +1076,7 @@ const deleteSchedule = function(scheduleObj, onResult){
 // TODO: check the implementation from UI
 const deletePrescription = function(prescriptionObj, onResult){
   const PrescriptionModel = getPrescriptionModel(sequelize);
+  //console.log('prescriptionObj', prescriptionObj);
   PrescriptionModel.destroy( {where:{ id:prescriptionObj.id }} ).then( function(result){
     onResult( result );
   }).catch(function(error){

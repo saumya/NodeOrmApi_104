@@ -904,11 +904,21 @@ router.delete('/deleteSchedule', (request,response)=>{
 
 // ----- DeletePrescription
 // TODO: Check the implementation from UI
-router.post('/deletePrescription', (request,response)=>{
+router.delete('/deletePrescription', (request,response)=>{
 	console.log('v1.js : API : deletePrescription');
-	const pId = request.body.prescriptionId;
-	const onCallbackFromDB = function(dbResult){ response.send( dbResult ); }
+	//const pId = request.body.prescriptionId;
+	const onCallbackFromDB = function(dbResult){ 
+		console.log( dbResult ); 
+		let resultMessage = 'Nothing Found';
+		if(dbResult===0){
+			// No Records Found. Nothing Happened :)
+		}else{
+			resultMessage = 'Successfully Deleted';
+		}
+		response.send({result: dbResult, message: resultMessage});
+	}
 	modelFactory.deletePrescription( request.body , onCallbackFromDB);
+	//response.send({result: 'Test message from server'});
 }); // ----- DeletePrescription/
 
 // Delete : /
