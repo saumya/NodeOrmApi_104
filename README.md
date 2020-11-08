@@ -1,7 +1,7 @@
 NodeOrmApi_104
 ======================
 
-Study of [Sequelize][1s] ORM by making a project with it. 
+The API is developed with [Sequelize][1s] ORM. 
 
 It has different UI as another projects. 
 This is the base project for the API server.
