@@ -3,7 +3,8 @@ NodeOrmApi_104
 
 The API is developed with [Sequelize][1s] ORM. 
 
-It has different UI as another projects. 
+It has many different UI as another projects.
+ 
 This is the base project for the API server.
 
 A General Store/Inventory API is added for buying and selling product.
