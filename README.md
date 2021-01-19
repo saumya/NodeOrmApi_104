@@ -7,7 +7,7 @@ It has many different UI as another projects.
  
 This is the base project for the API server.
 
-A General Store/Inventory API is added for buying and selling product.
+A General Store/Inventory API is added for buying and selling product. No UI is implemented yet.
 
 
 ### Status
