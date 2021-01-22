@@ -3,7 +3,7 @@ NodeOrmApi_104
 
 The API is developed with [Sequelize][1s] ORM. 
 
-It has many different UI as another projects.
+It has many different UI as different projects.
  
 This is the base project for the API server.
 
