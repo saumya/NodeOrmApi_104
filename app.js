@@ -1,3 +1,14 @@
+/*
+** 
+** version: 0.1.0
+** API server for FindHealth Platform
+**
+**
+**
+*/
+//
+//
+//
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
