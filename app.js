@@ -34,6 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // my Modules ===========
+// SaumyaLogger: Logs the Details in the console
 const SaumyaLogger = require('./saumya/SaumyaLogger');
 const SaumyaCORS = require('./saumya/SaumyaCORS');
 
