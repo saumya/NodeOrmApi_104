@@ -20,6 +20,7 @@ var usersRouter = require('./routes/users');
 var v1Router = require('./routes/v1');
 var v2Router = require('./routes/v2');
 
+// init : Express Application
 var app = express();
 
 // view engine setup
