@@ -1,7 +1,7 @@
 NodeOrmApi_104
 ======================
 
-The API is developed with [Sequelize][1s] ORM. 
+The API is developed with [Sequelize][1s] ORM. The development is made with [Express][express].
 
 It has many different UI as different projects.
  
@@ -10,6 +10,7 @@ This is the base project for the API server.
 A General Store/Inventory API is added for buying and selling product. 
 
 No UI is implemented yet (Inverntory).
+
 
 
 ### Status
@@ -84,6 +85,8 @@ npm install --save sequelize
 [1]: https://github.com/saumya/NodeOrmApi_101
 [2]: https://github.com/saumya/NodeOrmApi_102
 [3]: https://github.com/saumya/NodeOrmApi_103
+
+[express]: http://expressjs.com/
 
 [1s]: https://sequelize.org/
 [2s]: https://typeorm.io/
