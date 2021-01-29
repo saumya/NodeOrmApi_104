@@ -27,19 +27,13 @@ No UI is implemented yet (Inverntory).
  - Groups are made to separate different Organisations
  - DoctorGroups help separate different Doctors to different organisations
 
+### API reference
 
-### Reference and Further reading
+ - /initDB (This is not an API, but a setup step)
+  - This setsup the Database and Tables
+  - Must be visited from the server as the first thing before moving on with the API
+ - 
 
-[TypeORM][2s] looks interesting too.
- 
- The old projects are here
- 
- 1. Node, MySQL [NodeOrmApi_101][1] 
- 2. Node, MySQL [NodeOrmApi_102][2]
-
-These are projects where I am trying to connect to SQL database. There are other projects connecting to NoSQL database.
- 
- 1. Node and MongoDB [NodeOrmApi_103][3]
 
 
 ### Developing with this
@@ -56,6 +50,21 @@ Installing the requirements.
 npm install --save mysql2
 npm install --save sequelize
 ```
+
+
+### Reference and Further reading
+
+[TypeORM][2s] looks interesting too.
+ 
+ The old projects are here
+ 
+ 1. Node, MySQL [NodeOrmApi_101][1] 
+ 2. Node, MySQL [NodeOrmApi_102][2]
+
+These are projects where I am trying to connect to SQL database. There are other projects connecting to NoSQL database.
+ 
+ 1. Node and MongoDB [NodeOrmApi_103][3]
+
 
 
 
