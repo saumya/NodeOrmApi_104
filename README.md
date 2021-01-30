@@ -32,6 +32,16 @@ No UI is implemented yet (Inverntory).
  - /initDB (This is not an API, but a setup step)
   - This setsup the Database and Tables
   - Must be visited from the server as the first thing before moving on with the API
+  - 
+ - Person : /getPersonWithId/:id
+ - Doctor : /getDoctorWithId/:id
+ - Group : /getGroupWithId/:id
+ - DoctorGroup(Clinic) : /getDoctorGroupWithId/:id
+ - Schedules By Doctor Id : /getSchedulesByDoctorId/:id
+ - Schedules By Patient Id : /getSchedulesByPatientId/:id
+ - Schedules By Clinic Id : /getScheduleByDoctorGroupId/:id
+ - Schedules By Person Id : /getScheduleByPersonId/:id
+ - Prescription By Patient Id : /getPrescriptionsByPatientId/:id
  - 
 
 
