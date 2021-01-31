@@ -30,9 +30,9 @@ No UI is implemented yet (Inverntory).
 ### API reference
 
  - /initDB (This is not an API, but a setup step)
-  - This setsup the Database and Tables
-  - Must be visited from the server as the first thing before moving on with the API
-  - 
+ 		- This setsup the Database and Tables
+  	- Must be visited from the server as the first thing before moving on with the API
+  	- 
  - Person : /getPersonWithId/:id
  - Doctor : /getDoctorWithId/:id
  - Group : /getGroupWithId/:id
