@@ -1,7 +1,7 @@
 NodeOrmApi_104
 ======================
 
-The API is developed with [Sequelize][1s] ORM. The development is made with [Express][express].
+Made with [Sequelize][1s] ORM and [Express][express].
 
 It has many different UI as different projects.
  
