@@ -11,6 +11,8 @@ A General Store/Inventory API is added for buying and selling product.
 
 No UI is implemented yet (Inverntory).
 
+> Implemented two modules for my own learning. One is to allow CORS to domains. The other one is to log the messages to console.
+
 
 
 ### Status
