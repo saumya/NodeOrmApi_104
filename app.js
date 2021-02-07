@@ -85,6 +85,11 @@ function onModelFactoryInitFail(error){
     console.log( error );
     console.log('app.js: onModelFactoryInitFail : / : ');
     console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+    console.log('+-------------------------------+');
+    console.log('| FAIL : Application Init       |');
+    console.log('+-------------------------------+');
+    console.log('This is the last line. All the messages are shown above.');
+    console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
 }
 //----------------------------- Model Factory : init : / -----------------------------------
 
