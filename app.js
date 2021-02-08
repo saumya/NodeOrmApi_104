@@ -74,6 +74,9 @@ function onModelFactoryInitDone(sequelize){
     console.log('+----------------------------+');
     console.log('| Application: Init : Done   |');
     console.log('+----------------------------+');
+    console.log('xxxxxxxxxxxxxxxxxxxxxxxxxx');
+    console.log('Waiting for API calls');
+    console.log('xxxxxxxxxxxxxxxxxxxxxxxxxx');
 }
 function onModelFactoryInitFail(error){
     console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
